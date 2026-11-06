@@ -122,6 +122,118 @@ body.dark-mode .auth-screen{background:linear-gradient(145deg,rgba(37,58,82,.85)
 @media(max-width:600px){.auth-screen{margin:12px auto 28px;padding:5px;border-radius:21px}.auth-screen .authcard{padding:21px 17px 19px}.auth-intro h1{font-size:23px}.m-main{padding:12px}.empNav{bottom:7px}.calendar{padding:10px}.calendarGrid{gap:4px}.dayCell{min-height:43px;padding:5px 1px}.cutoffRow select{max-width:none;flex:1}.cutoffRow{gap:7px}}
 @media(min-width:761px){.auth-screen{margin-top:36px}.auth-screen .authcard{padding:30px 30px 25px}}
 
+
+/* EXQUISITE MANAGEMENT EXPERIENCE */
+body.management-mode{
+  background:
+    radial-gradient(ellipse at 82% -8%,rgba(160,164,226,.22),transparent 34%),
+    radial-gradient(ellipse at 22% 0%,rgba(105,196,225,.20),transparent 32%),
+    linear-gradient(135deg,#edf7fb 0%,#f4f2fa 52%,#eef5fb 100%);
+}
+body.management-mode .m-sidebar{
+  width:236px;padding:18px 14px;background:rgba(255,255,255,.82);
+  border-right:1px solid rgba(208,225,238,.9);
+  box-shadow:12px 0 38px rgba(43,83,117,.045);
+}
+body.management-mode main{padding-left:236px}
+body.management-mode .m-brand{padding:4px 5px 20px;margin-bottom:18px}
+body.management-mode .m-logo{
+  width:38px;height:38px;border-radius:13px;font-size:16px;
+  background:linear-gradient(145deg,#259ed0 0%,#7d83cb 100%);
+  box-shadow:0 7px 18px rgba(54,133,177,.24);
+}
+body.management-mode .m-brand b{font-size:12px;letter-spacing:-.25px}
+body.management-mode .m-brand small{font-size:9px;letter-spacing:.35px}
+body.management-mode .m-side-label{font-size:9px;letter-spacing:1.2px;text-transform:uppercase;margin:0 5px 10px}
+body.management-mode .m-nav{gap:7px}
+body.management-mode .m-nav button{
+  min-height:43px;padding:11px 12px;border:1px solid transparent;
+  border-radius:12px;background:transparent;color:#5b6f86;font-size:11px;
+  transition:all .18s ease;
+}
+body.management-mode .m-nav button:hover{background:#f1f7fb;border-color:#e3edf4;transform:translateX(2px)}
+body.management-mode .m-nav button.active{
+  background:linear-gradient(105deg,#e4f4fb 0%,#f0effb 100%);
+  border-color:#d6e8f4;color:#147eae;box-shadow:inset 3px 0 #268fc1,0 5px 14px rgba(65,119,157,.06);
+}
+body.management-mode .m-nav .m-ico{font-size:15px;width:18px}
+body.management-mode .m-side-bottom{border-color:#e7edf3;padding-top:14px}
+body.management-mode .m-bottom-actions button{border-radius:11px;padding:9px 7px;background:#f7fafc;border-color:#e4edf3}
+body.management-mode .m-main{max-width:1500px;padding:25px 34px 54px}
+.m-welcome{
+  position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding:23px 25px;margin:0 0 19px;border:1px solid rgba(255,255,255,.92);border-radius:20px;
+  background:linear-gradient(112deg,rgba(255,255,255,.92),rgba(238,247,253,.82) 58%,rgba(240,237,250,.88));
+  box-shadow:0 12px 32px rgba(49,91,126,.07),inset 0 1px 0 #fff;
+}
+.m-welcome:after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;right:7%;top:-145px;background:radial-gradient(circle,rgba(128,174,222,.18),transparent 70%);pointer-events:none}
+.m-welcome-copy{position:relative;z-index:1}
+.m-welcome-kicker{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#5483a2;font-weight:800;margin-bottom:6px}
+.m-welcome h1{font-size:23px;line-height:1.2;letter-spacing:-.8px;margin:0 0 5px;color:#1a3049}
+.m-welcome p{font-size:11px;color:#75869a;margin:0}
+.m-welcome-mark{position:relative;z-index:1;width:48px;height:48px;border-radius:16px;display:grid;place-items:center;color:#fff;font-size:20px;background:linear-gradient(145deg,#2a9ac9,#8a83cb);box-shadow:0 9px 22px rgba(76,131,177,.22)}
+.m-module{padding:20px;border-radius:19px;background:rgba(255,255,255,.82);backdrop-filter:blur(18px);box-shadow:0 12px 32px rgba(44,83,119,.055),inset 0 1px 0 rgba(255,255,255,.9)}
+#hE.card,#hD.card,#hA.card,#hP.card{background:transparent}
+#hE{padding:0}
+#hE>.row:first-child,#hF>.row:first-child{
+  align-items:end;padding:13px 15px;margin:0 0 13px;border:1px solid #e5edf4;border-radius:14px;
+  background:linear-gradient(110deg,#f8fcff,#f7f6fc);
+}
+#hE h3{font-size:14px;letter-spacing:-.2px;margin:20px 0 10px}
+.m-search-wrap{position:relative;flex:1 1 260px;min-width:220px}
+.m-search-wrap .m-search-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:15px;color:#8296aa;pointer-events:none}
+.m-search{
+  width:100%;min-height:42px;padding:10px 13px 10px 38px;border-radius:12px;
+  background:rgba(255,255,255,.95);border:1px solid #dfeaf2;color:#243b53;font-size:11px;
+  box-shadow:inset 0 1px 2px rgba(38,76,108,.025);transition:border-color .18s,box-shadow .18s;
+}
+.m-search:focus{outline:0;border-color:#83bfdf;box-shadow:0 0 0 3px rgba(67,158,204,.12)}
+.m-search-meta{font-size:10px;color:#8292a5;white-space:nowrap;padding:0 2px 3px}
+.m-add-panel{padding:15px 16px 16px;border:1px solid #e4edf4;border-radius:15px;background:linear-gradient(120deg,#fbfdff,#f7f6fc)}
+.m-add-panel h3{margin:0 0 7px!important}
+#hEBody{margin-top:14px}
+#hEBody .tw,#hFBody .tw,#hABody .tw{border:1px solid #e4edf4;border-radius:14px;background:rgba(255,255,255,.8);box-shadow:0 5px 18px rgba(43,82,116,.035)}
+#hEBody table,#hFBody table{font-size:10px}
+#hEBody th,#hFBody th{position:sticky;top:0;background:#f1f7fb;color:#5f748b;font-size:9px;letter-spacing:.2px;text-transform:uppercase}
+#hEBody td,#hFBody td{padding:10px 11px}
+#hEBody tbody tr:hover,#hFBody tbody tr:hover{background:#f7fbfe}
+#hEBody .act{min-width:165px}
+#hEBody .btn.sm{border-radius:8px}
+#hF{padding:0}
+#hStats .stat{border-radius:14px;padding:14px 15px;background:linear-gradient(145deg,#fff,#f3f8fc);box-shadow:0 5px 17px rgba(42,82,116,.04)}
+#hStats .stat b{font-size:24px}
+#hD h3,#hA h3,#hP h3{font-size:15px}
+#hD>.row:first-of-type{padding:14px;border:1px solid #e5edf4;border-radius:14px;background:#f8fbfd}
+#hD>.row:nth-of-type(2){margin:12px 0 4px}
+body.dark-mode.management-mode .m-welcome{background:linear-gradient(110deg,rgba(28,45,67,.96),rgba(32,47,70,.9) 58%,rgba(48,43,73,.9));border-color:#344960}
+body.dark-mode.management-mode .m-welcome h1{color:#e7f0fa}
+body.dark-mode.management-mode .m-welcome p,body.dark-mode.management-mode .m-welcome-kicker{color:#a7bdd0}
+body.dark-mode.management-mode .m-nav button:hover{background:#20334a;border-color:#344960}
+body.dark-mode.management-mode .m-add-panel,body.dark-mode.management-mode #hE>.row:first-child,body.dark-mode.management-mode #hF>.row:first-child,body.dark-mode.management-mode #hD>.row:first-of-type{background:#1b2d43;border-color:#344960}
+body.dark-mode.management-mode .m-search{background:#1e3047;border-color:#344960;color:#e7f0fa}
+body.dark-mode.management-mode #hEBody .tw,body.dark-mode.management-mode #hFBody .tw,body.dark-mode.management-mode #hABody .tw{background:#192a40;border-color:#344960}
+body.dark-mode.management-mode #hEBody th,body.dark-mode.management-mode #hFBody th{background:#22364e;color:#b7c9dc}
+body.dark-mode.management-mode #hEBody tbody tr:hover,body.dark-mode.management-mode #hFBody tbody tr:hover{background:#20334a}
+@media(max-width:850px){
+ body.management-mode main{padding-left:0;padding-top:72px}
+ body.management-mode .m-sidebar{width:100%;height:64px;padding:7px 10px}
+ body.management-mode .m-brand{min-width:145px;padding:0;margin:0}
+ body.management-mode .m-nav button{min-height:38px}
+ body.management-mode .m-main{padding:13px 12px 35px}
+}
+@media(max-width:600px){
+ .m-welcome{padding:18px 17px;margin-bottom:13px;border-radius:16px}
+ .m-welcome h1{font-size:19px}
+ .m-welcome-mark{width:40px;height:40px;border-radius:13px}
+ .m-module{padding:13px;border-radius:16px}
+ .m-search-wrap{min-width:100%;flex-basis:100%}
+ .m-search-meta{white-space:normal}
+ #hE>.row:first-child,#hF>.row:first-child{padding:11px;gap:8px}
+ #hE .row>*{min-width:100%}
+ #hE .row .fit{min-width:100%}
+ #hE .m-add-panel .row>*{min-width:calc(50% - 8px)}
+}
+
 </style>
 </head>
 <body>
@@ -183,17 +295,29 @@ body.dark-mode .auth-screen{background:linear-gradient(145deg,rgba(37,58,82,.85)
   <div class="m-side-bottom"><div class="m-bottom-actions"><button onclick="toggleTheme()">◐ Dark</button><button onclick="logout()">Log out</button></div></div>
  </aside>
  <div class="m-main">
+  <section class="m-welcome">
+   <div class="m-welcome-copy"><div class="m-welcome-kicker">BETTER EDGE SOLUTIONS INC. · MANAGEMENT</div><h1>Management workspace</h1><p>People, attendance and employee requests — thoughtfully organized in one place.</p></div>
+   <div class="m-welcome-mark" aria-hidden="true">B</div>
+  </section>
   <div class="m-module" id="managementExistingModules">
   <div class="tabs hide" id="hrTabs"><button class="on" data-t="hF">Filings</button><button data-t="hE">Employees</button><button data-t="hD">DTR</button><button data-t="hA" id="hAtab" class="hide">HR accounts</button><button data-t="hP">Password</button></div>
-  <div id="hF"><div class="row" style="margin-bottom:14px"><div class="fit"><label>LDC</label><select id="hfl" onchange="loadFilings()"><option value="">All LDCs</option><option>LDC1</option><option>LDC2</option></select></div>
+  <div id="hF"><div class="row" style="margin-bottom:14px"><div class="m-search-wrap"><span class="m-search-icon">⌕</span><input class="m-search" id="filingSearch" type="search" placeholder="Search employee, reference or filing reason..." oninput="renderFilings()"></div><div class="fit"><label>LDC</label><select id="hfl" onchange="loadFilings()"><option value="">All LDCs</option><option>LDC1</option><option>LDC2</option></select></div>
     <div class="fit"><label>Status</label><select id="hfs" onchange="renderFilings()"><option value="">All</option><option>PENDING</option><option>APPROVED</option><option>REJECTED</option></select></div>
     <div class="fit"><label>Show</label><select id="hfa" onchange="renderFilings()"><option value="cur">Current cutoff</option><option value="arc">Archive</option><option value="all">All</option></select></div></div>
     <div class="grid" id="hStats"></div><div id="hFBody"></div></div>
-  <div id="hE" class="hide card"><div class="row"><div class="fit"><label>LDC</label><select id="hel" onchange="loadEmps()"><option value="">All LDCs</option><option>LDC1</option><option>LDC2</option></select></div>
-    <div class="fit"><label>Show</label><select id="hes" onchange="loadEmps()"><option value="ACTIVE">Active</option><option value="INACTIVE">Archived (inactive)</option><option value="">All</option></select></div>
-    <div class="fit"><button class="btn sec" onclick="syncML(this)">Sync from master list</button></div></div>
-    <h3 style="margin-top:20px">Add employee</h3><div class="row"><div><label>Full name</label><input id="an"></div><div class="fit"><label>LDC</label><select id="al"><option>LDC1</option><option>LDC2</option></select></div><div class="fit"><label>Shift</label><select class="shiftSel" id="as"></select></div><div class="fit"><button class="btn" onclick="addEmp(this)">Add</button></div></div>
-    <div id="hEBody"></div></div>
+  <div id="hE" class="hide card">
+    <div class="row">
+      <div class="m-search-wrap"><span class="m-search-icon">⌕</span><input class="m-search" id="employeeSearch" type="search" placeholder="Search name, employee ID, email or contact..." oninput="renderEmployees()"></div>
+      <div class="fit"><label>LDC</label><select id="hel" onchange="loadEmps()"><option value="">All LDCs</option><option>LDC1</option><option>LDC2</option></select></div>
+      <div class="fit"><label>Employee status</label><select id="hes" onchange="renderEmployees()"><option value="ACTIVE">Active</option><option value="INACTIVE">Archived (inactive)</option><option value="">All employees</option></select></div>
+      <div class="fit"><button class="btn sec" onclick="syncML(this)">↻ Sync master list</button></div>
+    </div>
+    <div class="m-search-meta" id="employeeCount">Search your employee directory</div>
+    <div class="m-add-panel"><h3>Add employee</h3><p class="m-muted">Create an employee record and assign their LDC and shift.</p>
+      <div class="row"><div><label>Full name</label><input id="an" placeholder="Enter employee full name"></div><div class="fit"><label>LDC</label><select id="al"><option>LDC1</option><option>LDC2</option></select></div><div class="fit"><label>Shift</label><select class="shiftSel" id="as"></select></div><div class="fit"><button class="btn" onclick="addEmp(this)">＋ Add employee</button></div></div>
+    </div>
+    <div id="hEBody"></div>
+  </div>
   <div id="hD" class="hide card"><h3>DTR viewer</h3>
     <div class="row"><div><label>LDC</label><select id="dl" onchange="dtrLdc()"><option value="">Select LDC</option><option>LDC1</option><option>LDC2</option></select></div><div><label>Cutoff</label><select id="dc"></select></div><div><label>Employee</label><select id="de"></select></div></div>
     <div class="row" style="margin-top:12px"><div class="fit"><button class="btn" onclick="hrDtr(this)">View employee DTR</button></div><div class="fit"><button class="btn sec" onclick="hrSummary(this)">View LDC summary</button></div></div><div id="hDBody"></div></div>
@@ -328,18 +452,32 @@ async function loadFilings(){$('hFBody').innerHTML='<div class="empty">Loading..
   FIL=r.records;const s=r.stats;
   $('hStats').innerHTML=`<div class="stat"><b>${s.total}</b><span>Total filings</span></div><div class="stat wa"><b>${s.pending}</b><span>Pending</span></div><div class="stat ok"><b>${s.approved}</b><span>Approved</span></div><div class="stat er"><b>${s.rejected}</b><span>Rejected</span></div>`;renderFilings()}
 function renderFilings(){const f=$('hfs').value;
+  const q=String($('filingSearch')?.value||'').trim().toLowerCase();
   $('hFBody').innerHTML=table(['Reference','Filed','Employee','LDC','Type','Start','End','Days','Reason','Status','Action'],
-    FIL.filter(x=>(!f||x.status===f)&&arcOk(x,$('hfa').value)).map(x=>`<tr><td>${esc(x.reference)}</td><td>${esc(x.timestamp)}</td><td>${esc(x.employeeName)}<br><small>${esc(x.employeeId)}</small></td><td>${esc(x.ldc)}</td><td>${esc(x.filingType)}</td><td>${esc(x.startDate)}</td><td>${esc(x.endDate)}</td><td>${esc(x.days)}</td><td class="wrap">${esc(x.reason)}</td><td>${badge(x.status)}${x.actionBy?`<br><small>${esc(x.actionBy)}</small>`:''}</td>
+    FIL.filter(x=>(!f||x.status===f)&&arcOk(x,$('hfa').value))
+    .filter(x=>!q||[x.reference,x.timestamp,x.employeeName,x.employeeId,x.ldc,x.filingType,x.startDate,x.endDate,x.reason,x.status].some(v=>String(v||'').toLowerCase().includes(q))).map(x=>`<tr><td>${esc(x.reference)}</td><td>${esc(x.timestamp)}</td><td>${esc(x.employeeName)}<br><small>${esc(x.employeeId)}</small></td><td>${esc(x.ldc)}</td><td>${esc(x.filingType)}</td><td>${esc(x.startDate)}</td><td>${esc(x.endDate)}</td><td>${esc(x.days)}</td><td class="wrap">${esc(x.reason)}</td><td>${badge(x.status)}${x.actionBy?`<br><small>${esc(x.actionBy)}</small>`:''}</td>
     <td>${x.status==='PENDING'?`<div class="act"><button class="btn good sm" onclick="decide(this,'${esc(x.reference)}','APPROVED')">Approve</button><button class="btn bad sm" onclick="decide(this,'${esc(x.reference)}','REJECTED')">Reject</button></div>`:''}</td></tr>`),'No filings match these filters.')}
 async function decide(b,ref,st){if(!confirm((st==='APPROVED'?'Approve':'Reject')+' this filing?'))return;
   const r=await run(b,'updateFilingStatus',S.tok,ref,st);if(!r.success)dlg('Could not update',esc(r.message));loadFilings()}
 
-async function loadEmps(){$('hEBody').innerHTML='<div class="empty">Loading...</div>';const r=await call('getEmployeesForHR',S.tok,$('hel').value);
+async function loadEmps(){
+  $('hEBody').innerHTML='<div class="empty">Loading employee directory...</div>';
+  const r=await call('getEmployeesForHR',S.tok,$('hel').value);
   if(!r.success){$('hEBody').innerHTML=`<div class="msg er">${esc(r.message)}</div>`;return}
-  EMPS=r.employees;$('as').innerHTML=shiftOpts('');
-  $('hEBody').innerHTML=table(['ID','Name','LDC','Email','Birth date','Contact','Emergency contact','Address','Shift','Status','Registered','Actions'],EMPS.filter(e=>!$('hes').value||String(e.status||'').toUpperCase()===$('hes').value).map(e=>`<tr><td>${esc(e.employeeId)}</td><td>${esc(e.employeeName)}</td><td>${esc(e.ldc)}</td><td>${esc(e.email)}</td><td>${esc(e.dateOfBirth||'')}</td><td>${esc(e.contactNumber||'')}</td><td>${esc([e.emergencyContactName,e.emergencyContactNumber].filter(Boolean).join(' / '))}</td><td class="wrap">${esc(e.address||'')}</td>
+  EMPS=r.employees||[];$('as').innerHTML=shiftOpts('');
+  renderEmployees();
+}
+function renderEmployees(){
+  const q=String($('employeeSearch')?.value||'').trim().toLowerCase();
+  const status=$('hes').value;
+  const rows=EMPS.filter(e=>(!status||String(e.status||'').toUpperCase()===status))
+    .filter(e=>!q||[e.employeeId,e.employeeName,e.ldc,e.email,e.contactNumber,e.emergencyContactName,e.emergencyContactNumber,e.address,e.shift,e.status]
+      .some(v=>String(v||'').toLowerCase().includes(q)));
+  $('employeeCount').textContent=`Showing ${rows.length} of ${EMPS.length} employee${EMPS.length===1?'':'s'}${q?' · Search: “'+q+'”':''}`;
+  $('hEBody').innerHTML=table(['ID','Name','LDC','Email','Birth date','Contact','Emergency contact','Address','Shift','Status','Registered','Actions'],rows.map(e=>`<tr><td>${esc(e.employeeId)}</td><td><strong>${esc(e.employeeName)}</strong></td><td>${esc(e.ldc)}</td><td>${esc(e.email)}</td><td>${esc(e.dateOfBirth||'')}</td><td>${esc(e.contactNumber||'')}</td><td>${esc([e.emergencyContactName,e.emergencyContactNumber].filter(Boolean).join(' / '))}</td><td class="wrap">${esc(e.address||'')}</td>
     <td><select style="width:130px" onchange="setShift(this,'${esc(e.employeeId)}')">${shiftOpts(e.shift)}</select></td><td>${badge(e.status)}</td><td>${e.registered?'Yes':'No'}</td>
-    <td><div class="act"><button class="btn sec sm" onclick="setStatus('${esc(e.employeeId)}','${e.status==='ACTIVE'?'INACTIVE':'ACTIVE'}')">${e.status==='ACTIVE'?'Archive':'Restore'}</button>${e.registered?`<button class="btn sec sm" onclick="resetEmp(this,'${esc(e.employeeId)}')">Reset PIN</button>`:''}<button class="btn bad sm" onclick="rmEmp('${esc(e.employeeId)}','${esc(e.employeeName)}')">Remove</button></div></td></tr>`),'No employees found. Use "Sync from master list" or add one.')}
+    <td><div class="act"><button class="btn sec sm" onclick="setStatus('${esc(e.employeeId)}','${e.status==='ACTIVE'?'INACTIVE':'ACTIVE'}')">${e.status==='ACTIVE'?'Archive':'Restore'}</button>${e.registered?`<button class="btn sec sm" onclick="resetEmp(this,'${esc(e.employeeId)}')">Reset PIN</button>`:''}<button class="btn bad sm" onclick="rmEmp('${esc(e.employeeId)}','${esc(e.employeeName)}')">Remove</button></div></td></tr>`),q?'No employees match your search.':'No employees found. Use "Sync from master list" or add one.');
+}
 async function setShift(sel,id){const r=await call('updateEmployeeShift',S.tok,id,sel.value);if(!r.success)dlg('Could not save shift',esc(r.message))}
 async function setStatus(id,st){const r=await call('updateEmployeeStatus',S.tok,id,st);if(!r.success)dlg('Could not update',esc(r.message));loadEmps()}
 async function resetEmp(b,id){if(!confirm('Reset this employee\'s PIN?'))return;const r=await run(b,'resetEmployeePIN',S.tok,id);
