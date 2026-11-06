@@ -311,6 +311,32 @@ body.dark-mode.management-mode #hEBody tbody tr:hover,body.dark-mode.management-
  body.dark-mode .profileHead{background:linear-gradient(110deg,#1d3548,#2d2a45)!important;border-color:#344960}
 }
 
+
+/* FINAL DTR / PROFILE CLEANUP */
+#eDtr.card{padding:20px!important}
+#eDtr>h3{font-size:16px;margin:0 0 14px}
+.cutoffRow{display:flex;align-items:end;justify-content:space-between;gap:14px;padding:13px 15px;border:1px solid #e1ebf3;border-radius:14px;background:linear-gradient(110deg,#f7fbfe,#f7f6fc);margin-bottom:16px}
+.cutoffSelectWrap{display:flex;flex-direction:column;gap:6px;flex:1;min-width:0}
+.cutoffSelectWrap label{font-size:10px;font-weight:700;color:#60758c;margin:0}
+.cutoffSelectWrap select{width:100%;min-height:42px;border-radius:10px}
+.cutoffAutoNote{font-size:9px;color:#8797a8;line-height:1.5;padding-bottom:4px;max-width:230px;text-align:right}
+.dtr-note{padding:10px 13px;margin:0 0 14px;border:1px solid #dcebf5;border-radius:11px;background:#f1f8fc;color:#5e7890;font-size:10px;line-height:1.55}
+#eDtrBody>.empty{padding:22px;text-align:center;border:1px dashed #dbe7ef;border-radius:13px;background:#fafcfe;color:#8293a5;font-size:11px}
+#profileMsg:empty{display:none}
+#eProfile .profileHead{align-items:center}
+#eProfile .profileHead>div:last-child{min-width:0}
+#eProfile .profileHead strong,#eProfile .profileHead small{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:600px){
+ #eDtr.card{padding:14px!important}
+ .cutoffRow{align-items:stretch;flex-direction:column;gap:8px}
+ .cutoffAutoNote{max-width:none;text-align:left;padding:0}
+ .dtr-note{font-size:9px}
+}
+body.dark-mode .cutoffRow{background:linear-gradient(110deg,#1b2d43,#252b43);border-color:#344960}
+body.dark-mode .cutoffSelectWrap label,body.dark-mode .cutoffAutoNote{color:#a8b9cb}
+body.dark-mode .dtr-note{background:#1c3448;border-color:#31536c;color:#b6cadd}
+body.dark-mode #eDtrBody>.empty{background:#1b2c41;border-color:#344960;color:#a8b9cb}
+
 </style>
 </head>
 <body>
@@ -351,14 +377,14 @@ body.dark-mode.management-mode #hEBody tbody tr:hover,body.dark-mode.management-
 <!-- EMPLOYEE -->
 <section id="emp" class="hide">
  <div class="card empTop"><h2 id="eName"></h2><p id="eMeta"></p></div>
- <div id="eDtr" class="card"><h3>My DTR</h3><div class="cutoffRow"><select id="ec"></select><button class="btn" onclick="loadMyDtr(this)">View</button></div><div id="eDtrBody"><div class="empty">Select a cutoff and tap View.</div></div></div>
+ <div id="eDtr" class="card"><h3>My DTR</h3><div class="cutoffRow"><div class="cutoffSelectWrap"><label for="ec">Select cutoff period</label><select id="ec" aria-label="Select DTR cutoff period"></select></div><span class="cutoffAutoNote">Calendar updates automatically when you change the cutoff.</span></div><div id="eDtrBody"><div class="empty">Loading your latest cutoff calendar…</div></div></div>
  <div id="eFile" class="card hide"><h3>Absent filing</h3><div class="row"><div><label>Type</label><select id="ft" onchange="$('fdw').classList.toggle('hide',this.value!=='LEAVE')"><option value="ABSENT">Absent (1 day)</option><option value="LEAVE">Leave (multi-day)</option></select></div><div><label>Start date</label><input id="fs" type="date"></div><div id="fdw" class="hide"><label>Days (max 14)</label><input id="fd" type="number" min="1" max="14" value="1"></div></div><label>Reason</label><textarea id="fr" maxlength="500"></textarea><button class="btn" style="margin-top:14px" onclick="submitFiling(this)">Submit filing</button><div id="fMsg"></div><h3 style="margin-top:24px">My filings</h3><div id="eListBody"></div></div>
  <div id="ePw" class="card hide" style="max-width:520px"><h3>Change sorter PIN</h3><p class="sub">Update your six-digit PIN using your current PIN.</p><div id="ePwBox"></div></div>
- <div id="eProfile" class="card hide"><div class="row" style="align-items:center"><div><h3 style="margin:0">My profile</h3><p class="sub" style="margin:4px 0 0">Personal and emergency contact details.</p></div><div class="fit"><button class="btn sec" id="profileEditBtn" onclick="toggleProfileEdit()">Edit details</button></div></div><div class="profileHead"><div class="avatar" id="profileAvatar">BE</div><div><strong id="profileNameHead">Employee profile</strong><small id="profileEmailHead"></small></div></div>
+ <div id="eProfile" class="card hide"><div class="row" style="align-items:center"><div><h3 style="margin:0">My profile</h3><p class="sub" style="margin:4px 0 0">Personal and emergency contact details.</p></div><div class="fit"></div></div><div class="profileHead"><div class="avatar" id="profileAvatar">BE</div><div><strong id="profileNameHead">Employee profile</strong><small id="profileEmailHead"></small></div></div>
  <div class="row"><div><label>Full name</label><input id="pName" readonly></div><div><label>Date of birth</label><input id="pDob" type="date" readonly></div></div>
  <div class="row"><div><label>Contact number</label><input id="pPhone" readonly></div><div><label>Emergency contact</label><input id="pEmergency" readonly></div></div>
  <div class="row"><div><label>Emergency contact number</label><input id="pEmergencyPhone" readonly></div><div><label>Address</label><textarea id="pAddress" readonly></textarea></div></div>
- <div id="profileActions" class="hide" style="margin-top:14px"><button class="btn" onclick="saveProfile(this)">Save details</button> <button class="btn sec" onclick="cancelProfileEdit()">Cancel</button></div><div id="profileMsg"></div></div>
+ <div id="profileActions" class="hide" style="margin-top:14px"></div><div id="profileMsg"></div></div>
 </section>
 <nav id="empNav" class="empNav hide"><button class="on" data-t="eDtr"><span class="ico">▦</span>My DTR</button><button data-t="eFile"><span class="ico">▤</span>Absent filing</button><button data-t="ePw"><span class="ico">♙</span>PIN</button><button data-t="eProfile"><span class="ico">♧</span>My profile</button></nav>
 
@@ -465,7 +491,7 @@ async function empLogin(b){if(!/^\d{6}$/.test($('lp').value)){msg('authMsg',{mes
   S.tok=r.token;S.role='emp';const e=r.employee;
   $('eName').textContent=e.employeeName;$('eMeta').textContent=`${e.employeeId}  |  ${e.ldc.replace('LDC','LDC ')}  |  Shift: ${e.shiftLabel}`;
   $('whoTxt').textContent=e.employeeName;$('fs').value=new Date().toISOString().slice(0,10);
-  pinForm();show('emp');openEmpTab('eDtr');loadProfile();initDtr();}
+  pinForm();show('emp');openEmpTab('eDtr');loadProfile();}
 async function register(b){if(!/^\d{6}$/.test($('rp').value)){msg('authMsg',{message:'PIN must be exactly six digits.'});return}if($('rp').value!==$('rc').value){msg('authMsg',{message:'PINs do not match.'});return}const r=await run(b,'registerEmployee',$('rl').value,$('rn').value,$('re').value,$('rp').value,$('rc').value);
   if(!r.success){msg('authMsg',r);return}
   $('le').value=$('re').value;['rl','rn','re','rp','rc'].forEach(i=>$(i).value='');
@@ -513,15 +539,26 @@ async function loadMine(){$('eListBody').innerHTML='<div class="empty">Loading..
   if(!r.success){$('eListBody').innerHTML=`<div class="msg er">${esc(r.message)}</div>`;return}
   const cols=['Filed','Type','Start','End','Days','Reason','Status','Action by'],row=x=>`<tr><td>${esc(x.timestamp)}</td><td>${esc(x.filingType)}</td><td>${esc(x.startDate)}</td><td>${esc(x.endDate)}</td><td>${esc(x.days)}</td><td class="wrap">${esc(x.reason)}</td><td>${badge(x.status)}</td><td>${esc(x.actionBy)}</td></tr>`,cur=r.records.filter(x=>!isArchFiling(x)),old=r.records.filter(isArchFiling);
   $('eListBody').innerHTML=table(cols,cur.map(row),'No filings in the current cutoff.')+(old.length?`<details class="arc"><summary>Archived filings (${old.length})</summary>${table(cols,old.map(row),'')}</details>`:'')}
-async function initDtr(){if($('ec').options.length)return;const r=await call('getCutoffTabs',S.tok);
-  if(!r.success){$('eDtrBody').innerHTML=`<div class="msg er">${esc(r.message)}</div>`;return}
-  fillCut($('ec'),r.tabs)}
+let DTR_INIT_PROMISE=null;
+async function initDtr(){
+  if(DTR_INIT_PROMISE){await DTR_INIT_PROMISE;return}
+  if($('ec').options.length){if(!$('eDtrBody').dataset.loaded)await loadMyDtr();return}
+  DTR_INIT_PROMISE=(async()=>{
+    const r=await call('getCutoffTabs',S.tok);
+    if(!r.success){$('eDtrBody').innerHTML=`<div class="empty">DTR cutoff periods are temporarily unavailable. Please try again later.</div>`;return}
+    fillCut($('ec'),r.tabs||[]);
+    $('ec').onchange=()=>loadMyDtr();
+    if($('ec').value)await loadMyDtr();
+    else $('eDtrBody').innerHTML='<div class="empty">No cutoff periods are available yet.</div>';
+  })();
+  try{await DTR_INIT_PROMISE}finally{DTR_INIT_PROMISE=null}
+}
 function dtrView(r){
  LASTDTR=r;
  if(!r.success)return`<div class="msg er">${esc(r.message)}</div>`;
  const t=r.totals||{},rows=r.rows||[];
  const stat=(v,l,c='')=>`<div class="stat ${c}"><b>${esc(v??0)}</b><span>${l}</span></div>`;
- const parsed=rows.map(x=>({x,d:new Date(String(x.date||'').slice(0,10)+'T12:00:00')})).filter(z=>!isNaN(z.d.getTime())).sort((a,b)=>a.d-b.d);
+ const parsed=rows.map(x=>{const raw=String(x.date||'').trim();let d=null;const iso=raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);if(iso)d=new Date(Number(iso[1]),Number(iso[2])-1,Number(iso[3]),12);else{const m=raw.match(/^([A-Za-z]{3})\s+(\d{1,2}),\s*(\d{4})$/);if(m){const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];d=new Date(Number(m[3]),months.indexOf(m[1]),Number(m[2]),12)}else{const parsedDate=new Date(raw);if(!isNaN(parsedDate))d=new Date(parsedDate.getFullYear(),parsedDate.getMonth(),parsedDate.getDate(),12)}}return{x,d}}).filter(z=>z.d&&!isNaN(z.d.getTime())).sort((a,b)=>a.d-b.d);
  let cal='';
  if(parsed.length){
    const first=new Date(parsed[0].d.getFullYear(),parsed[0].d.getMonth(),parsed[0].d.getDate());
@@ -542,8 +579,8 @@ function dtrView(r){
        let cls='no-record',label=x?(x.status||'Recorded'):'No record';
        if(st.includes('ABSENT'))cls='absent';
        else if(st.includes('MISSING')||st.includes('NO TIME OUT'))cls='missing';
-       else if(st.includes('LATE'))cls='late';
-       else if(st.includes('UNDERTIME'))cls='undertime';
+       else if(st.includes('LATE')||Number(x?.late||0)>0)cls='late';
+       else if(st.includes('UNDERTIME')||Number(x?.undertime||0)>0)cls='undertime';
        else if(st.includes('OVERTIME')||(Number(x?.overtime||0)>0))cls='overtime';
        else if(x?.timeIn)cls='ontime';
        const inTime=x?.timeIn?`In ${esc(x.timeIn)}`:'';
@@ -559,7 +596,7 @@ function dtrView(r){
    cal='<div class="empty">No attendance dates are available for this cutoff.</div>';
  }
  return DLROW('dlDtr()')+
- `${r.shiftSet?'':`<div class="msg er">No shift is set yet, so late and undertime cannot be computed. Ask HR to set it.</div>`}
+ `${r.shiftSet?'':`<div class="dtr-note">Your shift schedule has not been assigned yet. Attendance hours will still appear; late and undertime calculations will be available after Management assigns your shift.</div>`}
  <div class="grid">${stat(t.daysRendered,'Days worked')}${stat(t.hours,'Total hours')}${stat(t.overtimeHours||0,'OT hours','ok')}${stat(t.lateMinutes??0,'Late (min)','wa')}</div>
  <div class="calendar dtr-calendar">
    <div class="dtr-calendar-heading"><div><span class="dtr-eyebrow">MY ATTENDANCE</span><div class="calHead">Attendance calendar · ${esc(r.tab||'Selected cutoff')}</div><p>Full cutoff view · Select another cutoff above to view a different period.</p></div><span class="dtr-calendar-icon">▦</span></div>
@@ -568,7 +605,7 @@ function dtrView(r){
  </div>
  <div class="grid">${stat(t.undertimeMinutes??0,'Undertime (min)','wa')}${stat(t.absences??0,'Absences','er')}</div>`;
 }
-async function loadMyDtr(b){DTRCTX={name:$('eName').textContent,meta:$('eMeta').textContent,cut:$('ec').value};$('eDtrBody').innerHTML='';$('eDtrBody').innerHTML=dtrView(await run(b,'getMyDTR',S.tok,$('ec').value))}
+async function loadMyDtr(b){if(!$('ec').value)return;DTRCTX={name:$('eName').textContent,meta:$('eMeta').textContent,cut:$('ec').value};$('eDtrBody').dataset.loaded='0';$('eDtrBody').innerHTML='<div class="empty">Loading selected cutoff calendar…</div>';const r=await run(b,'getMyDTR',S.tok,$('ec').value);$('eDtrBody').innerHTML=dtrView(r);$('eDtrBody').dataset.loaded=r.success?'1':'0'}
 
 /* ---------- HR ---------- */
 async function loadFilings(){$('hFBody').innerHTML='<div class="empty">Loading...</div>';const r=await call('getHRDashboard',S.tok,$('hfl').value);
@@ -634,11 +671,17 @@ $('empNav').addEventListener('click',e=>{const b=e.target.closest('button[data-t
 function pinForm(){$('ePwBox').innerHTML=`<label>Current 6-digit PIN</label><input id="pinOld" type="text" inputmode="numeric" maxlength="6" autocomplete="off"><label>New 6-digit PIN</label><input id="pinNew" type="text" inputmode="numeric" maxlength="6" autocomplete="off"><label>Confirm new PIN</label><input id="pinConfirm" type="text" inputmode="numeric" maxlength="6" autocomplete="off"><button class="btn" style="margin-top:15px" id="pinSaveBtn">Update PIN</button><div id="pinMsg"></div>`;$('pinSaveBtn').onclick=async()=>{let o=$('pinOld').value,n=$('pinNew').value,c=$('pinConfirm').value;if(!/^\d{6}$/.test(o)||!/^\d{6}$/.test(n)){msg('pinMsg',{message:'Enter a valid six-digit PIN.'});return}if(n!==c){msg('pinMsg',{message:'New PINs do not match.'});return}let r=await run($('pinSaveBtn'),'changeEmployeePIN',S.tok,o,n);msg('pinMsg',r,'PIN updated successfully.');if(r.success)$('pinOld').value=$('pinNew').value=$('pinConfirm').value=''}}
 let PROFILE_SNAPSHOT={};
 function profileVals(){return{employeeName:$('pName').value,dateOfBirth:$('pDob').value,contactNumber:$('pPhone').value,emergencyContactName:$('pEmergency').value,emergencyContactNumber:$('pEmergencyPhone').value,address:$('pAddress').value}}
-function setProfile(p){p=p||{};$('pName').value=p.employeeName||p.name||$('eName').textContent||'';$('pDob').value=(p.dateOfBirth||p.dob||'').slice(0,10);$('pPhone').value=p.contactNumber||'';$('pEmergency').value=p.emergencyContactName||p.emergencyContact||'';$('pEmergencyPhone').value=p.emergencyContactNumber||'';$('pAddress').value=p.address||'';$('profileNameHead').textContent=$('pName').value||'Employee profile';$('profileEmailHead').textContent=p.email||$('le').value;$('profileAvatar').textContent=$('pName').value.split(/\s+/).slice(0,2).map(x=>x[0]||'').join('').toUpperCase()||'BE';PROFILE_SNAPSHOT=profileVals();['pName','pDob','pPhone','pEmergency','pEmergencyPhone','pAddress'].forEach(id=>$(id).readOnly=true);$('profileActions').classList.add('hide');$('profileEditBtn').classList.remove('hide')}
-async function loadProfile(){if(!$('profileMsg'))return;$('profileMsg').innerHTML='';let r=await call('getEmployeeProfile',S.tok);if(r.success)setProfile(r.profile||r.employee||r);else{setProfile({employeeName:$('eName').textContent,email:$('le').value});$('profileMsg').innerHTML=`<div class="msg er">${esc(r.message||'Profile service is not available yet.')}</div>`}}
-function toggleProfileEdit(){['pName','pDob','pPhone','pEmergency','pEmergencyPhone','pAddress'].forEach(id=>$(id).readOnly=false);$('profileActions').classList.remove('hide');$('profileEditBtn').classList.add('hide')}
-function cancelProfileEdit(){setProfile(PROFILE_SNAPSHOT)}
-async function saveProfile(b){let v=profileVals();if(!v.employeeName.trim()){msg('profileMsg',{message:'Full name is required.'});return}let r=await run(b,'updateEmployeeProfile',S.tok,v);msg('profileMsg',r,'Profile details saved. HR/Management can view the updated details.');if(r.success){$('eName').textContent=v.employeeName;setProfile(v)}}
+function setProfile(p){p=p||{};$('pName').value=p.employeeName||p.name||$('eName').textContent||'';$('pDob').value=(p.dateOfBirth||p.dob||'').slice(0,10);$('pPhone').value=p.contactNumber||'';$('pEmergency').value=p.emergencyContactName||p.emergencyContact||'';$('pEmergencyPhone').value=p.emergencyContactNumber||'';$('pAddress').value=p.address||'';$('profileNameHead').textContent=$('pName').value||'Employee profile';$('profileEmailHead').textContent=p.email||$('le').value;$('profileAvatar').textContent=$('pName').value.split(/\s+/).slice(0,2).map(x=>x[0]||'').join('').toUpperCase()||'BE';PROFILE_SNAPSHOT=profileVals();['pName','pDob','pPhone','pEmergency','pEmergencyPhone','pAddress'].forEach(id=>$(id).readOnly=true);$('profileActions').classList.add('hide')}
+function loadProfile(){
+  if(!$('profileMsg'))return;
+  $('profileMsg').innerHTML='';
+  setProfile({employeeName:$('eName').textContent,email:$('le').value});
+  $('pDob').placeholder='Not provided';
+  $('pPhone').placeholder='Not provided';
+  $('pEmergency').placeholder='Not provided';
+  $('pEmergencyPhone').placeholder='Not provided';
+  $('pAddress').placeholder='Not provided';
+}
 
 document.addEventListener('keydown',e=>{if(e.key!=='Enter'||e.target.tagName==='TEXTAREA')return;
   const m={le:()=>empLogin($('aLogin').querySelector('.btn')),lp:()=>empLogin($('aLogin').querySelector('.btn')),hu:()=>hrLogin($('aHR').querySelector('.btn')),hp:()=>hrLogin($('aHR').querySelector('.btn'))};m[e.target.id]&&m[e.target.id]()});
