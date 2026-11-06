@@ -101,36 +101,61 @@ body.management-mode main{max-width:none;margin:0;padding:0 0 30px 216px}
 
 .dlRow{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 14px}.arc{margin-top:18px}.arc summary{cursor:pointer;font-weight:700;padding:6px 0}
 @media print{header,#empNav,.cutoffRow,.m-sidebar,.dlRow,.row,#hD>h3,.tabs{display:none!important}body{background:#fff}.management-shell{display:block}.card{box-shadow:none;border:0}}
+
+/* BESI polished glass / mirror interface */
+:root{--bg:#eaf4fa;--card:rgba(255,255,255,.94);--ink:#172b45;--muted:#71839a;--line:#dfeaf2;--blue:#1683bd;--pale:#e8f5fc;--shadow:0 12px 34px rgba(34,75,111,.09)}
+body{background:radial-gradient(ellipse at 12% 4%,rgba(113,203,231,.24),transparent 34%),radial-gradient(ellipse at 90% 8%,rgba(180,164,229,.2),transparent 32%),linear-gradient(135deg,#edf7fb,#f4f2fa 58%,#edf6fb);background-attachment:fixed}
+header{backdrop-filter:blur(18px);background:rgba(255,255,255,.78);border-color:rgba(215,229,239,.9)}
+.auth-screen{max-width:480px;display:block;margin:24px auto 42px;border:1px solid rgba(255,255,255,.9);border-radius:25px;overflow:visible;background:linear-gradient(145deg,rgba(255,255,255,.72),rgba(237,247,252,.52));box-shadow:0 24px 65px rgba(42,91,128,.12);padding:7px}
+.auth-screen .authcard{border-radius:20px;padding:25px 24px 22px;background:rgba(255,255,255,.88);backdrop-filter:blur(22px);box-shadow:inset 0 1px 0 #fff,0 7px 24px rgba(53,97,130,.06)}
+.auth-brand{display:flex;align-items:center;gap:11px;margin-bottom:20px}.auth-mark{height:42px;width:42px;border-radius:12px;background:linear-gradient(145deg,#29a9d7,#8e83d5);color:#fff;display:grid;place-items:center;font-size:20px;font-weight:800;box-shadow:0 6px 15px #328db333}.auth-brand b{display:block;font-size:12px;letter-spacing:-.2px}.auth-brand span{display:block;font-size:9px;letter-spacing:1px;color:#72869e;font-weight:700;margin-top:2px}
+.secure-tag{display:inline-flex;align-items:center;gap:7px;padding:5px 10px;border-radius:20px;background:#e9f6fc;color:#1685b9;font-size:9px;font-weight:800;letter-spacing:.8px}.secure-tag i{height:7px;width:7px;border-radius:50%;background:#16b68e;box-shadow:0 0 0 3px #d5f2e9}.auth-intro{margin:12px 0 16px}.auth-intro h1{font-size:25px;letter-spacing:-1px;line-height:1.2;margin:0 0 5px}.auth-intro p{font-size:12px;color:var(--muted);margin:0;max-width:330px}.auth-role-tabs{margin:0 0 10px;padding:4px;background:#f3f7fa;border-color:#e5edf3;display:grid;grid-template-columns:1fr 1fr}.auth-role-tabs button{padding:10px 12px;font-size:12px}.auth-role-tabs button.on{background:linear-gradient(180deg,#fff,#fafdff);color:#0879b5;box-shadow:0 2px 8px rgba(37,87,121,.12);border:1px solid #dcebf4}
+.auth-help{margin:0 0 14px}.auth-screen label{margin:12px 0 6px;font-size:10px;color:#334b64}.auth-screen input,.auth-screen select{background:#fbfdff;border-color:#e2ebf2;border-radius:10px;min-height:44px;font-size:12px}.auth-screen .full{margin-top:17px;min-height:45px;border-radius:10px;background:linear-gradient(100deg,#1685bd,#177bb2);box-shadow:0 5px 13px rgba(22,125,181,.2)}.auth-footnote{text-align:center;color:#71839a;font-size:10px;margin:8px 0 2px}.register-prompt{text-align:left;margin:5px 0 0;font-size:10px;color:#5d728a}.register-prompt a{color:#087db8;text-decoration:none;font-weight:700}.register-prompt a:hover{text-decoration:underline}
+.card{backdrop-filter:blur(12px)}.empTop{background:linear-gradient(120deg,rgba(255,255,255,.98),rgba(237,247,252,.94));border-color:#e1edf4}.empTop h2{letter-spacing:-.4px}.empTop p{font-size:11px}.cutoffRow{align-items:center}.cutoffRow select{border-radius:10px;border-color:#e1eaf1;min-height:39px}.cutoffRow .btn{border-radius:22px}.stat{background:linear-gradient(145deg,#f8fcff,#eff6fb);border-color:#e3edf4}.stat b{letter-spacing:-.6px}.calendar{background:linear-gradient(145deg,#fff,#fbfdff);border-color:#e4edf4}.dayCell{background:rgba(255,255,255,.8);min-height:48px}.dayCell b{font-size:11px}.dayCell small{font-size:8px}.empNav{backdrop-filter:blur(18px);background:rgba(255,255,255,.9);border-color:#e1eaf1;box-shadow:0 12px 32px rgba(30,67,97,.16)}
+.btn{transition:transform .16s ease,box-shadow .16s ease}.btn:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(22,125,181,.16)}.theme-toggle{border:1px solid #dce8f0;background:rgba(255,255,255,.8);color:#526a82;border-radius:20px;padding:7px 12px;font-size:10px;font-weight:700;cursor:pointer;white-space:nowrap}.who{gap:9px}
+/* Management layout spacing and theme */
+body.management-mode{background:radial-gradient(ellipse at 75% 0%,rgba(168,188,233,.18),transparent 36%),linear-gradient(125deg,#edf7fb,#f3f1fa)}
+.m-sidebar{background:rgba(255,255,255,.88);backdrop-filter:blur(20px);border-color:#e0eaf2}.m-main{max-width:1320px;padding:22px 28px 46px}.m-panel,.m-module,.m-metric{box-shadow:0 8px 26px rgba(35,79,112,.06);border-color:#e3edf4}.m-module{border-radius:17px}.m-nav button{padding:11px 12px;border-radius:11px}.m-nav button.active{background:linear-gradient(100deg,#e5f5fc,#f0f4ff);border-color:#c5e3f3}.m-title{font-size:21px}.m-metric{border-radius:15px}.dlRow{gap:8px}.dlRow .btn{min-height:34px}
+body.dark-mode{--bg:#101b2b;--card:#18263a;--ink:#e7f0fa;--muted:#9aacc1;--line:#2b3d54;--blue:#45a9dc;--pale:#203c54;--shadow:0 12px 34px rgba(0,0,0,.25);background:radial-gradient(ellipse at 10% 0%,rgba(35,110,145,.2),transparent 35%),radial-gradient(ellipse at 90% 0%,rgba(104,83,154,.18),transparent 32%),linear-gradient(135deg,#101b2b,#172238 60%,#111e30);color:var(--ink)}
+body.dark-mode header,body.dark-mode .auth-screen .authcard,body.dark-mode .card,body.dark-mode .m-sidebar,body.dark-mode .m-module,body.dark-mode .m-panel,body.dark-mode .m-metric,body.dark-mode .empNav{background:rgba(24,38,58,.94);border-color:#2b3d54;color:var(--ink)}
+body.dark-mode .auth-screen{background:linear-gradient(145deg,rgba(37,58,82,.85),rgba(24,38,58,.72));border-color:#33475f}body.dark-mode .auth-role-tabs,body.dark-mode .tabs,body.dark-mode .stat,body.dark-mode .dayCell,body.dark-mode th,body.dark-mode input,body.dark-mode select,body.dark-mode textarea{background:#1e3047;border-color:#344960;color:#e7f0fa}body.dark-mode .tabs button.on{background:#293d56;color:#70c5ed;border-color:#3a5874}body.dark-mode .auth-brand span,body.dark-mode .auth-intro p,body.dark-mode .auth-help,body.dark-mode .auth-footnote,body.dark-mode .register-prompt,body.dark-mode label,body.dark-mode .m-muted,body.dark-mode .m-eyebrow,body.dark-mode .m-subtitle{color:#a5b7ca}body.dark-mode .secure-tag{background:#1c3d52;color:#7ed0f2}body.dark-mode .m-nav button{background:#1c2c41;border-color:#344960;color:#dce8f5}body.dark-mode .m-nav button.active{background:#203e56;color:#7ac9ee;border-color:#3d6b88}body.dark-mode .m-bottom-actions button,body.dark-mode .theme-toggle{background:#1e3047;color:#dce8f5;border-color:#344960}body.dark-mode .calendar{background:#192a40;border-color:#344960}body.dark-mode .dayCell.present{background:#173b37;border-color:#27665a}body.dark-mode .dayCell.absent{background:#422a36;border-color:#71404b}body.dark-mode .dayCell.late{background:#413729;border-color:#6d5736}body.dark-mode .profileHead{background:#203e56}body.dark-mode .m-ring-inner{background:#18263a;color:#e7f0fa}body.dark-mode .tw{border-color:#344960}body.dark-mode td{border-color:#2b3d54}body.dark-mode .b{background:#2b405a;color:#c5d8eb}
+@media(max-width:600px){.auth-screen{margin:12px auto 28px;padding:5px;border-radius:21px}.auth-screen .authcard{padding:21px 17px 19px}.auth-intro h1{font-size:23px}.m-main{padding:12px}.empNav{bottom:7px}.calendar{padding:10px}.calendarGrid{gap:4px}.dayCell{min-height:43px;padding:5px 1px}.cutoffRow select{max-width:none;flex:1}.cutoffRow{gap:7px}}
+@media(min-width:761px){.auth-screen{margin-top:36px}.auth-screen .authcard{padding:30px 30px 25px}}
+
 </style>
 </head>
 <body>
 <header>
   <div class="logo"><svg viewBox="0 0 40 40" width="38" height="38" aria-hidden="true"><rect width="40" height="40" rx="9" fill="#fff"/><path d="M9 6h12a9 9 0 0 1 0 14L9 20z" fill="#183a93"/><path d="M9 20l14 0a9 9 0 0 1 0 14H9z" fill="#d92aa1"/><path d="M9 12l12 8-12 8z" fill="#27cdff"/></svg></div>
   <div class="brand wm"><b>BetterEdge</b><span>SOLUTIONS INC. | EMPLOYEE PORTAL</span></div>
-  <div class="who hide" id="who"><span id="whoTxt"></span><button class="btn sec sm" onclick="logout()">Log out</button></div>
+  <div class="who"><button class="theme-toggle" onclick="toggleTheme()" id="themeToggle" type="button">◐ Dark</button><span class="hide" id="whoTxt"></span><button class="btn sec sm hide" id="headerLogout" onclick="logout()">Log out</button></div>
 </header>
 <main>
 
 <!-- AUTH -->
-<section id="auth" class="authgrid"><aside class="hero"><svg viewBox="0 0 40 40" width="64" height="64" aria-hidden="true"><rect width="40" height="40" rx="9" fill="#fff"/><path d="M9 6h12a9 9 0 0 1 0 14L9 20z" fill="#183a93"/><path d="M9 20l14 0a9 9 0 0 1 0 14H9z" fill="#d92aa1"/><path d="M9 12l12 8-12 8z" fill="#27cdff"/></svg><h1>File absences and check your DTR in one place</h1><p>Better Edge Solutions Inc. employee portal.</p><ul><li>File an absence or leave in under a minute</li><li>See your hours, late and undertime per cutoff</li><li>Track the status of every filing</li></ul></aside><div class="card authcard">
-  <div class="tabs" id="authTabs">
-    <button class="on" data-t="aLogin">Employee login</button><button data-t="aReg">Register</button><button data-t="aHR">HR login</button>
+<section id="auth" class="authgrid auth-screen"><div class="card authcard">
+  <div class="auth-brand"><div class="auth-mark">B</div><div><b>BETTER EDGE SOLUTIONS INC.</b><span>SORTER ATTENDANCE PORTAL</span></div></div>
+  <div class="secure-tag"><i></i> SECURE ACCESS</div>
+  <div class="auth-intro"><h1>Welcome back</h1><p>Sign in to record attendance and view your cutoff details.</p></div>
+  <div class="tabs auth-role-tabs" id="authTabs"><button class="on" data-t="aLogin">Sorter</button><button data-t="aHR">Management</button></div>
+  <div id="aLogin"><p class="sub auth-help">Use the email and six-digit PIN provided during registration.</p>
+    <label>Email address</label><input id="le" type="email" autocomplete="username" placeholder="Enter your registered email">
+    <label>Sorter PIN</label><input id="lp" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" autocomplete="current-password" placeholder="Enter your 6-digit PIN">
+    <button class="btn full" onclick="empLogin(this)">Sign in to attendance</button>
+    <p class="auth-footnote">Need help accessing your account? Contact management.</p>
+    <p class="register-prompt">New sorter? <a href="#register" onclick="showRegister(true);return false">Register here.</a></p>
   </div>
-  <div id="aLogin"><h2>Welcome back</h2><p class="sub">Log in using your registered email and six-digit sorter PIN.</p>
-    <label>Email</label><input id="le" type="email" autocomplete="username">
-    <label>Sorter PIN</label><input id="lp" type="text" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" autocomplete="off" placeholder="Enter your 6-digit PIN">
-    <button class="btn full" onclick="empLogin(this)">Log in</button></div>
-  <div id="aReg" class="hide"><h2>Create your account</h2><p class="sub">Register with your master-list name and create a six-digit PIN for sorter access.</p>
+  <div id="aReg" class="hide"><h2>Create your sorter account</h2><p class="sub">Register using the name on your employee master list.</p>
     <label>LDC</label><select id="rl"><option value="">Select LDC</option><option value="LDC1">LDC 1</option><option value="LDC2">LDC 2</option></select>
     <label>Full name</label><input id="rn" placeholder="First and last name">
-    <label>Email</label><input id="re" type="email">
-    <label>Create 6-digit PIN</label><input id="rp" type="text" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" autocomplete="off" placeholder="Create your sorter PIN"><div class="hint">Use exactly six numbers. Do not share your PIN.</div>
-    <label>Confirm 6-digit PIN</label><input id="rc" type="text" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" autocomplete="off" placeholder="Re-enter your PIN">
-    <button class="btn full" onclick="register(this)">Create account</button></div>
-  <div id="aHR" class="hide"><h2>HR sign in</h2><p class="sub">For authorized HR staff only.</p>
-    <label>Username</label><input id="hu" autocomplete="username">
-    <label>Password</label><input id="hp" type="password" autocomplete="current-password">
-    <button class="btn full" onclick="hrLogin(this)">Log in as HR</button></div>
+    <label>Email address</label><input id="re" type="email" placeholder="you@example.com">
+    <label>Create 6-digit PIN</label><input id="rp" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" autocomplete="new-password" placeholder="Create your sorter PIN"><div class="hint">Use exactly six numbers. Keep your PIN private.</div>
+    <label>Confirm 6-digit PIN</label><input id="rc" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" autocomplete="new-password" placeholder="Re-enter your PIN">
+    <button class="btn full" onclick="register(this)">Create account</button><p class="register-prompt"><a href="#login" onclick="showRegister(false);return false">Back to sorter login</a></p></div>
+  <div id="aHR" class="hide"><h2>Management sign in</h2><p class="sub">Authorized management access only.</p>
+    <label>Username</label><input id="hu" autocomplete="username" placeholder="Enter your username">
+    <label>Password</label><input id="hp" type="password" autocomplete="current-password" placeholder="Enter your password">
+    <button class="btn full" onclick="hrLogin(this)">Sign in to management</button></div>
   <div id="authMsg"></div>
 </div></section>
 
@@ -155,7 +180,7 @@ body.management-mode main{max-width:none;margin:0;padding:0 0 30px 216px}
   <div class="m-brand"><div class="m-logo">B</div><div><b>Better Edge Solutions</b><small>Employee portal</small></div></div>
   <div class="m-side-label">Management Dashboard</div>
   <nav class="m-nav" id="managementNav"><button data-panel="hE"><span class="m-ico">♙</span>Employees</button><button data-panel="hD"><span class="m-ico">◷</span>DTR</button><button data-panel="hF" class="active"><span class="m-ico">▣</span>Filings</button><button data-panel="hP"><span class="m-ico">⚙</span>Management account</button></nav>
-  <div class="m-side-bottom"><div class="m-bottom-actions"><button onclick="document.body.classList.toggle('dark-mode')">◐ Dark</button><button onclick="logout()">Log out</button></div></div>
+  <div class="m-side-bottom"><div class="m-bottom-actions"><button onclick="toggleTheme()">◐ Dark</button><button onclick="logout()">Log out</button></div></div>
  </aside>
  <div class="m-main">
   <div class="m-module" id="managementExistingModules">
@@ -219,7 +244,10 @@ function tabs(id){const bar=$(id);bar.addEventListener('click',e=>{const t=e.tar
   const hooks={eList:loadMine,eDtr:initDtr,hE:loadEmps,hD:()=>{},hA:loadHR};hooks[t]&&hooks[t]();$('authMsg').innerHTML=''})}
 ['authTabs','hrTabs'].forEach(tabs);
 function openTab(barId,t){[...$(barId).children].find(b=>b.dataset.t===t).click()}
-function show(which){['auth','emp','hr'].forEach(s=>$(s).classList.toggle('hide',s!==which));$('empNav').classList.toggle('hide',which!=='emp');$('who').classList.toggle('hide',which==='auth')}
+function showRegister(on){$('aLogin').classList.toggle('hide',!!on);$('aReg').classList.toggle('hide',!on);$('aHR').classList.add('hide');$('authMsg').innerHTML='';if(on){$('authTabs').querySelector('[data-t="aLogin"]').classList.add('on');$('authTabs').querySelector('[data-t="aHR"]').classList.remove('on')}}
+function toggleTheme(){document.body.classList.toggle('dark-mode');const dark=document.body.classList.contains('dark-mode');$('themeToggle').textContent=dark?'☀ Light':'◐ Dark';try{localStorage.setItem('besi-theme',dark?'dark':'light')}catch(e){}}
+try{if(localStorage.getItem('besi-theme')==='dark'){document.body.classList.add('dark-mode');$('themeToggle').textContent='☀ Light'}}catch(e){}
+function show(which){['auth','emp','hr'].forEach(s=>$(s).classList.toggle('hide',s!==which));$('empNav').classList.toggle('hide',which!=='emp');$('headerLogout').classList.toggle('hide',which==='auth');$('whoTxt').classList.toggle('hide',which==='auth')}
 function logout(m){S.tok=null;S.role=null;S.mustChange=false;document.body.classList.remove('management-mode');show('auth');
   ['le','lp','hu','hp'].forEach(i=>$(i).value='');$('authMsg').innerHTML=m?`<div class="msg er">${esc(m)}</div>`:''}
 
@@ -240,7 +268,7 @@ async function empLogin(b){if(!/^\d{6}$/.test($('lp').value)){msg('authMsg',{mes
 async function register(b){if(!/^\d{6}$/.test($('rp').value)){msg('authMsg',{message:'PIN must be exactly six digits.'});return}if($('rp').value!==$('rc').value){msg('authMsg',{message:'PINs do not match.'});return}const r=await run(b,'registerEmployee',$('rl').value,$('rn').value,$('re').value,$('rp').value,$('rc').value);
   if(!r.success){msg('authMsg',r);return}
   $('le').value=$('re').value;['rl','rn','re','rp','rc'].forEach(i=>$(i).value='');
-  openTab('authTabs','aLogin');msg('authMsg',r,`Welcome, ${r.employeeName}. Your account is ready. Log in to continue.`)}
+  openTab('authTabs','aLogin');showRegister(false);msg('authMsg',r,`Welcome, ${r.employeeName}. Your account is ready. Log in to continue.`)}
 async function hrLogin(b){const r=await run(b,'hrLogin',$('hu').value,$('hp').value);
   if(!r.success){msg('authMsg',r);return}
   S.tok=r.token;S.role='hr';S.isOwner=r.isOwner;$('whoTxt').textContent=r.hrName+(r.isOwner?' (Owner)':'');
@@ -271,11 +299,11 @@ const arcOk=(x,m)=>m==='all'||(m==='arc'?isArchFiling(x):!isArchFiling(x));
 
 /* ---------- DOWNLOADS ---------- */
 let LASTDTR=null,DTRCTX={},LASTSUM=null;
-const csvCell=v=>'"'+String(v==null?'':v).replace(/"/g,'""')+'"';
-function saveCsv(name,rows){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+rows.map(r=>r.map(csvCell).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8'}));a.download=name.replace(/[^\w.-]+/g,'_')+'.csv';document.body.append(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500)}
-const DLROW=f=>`<div class="dlRow"><button class="btn sec sm" onclick="${f}">Download DTR</button><button class="btn sec sm" onclick="window.print()">Print or save as PDF</button></div>`;
-function dlDtr(){const r=LASTDTR;if(!r||!r.success)return;const t=r.totals||{},c=DTRCTX;saveCsv('DTR_'+c.name+'_'+(r.tab||c.cut),[['Better Edge Solutions Inc.','Daily Time Record'],['Employee',c.name],['Details',c.meta],['Cutoff',r.tab||c.cut],[],['Days worked','Total hours','OT hours','Late (min)','Undertime (min)','Absences'],[t.daysRendered,t.hours,t.overtimeHours||0,t.lateMinutes||0,t.undertimeMinutes||0,t.absences||0],[],['Date','Day','Time in','Time out','Hours','Late','Undertime','Status','Filing'],...(r.rows||[]).map(x=>[x.date,x.day,x.timeIn,x.timeOut,x.hours,x.late,x.undertime,x.status,x.filing])])}
-function dlSummary(){const s=LASTSUM;if(!s)return;saveCsv('DTR_summary_'+s.ldc+'_'+s.cut,[['Better Edge Solutions Inc.','DTR summary',s.ldc,s.cut],[],['ID','Name','Shift','Days','Hours','Late (min)','Undertime (min)','Absences','Leaves'],...s.rows.map(x=>x.found?[x.employeeId,x.employeeName,x.shiftLabel,x.totals.daysRendered,x.totals.hours,x.totals.lateMinutes,x.totals.undertimeMinutes,x.totals.absences,x.totals.leaves]:[x.employeeId,x.employeeName,x.shiftLabel,'Not found in this cutoff'])])}
+const xmlEsc=v=>String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+function saveExcel(name,sheets){const sheetXml=sheets.map((sh,i)=>`<Worksheet ss:Name="${xmlEsc(sh.name).slice(0,31)}"><Table>${sh.rows.map(row=>`<Row>${row.map(v=>{const n=typeof v==='number'&&Number.isFinite(v);return `<Cell><Data ss:Type="${n?'Number':'String'}">${xmlEsc(v)}</Data></Cell>`}).join('')}</Row>`).join('')}</Table></Worksheet>`).join('');const xml=`<?xml version="1.0"?><Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">${sheetXml}</Workbook>`;const blob=new Blob([xml],{type:'application/vnd.ms-excel;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name.replace(/[^\w.-]+/g,'_')+'.xls';document.body.append(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500)}
+const DLROW=f=>`<div class="dlRow"><button class="btn sec sm" onclick="${f}">Download Excel workbook</button><button class="btn sec sm" onclick="window.print()">Print / Save PDF</button></div>`;
+function dlDtr(){const r=LASTDTR;if(!r||!r.success)return;const t=r.totals||{},c=DTRCTX;const summary=[['BETTER EDGE SOLUTIONS INC.','DAILY TIME RECORD'],['Employee',c.name],['Details',c.meta],['Cutoff',r.tab||c.cut],[],['Days worked','Total hours','OT hours','Late (min)','Undertime (min)','Absences'],[t.daysRendered,t.hours,t.overtimeHours||0,t.lateMinutes||0,t.undertimeMinutes||0,t.absences||0]];const attendance=[['Date','Day','Time in','Time out','Hours','Late','Undertime','Status','Filing'],...(r.rows||[]).map(x=>[x.date,x.day,x.timeIn,x.timeOut,x.hours,x.late,x.undertime,x.status,x.filing])];saveExcel('BESI_DTR_'+c.name+'_'+(r.tab||c.cut),[{name:'DTR Summary',rows:summary},{name:'Attendance',rows:attendance}])}
+function dlSummary(){const s=LASTSUM;if(!s)return;saveExcel('BESI_Attendance_Summary_'+s.ldc+'_'+s.cut,[{name:'Attendance Summary',rows:[['BETTER EDGE SOLUTIONS INC.','ATTENDANCE SUMMARY',s.ldc,s.cut],[],['ID','Name','Shift','Days','Hours','Late (min)','Undertime (min)','Absences','Leaves'],...s.rows.map(x=>x.found?[x.employeeId,x.employeeName,x.shiftLabel,x.totals.daysRendered,x.totals.hours,x.totals.lateMinutes,x.totals.undertimeMinutes,x.totals.absences,x.totals.leaves]:[x.employeeId,x.employeeName,x.shiftLabel,'Not found in this cutoff'])]}])}
 
 /* ---------- EMPLOYEE ---------- */
 async function submitFiling(b){const r=await run(b,'submitEmployeeFiling',S.tok,$('ft').value,$('fs').value,$('fd').value,$('fr').value);
@@ -289,8 +317,8 @@ async function initDtr(){if($('ec').options.length)return;const r=await call('ge
   fillCut($('ec'),r.tabs)}
 function dtrView(r){LASTDTR=r;if(!r.success)return`<div class="msg er">${esc(r.message)}</div>`;const t=r.totals||{},rows=r.rows||[];
  const stat=(v,l,c='')=>`<div class="stat ${c}"><b>${esc(v??0)}</b><span>${l}</span></div>`;
- const parsed=rows.map(x=>({x,d:new Date(x.date+'T12:00:00')})).filter(z=>!isNaN(z.d));const first=parsed.length?new Date(parsed[0].d.getFullYear(),parsed[0].d.getMonth(),1):new Date();const last=parsed.length?new Date(parsed[parsed.length-1].d.getFullYear(),parsed[parsed.length-1].d.getMonth()+1,0):new Date();const map={};parsed.forEach(z=>map[z.d.getDate()]=z.x);
- let cal=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(x=>`<div class="dayName">${x}</div>`).join('');for(let k=0;k<first.getDay();k++)cal+='<div></div>';for(let d=1;d<=last.getDate();d++){let x=map[d],st=String(x?.status||'').toUpperCase(),cl=st.includes('ABSENT')?'absent':st.includes('LATE')?'late':x?.timeIn?'present':'';cal+=`<div class="dayCell ${cl}"><b>${d}</b><small>${x?esc(x.timeIn||x.status||'—'):'—'}</small></div>`}
+ const parsed=rows.map(x=>({x,d:new Date(x.date+'T12:00:00')})).filter(z=>!isNaN(z.d));const first=parsed.length?parsed[0].d:new Date();const last=parsed.length?parsed[parsed.length-1].d:new Date();const map={};parsed.forEach(z=>map[z.d.getDate()]=z.x);
+ let cal=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(x=>`<div class="dayName">${x}</div>`).join('');for(let k=0;k<first.getDay();k++)cal+='<div></div>';for(let d=first.getDate();d<=last.getDate();d++){let x=map[d],st=String(x?.status||'').toUpperCase(),cl=st.includes('ABSENT')?'absent':st.includes('LATE')?'late':x?.timeIn?'present':'';cal+=`<div class="dayCell ${cl}"><b>${d}</b><small>${x?esc(x.timeIn||x.status||'—'):'—'}</small></div>`}
  return DLROW('dlDtr()')+`${r.shiftSet?'':`<div class="msg er">No shift is set yet, so late and undertime cannot be computed. Ask HR to set it.</div>`}<div class="grid">${stat(t.daysRendered,'Days worked')}${stat(t.hours,'Total hours')}${stat(t.overtimeHours||0,'OT hours','ok')}${stat(t.lateMinutes??0,'Late (min)','wa')}</div><div class="calendar"><div class="calHead">Attendance calendar · ${esc(r.tab||'Selected cutoff')}</div><div class="legend"><span><i class="dot" style="background:#17a879"></i>On time</span><span><i class="dot" style="background:#e99a35"></i>Late</span><span><i class="dot" style="background:#8262d8"></i>Undertime</span><span><i class="dot" style="background:#2589c3"></i>Overtime</span><span><i class="dot" style="background:#df5965"></i>Missing time out</span></div><div class="calendarGrid">${cal}</div></div><div class="grid">${stat(t.undertimeMinutes??0,'Undertime (min)','wa')}${stat(t.absences??0,'Absences','er')}</div><h3 style="margin-top:20px">Daily attendance details</h3>${table(['Date','Day','Time in','Time out','Hours','Late','Undertime','Status','Filing'],rows.map(x=>`<tr><td>${esc(x.date)}</td><td>${esc(x.day)}</td><td>${esc(x.timeIn)}</td><td>${esc(x.timeOut)}</td><td>${esc(x.hours)}</td><td>${esc(x.late)}</td><td>${esc(x.undertime)}</td><td>${badge(x.status)}</td><td>${esc(x.filing)}</td></tr>`),'No dates in this cutoff.')}`;}
 async function loadMyDtr(b){DTRCTX={name:$('eName').textContent,meta:$('eMeta').textContent,cut:$('ec').value};$('eDtrBody').innerHTML='';$('eDtrBody').innerHTML=dtrView(await run(b,'getMyDTR',S.tok,$('ec').value))}
 
