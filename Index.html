@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Better Edge Solutions Inc. - Employee Portal</title>
+<style>
+:root{--ink:#0f2461;--bg:#f2f5fb;--card:#fff;--line:#d9e0ee;--txt:#18233f;--mut:#5b6784;--pri:#183a93;--pri2:#122c72;--cy:#27cdff;--mg:#d92aa1;--ok:#18794e;--okb:#e1f4ea;--wa:#9a5b00;--wab:#fdf0d5;--er:#b42318;--erb:#fde8e6;--in:#183a93;--inb:#e6ecfa}
+@media(prefers-color-scheme:dark){:root{--ink:#0a1537;--bg:#0c1226;--card:#141c38;--line:#26304f;--txt:#e8ecf7;--mut:#98a3c2;--pri:#5f86f0;--pri2:#86a5f5;--okb:#12382a;--ok:#5dd39e;--wab:#3b2c0d;--wa:#f2b94b;--erb:#3d1a17;--er:#ff8a80;--inb:#1c2a57;--in:#9db8f7}}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 "Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;background:var(--bg);color:var(--txt)}
+header{background:var(--ink);border-bottom:4px solid;border-image:linear-gradient(90deg,#183a93 0 34%,#27cdff 34% 67%,#d92aa1 67%) 1;color:#fff;padding:14px 24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.logo{display:flex}
+.brand b{display:block;font-size:16px}.brand span{font-size:12px;opacity:.75}
+.who{margin-left:auto;display:flex;align-items:center;gap:12px;font-size:13px}
+main{max-width:1180px;margin:0 auto;padding:24px 16px 60px}
+.auth{max-width:440px;margin:40px auto;border-top:4px solid var(--pri)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:20px;overflow-x:auto}
+.tabs button{background:none;border:0;border-bottom:3px solid transparent;padding:10px 14px;font:inherit;color:var(--mut);cursor:pointer;white-space:nowrap}
+.tabs button.on{color:var(--pri);border-color:var(--mg);font-weight:600}
+h2{margin:0 0 4px;font-size:20px}h3{margin:0 0 12px;font-size:16px}p.sub{margin:0 0 18px;color:var(--mut);font-size:13px}
+label{display:block;font-size:13px;font-weight:600;margin:12px 0 4px}
+input,select,textarea{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:7px;font:inherit;background:var(--card);color:var(--txt)}
+textarea{min-height:80px;resize:vertical}
+input:focus,select:focus,textarea:focus,button:focus-visible{outline:2px solid var(--pri);outline-offset:1px}
+.btn{background:var(--pri);color:#fff;border:0;border-radius:7px;padding:9px 16px;font:inherit;font-weight:600;cursor:pointer}
+.btn:hover{background:var(--pri2)}.btn:disabled{opacity:.55;cursor:wait}
+.btn.sec{background:transparent;color:var(--pri);border:1px solid var(--pri)}.btn.sm{padding:4px 10px;font-size:12.5px}
+.btn.bad{background:var(--er)}.btn.good{background:var(--ok)}.full{width:100%;margin-top:18px}
+header .btn.sec{color:#fff;border-color:#ffffff88}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end}.row>*{flex:1;min-width:150px}.row .fit{flex:none;min-width:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:18px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;border-left:4px solid var(--pri)}
+.stat b{display:block;font-size:26px;line-height:1.1}.stat span{font-size:12.5px;color:var(--mut)}
+.stat.wa{border-left-color:var(--mg)}.stat.ok{border-left-color:var(--cy)}.stat.er{border-left-color:var(--er)}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;margin-top:12px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+td.wrap{white-space:normal;min-width:180px}th{background:var(--bg);font-size:12.5px;color:var(--mut);font-weight:600;position:sticky;top:0}tr:last-child td{border-bottom:0}
+.b{display:inline-block;padding:2px 9px;border-radius:99px;font-size:12px;font-weight:600;background:var(--inb);color:var(--in)}
+.b.APPROVED,.b.PRESENT,.b.ACTIVE{background:var(--okb);color:var(--ok)}.b.PENDING,.b.IN\ PROGRESS,.b.ON\ LEAVE,.b.OFF{background:var(--wab);color:var(--wa)}
+.b.REJECTED,.b.ABSENT,.b.INACTIVE,.b.NO\ LOG,.b.NO\ TIME\ OUT,.b.NO\ TIME\ IN{background:var(--erb);color:var(--er)}
+.hide{display:none!important}.msg{margin-top:12px;padding:9px 12px;border-radius:7px;font-size:13.5px}.msg.er{background:var(--erb);color:var(--er)}.msg.ok{background:var(--okb);color:var(--ok)}
+.empty{padding:28px;text-align:center;color:var(--mut)}.act{display:flex;gap:6px}
+dialog{border:1px solid var(--line);border-radius:10px;padding:22px;max-width:420px;width:92%;background:var(--card);color:var(--txt)}dialog::backdrop{background:#0008}
+code{background:var(--bg);padding:3px 8px;border-radius:5px;font-size:15px;user-select:all;border:1px solid var(--line)}
+.hint{font-size:12px;color:var(--mut);margin-top:4px}
+
+.authgrid{display:grid;grid-template-columns:1fr 1fr;max-width:900px;margin:36px auto;border-radius:12px;overflow:hidden;box-shadow:0 10px 30px #0f246126}
+.hero{background:linear-gradient(160deg,#183a93 0%,#0f2461 100%);color:#fff;padding:36px 32px;display:flex;flex-direction:column;gap:18px;position:relative}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:linear-gradient(90deg,#27cdff 50%,#d92aa1 50%)}
+.hero h1{margin:0;font-size:26px;line-height:1.2}.hero p{margin:0;opacity:.85;font-size:14px}
+.hero ul{margin:8px 0 0;padding:0;list-style:none;display:grid;gap:12px;font-size:14px}
+.hero li{padding-left:14px;border-left:3px solid #27cdff}.hero li:nth-child(2){border-color:#d92aa1}
+.authcard{border-radius:0;border:0}
+.wm b{font-size:19px;letter-spacing:.2px}.wm span{font-size:11.5px;opacity:.8;letter-spacing:1.2px}
+.btn{box-shadow:0 1px 0 #0003}.tabs button:hover{color:var(--pri)}
+@media(max-width:760px){.authgrid{grid-template-columns:1fr;margin:16px auto}.hero{padding:22px}.hero ul{display:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><svg viewBox="0 0 40 40" width="38" height="38" aria-hidden="true"><rect width="40" height="40" rx="9" fill="#fff"/><path d="M9 6h12a9 9 0 0 1 0 14L9 20z" fill="#183a93"/><path d="M9 20l14 0a9 9 0 0 1 0 14H9z" fill="#d92aa1"/><path d="M9 12l12 8-12 8z" fill="#27cdff"/></svg></div>
+  <div class="brand wm"><b>BetterEdge</b><span>SOLUTIONS INC. | EMPLOYEE PORTAL</span></div>
+  <div class="who hide" id="who"><span id="whoTxt"></span><button class="btn sec sm" onclick="logout()">Log out</button></div>
+</header>
+<main>
+
+<!-- AUTH -->
+<section id="auth" class="authgrid"><aside class="hero"><svg viewBox="0 0 40 40" width="64" height="64" aria-hidden="true"><rect width="40" height="40" rx="9" fill="#fff"/><path d="M9 6h12a9 9 0 0 1 0 14L9 20z" fill="#183a93"/><path d="M9 20l14 0a9 9 0 0 1 0 14H9z" fill="#d92aa1"/><path d="M9 12l12 8-12 8z" fill="#27cdff"/></svg><h1>File absences and check your DTR in one place</h1><p>Better Edge Solutions Inc. employee portal.</p><ul><li>File an absence or leave in under a minute</li><li>See your hours, late and undertime per cutoff</li><li>Track the status of every filing</li></ul></aside><div class="card authcard">
+  <div class="tabs" id="authTabs">
+    <button class="on" data-t="aLogin">Employee login</button><button data-t="aReg">Register</button><button data-t="aHR">HR login</button>
+  </div>
+  <div id="aLogin"><h2>Welcome back</h2><p class="sub">Log in with the email you registered with.</p>
+    <label>Email</label><input id="le" type="email" autocomplete="username">
+    <label>Password</label><input id="lp" type="password" autocomplete="current-password">
+    <button class="btn full" onclick="empLogin(this)">Log in</button></div>
+  <div id="aReg" class="hide"><h2>Create your account</h2><p class="sub">Your name must match the LDC master list.</p>
+    <label>LDC</label><select id="rl"><option value="">Select LDC</option><option value="LDC1">LDC 1</option><option value="LDC2">LDC 2</option></select>
+    <label>Full name</label><input id="rn" placeholder="First and last name">
+    <label>Email</label><input id="re" type="email">
+    <label>Password</label><input id="rp" type="password" autocomplete="new-password"><div class="hint">At least 8 characters, with letters and numbers.</div>
+    <label>Confirm password</label><input id="rc" type="password" autocomplete="new-password">
+    <button class="btn full" onclick="register(this)">Create account</button></div>
+  <div id="aHR" class="hide"><h2>HR sign in</h2><p class="sub">For authorized HR staff only.</p>
+    <label>Username</label><input id="hu" autocomplete="username">
+    <label>Password</label><input id="hp" type="password" autocomplete="current-password">
+    <button class="btn full" onclick="hrLogin(this)">Log in as HR</button></div>
+  <div id="authMsg"></div>
+</div></section>
+
+<!-- EMPLOYEE -->
+<section id="emp" class="hide">
+  <div class="card" style="margin-bottom:16px"><h2 id="eName"></h2><p class="sub" id="eMeta" style="margin:0"></p></div>
+  <div class="tabs" id="empTabs"><button class="on" data-t="eFile">File absence or leave</button><button data-t="eList">My filings</button><button data-t="eDtr">My DTR</button><button data-t="ePw">Password</button></div>
+  <div id="eFile" class="card"><h3>New filing</h3>
+    <div class="row"><div><label>Type</label><select id="ft" onchange="$('fdw').classList.toggle('hide',this.value!=='LEAVE')"><option value="ABSENT">Absent (1 day)</option><option value="LEAVE">Leave (multi-day)</option></select></div>
+    <div><label>Start date</label><input id="fs" type="date"></div>
+    <div id="fdw" class="hide"><label>Days (max 14)</label><input id="fd" type="number" min="1" max="14" value="1"></div></div>
+    <label>Reason</label><textarea id="fr" maxlength="500"></textarea>
+    <button class="btn" style="margin-top:14px" onclick="submitFiling(this)">Submit filing</button><div id="fMsg"></div></div>
+  <div id="eList" class="card hide"><h3>Filing history</h3><div id="eListBody"></div></div>
+  <div id="eDtr" class="card hide"><h3>Daily time record</h3>
+    <div class="row"><div><label>Cutoff</label><select id="ec"></select></div><div class="fit"><button class="btn" onclick="loadMyDtr(this)">View DTR</button></div></div><div id="eDtrBody"></div></div>
+  <div id="ePw" class="card hide" style="max-width:440px"><h3>Change password</h3><div id="ePwBox"></div></div>
+</section>
+
+<!-- HR -->
+<section id="hr" class="hide">
+  <div class="tabs" id="hrTabs"><button class="on" data-t="hF">Filings</button><button data-t="hE">Employees</button><button data-t="hD">DTR</button><button data-t="hA" id="hAtab" class="hide">HR accounts</button><button data-t="hP">Password</button></div>
+  <div id="hF"><div class="row" style="margin-bottom:14px"><div class="fit"><label>LDC</label><select id="hfl" onchange="loadFilings()"><option value="">All LDCs</option><option>LDC1</option><option>LDC2</option></select></div>
+    <div class="fit"><label>Status</label><select id="hfs" onchange="renderFilings()"><option value="">All</option><option>PENDING</option><option>APPROVED</option><option>REJECTED</option></select></div></div>
+    <div class="grid" id="hStats"></div><div id="hFBody"></div></div>
+  <div id="hE" class="hide card"><div class="row"><div class="fit"><label>LDC</label><select id="hel" onchange="loadEmps()"><option value="">All LDCs</option><option>LDC1</option><option>LDC2</option></select></div>
+    <div class="fit"><button class="btn sec" onclick="syncML(this)">Sync from master list</button></div></div>
+    <h3 style="margin-top:20px">Add employee</h3><div class="row"><div><label>Full name</label><input id="an"></div><div class="fit"><label>LDC</label><select id="al"><option>LDC1</option><option>LDC2</option></select></div><div class="fit"><label>Shift</label><select class="shiftSel" id="as"></select></div><div class="fit"><button class="btn" onclick="addEmp(this)">Add</button></div></div>
+    <div id="hEBody"></div></div>
+  <div id="hD" class="hide card"><h3>DTR viewer</h3>
+    <div class="row"><div><label>LDC</label><select id="dl" onchange="dtrLdc()"><option value="">Select LDC</option><option>LDC1</option><option>LDC2</option></select></div><div><label>Cutoff</label><select id="dc"></select></div><div><label>Employee</label><select id="de"></select></div></div>
+    <div class="row" style="margin-top:12px"><div class="fit"><button class="btn" onclick="hrDtr(this)">View employee DTR</button></div><div class="fit"><button class="btn sec" onclick="hrSummary(this)">View LDC summary</button></div></div><div id="hDBody"></div></div>
+  <div id="hA" class="hide card"><h3>Create HR account</h3><div class="row"><div><label>Name</label><input id="cn"></div><div><label>Username</label><input id="cu"></div><div><label>Email (optional)</label><input id="cm" type="email"></div><div class="fit"><button class="btn" onclick="mkHR(this)">Create</button></div></div><div id="hABody"></div></div>
+  <div id="hP" class="hide card" style="max-width:440px"><h3>Change password</h3><div id="hPwBox"></div></div>
+</section>
+</main>
+<dialog id="dlg"><h3 id="dT"></h3><div id="dB"></div><div style="text-align:right;margin-top:18px"><button class="btn" onclick="$('dlg').close()">Close</button></div></dialog>
+
+<script>
+/* Replaces google.script.run so this page can live on GitHub Pages. */
+const API_URL='https://script.google.com/macros/s/AKfycbwDooIDpYRhQfGNlY3RmmR0rqVTTq7mSV826Xj5Mp63nTqczneLQdG_aOsLyj-qnBKj/exec'; // ends with /exec
+window.google={script:{run:(function mk(ok,no){return new Proxy({},{get:(t,p)=>{
+  if(p==='withSuccessHandler')return f=>mk(f,no);
+  if(p==='withFailureHandler')return f=>mk(ok,f);
+  return(...args)=>fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({fn:p,args})})
+    .then(r=>r.json()).then(j=>j.error?no&&no({message:j.error}):ok&&ok(j.result))
+    .catch(()=>no&&no({message:'Network error. Check your connection and try again.'}))}})})()}};
+</script>
+<script>
+const $=s=>document.getElementById(s);
+const SH=['7PM-4AM','8PM-5AM','9PM-6AM','12AM-9AM','1AM-10AM'];
+const S={tok:null,role:null,mustChange:false,isOwner:false};
+let FIL=[],EMPS=[];
+const esc=v=>String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const badge=s=>s?`<span class="b ${esc(s)}">${esc(s)}</span>`:'';
+const opt=(v,t,sel)=>`<option value="${esc(v)}"${sel?' selected':''}>${esc(t)}</option>`;
+const shiftOpts=cur=>opt('','Not set',!cur)+SH.map(s=>opt(s,s.replace('-',' - '),s===cur)).join('');
+
+function call(fn,...a){return new Promise(ok=>{google.script.run
+  .withSuccessHandler(r=>{if(r&&r.sessionExpired){logout('Your session expired. Please log in again.');return}ok(r||{})})
+  .withFailureHandler(e=>ok({success:false,message:e.message||'Something went wrong. Try again.'}))[fn](...a)})}
+async function run(btn,fn,...a){const t=btn&&btn.textContent;if(btn){btn.disabled=true;btn.textContent='Please wait...'}
+  const r=await call(fn,...a);if(btn){btn.disabled=false;btn.textContent=t}return r}
+function msg(id,r,okText){$(id).innerHTML=`<div class="msg ${r.success?'ok':'er'}">${esc(r.success?okText:r.message)}</div>`}
+function dlg(t,h){$('dT').textContent=t;$('dB').innerHTML=h;$('dlg').showModal()}
+function tempDlg(t,who,pw){dlg(t,`<p>Give this temporary password to <b>${esc(who)}</b>. They must change it at next login. It is shown only once.</p><p><code>${esc(pw)}</code></p>`)}
+function table(cols,rows,empty){if(!rows.length)return`<div class="tw"><div class="empty">${esc(empty)}</div></div>`;
+  return`<div class="tw"><table><thead><tr>${cols.map(c=>`<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>${rows.join('')}</tbody></table></div>`}
+
+function tabs(id){const bar=$(id);bar.addEventListener('click',e=>{const t=e.target.dataset.t;if(!t)return;
+  [...bar.children].forEach(b=>b.classList.toggle('on',b===e.target));
+  [...bar.children].forEach(b=>$(b.dataset.t).classList.toggle('hide',b.dataset.t!==t));
+  if(S.mustChange&&t!=='ePw'&&t!=='hP')return;
+  const hooks={eList:loadMine,eDtr:initDtr,hE:loadEmps,hD:()=>{},hA:loadHR};hooks[t]&&hooks[t]();$('authMsg').innerHTML=''})}
+['authTabs','empTabs','hrTabs'].forEach(tabs);
+function openTab(barId,t){[...$(barId).children].find(b=>b.dataset.t===t).click()}
+function show(which){['auth','emp','hr'].forEach(s=>$(s).classList.toggle('hide',s!==which));
+  $('who').classList.toggle('hide',which==='auth')}
+function logout(m){S.tok=null;S.role=null;S.mustChange=false;show('auth');
+  ['le','lp','hu','hp'].forEach(i=>$(i).value='');$('authMsg').innerHTML=m?`<div class="msg er">${esc(m)}</div>`:''}
+
+function pwForm(box,fn){$(box).innerHTML=`<label>Current password</label><input id="${box}o" type="password"><label>New password</label><input id="${box}n" type="password"><div class="hint">At least 8 characters, with letters and numbers.</div><label>Confirm new password</label><input id="${box}c" type="password"><button class="btn" style="margin-top:16px" id="${box}b">Update password</button><div id="${box}m"></div>`;
+  $(box+'b').onclick=async()=>{if($(box+'n').value!==$(box+'c').value){msg(box+'m',{message:'New passwords do not match.'});return}
+    const r=await run($(box+'b'),fn,S.tok,$(box+'o').value,$(box+'n').value);msg(box+'m',r,'Password updated.');
+    if(r.success){S.mustChange=false;['eNote','hNote'].forEach(n=>{const e=$(n);e&&e.remove()});$(box+'o').value=$(box+'n').value=$(box+'c').value=''}}}
+function forceChange(tabsId,pwTab,box){S.mustChange=true;openTab(tabsId,pwTab);
+  $(box).insertAdjacentHTML('beforebegin',`<div class="msg er" id="${box==='ePwBox'?'eNote':'hNote'}">You are using a temporary password. Set a new one to continue.</div>`)}
+
+/* ---------- AUTH ---------- */
+async function empLogin(b){const r=await run(b,'employeeLogin',$('le').value,$('lp').value);
+  if(!r.success){msg('authMsg',r);return}
+  S.tok=r.token;S.role='emp';const e=r.employee;
+  $('eName').textContent=e.employeeName;$('eMeta').textContent=`${e.employeeId}  |  ${e.ldc.replace('LDC','LDC ')}  |  Shift: ${e.shiftLabel}`;
+  $('whoTxt').textContent=e.employeeName;$('fs').value=new Date().toISOString().slice(0,10);
+  pwForm('ePwBox','changeEmployeePassword');show('emp');openTab('empTabs','eFile');if(r.mustChange)forceChange('empTabs','ePw','ePwBox')}
+async function register(b){const r=await run(b,'registerEmployee',$('rl').value,$('rn').value,$('re').value,$('rp').value,$('rc').value);
+  if(!r.success){msg('authMsg',r);return}
+  $('le').value=$('re').value;['rl','rn','re','rp','rc'].forEach(i=>$(i).value='');
+  openTab('authTabs','aLogin');msg('authMsg',r,`Welcome, ${r.employeeName}. Your account is ready. Log in to continue.`)}
+async function hrLogin(b){const r=await run(b,'hrLogin',$('hu').value,$('hp').value);
+  if(!r.success){msg('authMsg',r);return}
+  S.tok=r.token;S.role='hr';S.isOwner=r.isOwner;$('whoTxt').textContent=r.hrName+(r.isOwner?' (Owner)':'');
+  $('hAtab').classList.toggle('hide',!r.isOwner);pwForm('hPwBox','changeHRPassword');
+  show('hr');openTab('hrTabs','hF');loadFilings();if(r.mustChange)forceChange('hrTabs','hP','hPwBox')}
+
+/* ---------- EMPLOYEE ---------- */
+async function submitFiling(b){const r=await run(b,'submitEmployeeFiling',S.tok,$('ft').value,$('fs').value,$('fd').value,$('fr').value);
+  msg('fMsg',r,'Filing submitted. Reference: '+r.reference);if(r.success)$('fr').value=''}
+async function loadMine(){$('eListBody').innerHTML='<div class="empty">Loading...</div>';const r=await call('getEmployeeFilings',S.tok);
+  if(!r.success){$('eListBody').innerHTML=`<div class="msg er">${esc(r.message)}</div>`;return}
+  $('eListBody').innerHTML=table(['Filed','Type','Start','End','Days','Reason','Status','Action by'],
+    r.records.map(x=>`<tr><td>${esc(x.timestamp)}</td><td>${esc(x.filingType)}</td><td>${esc(x.startDate)}</td><td>${esc(x.endDate)}</td><td>${esc(x.days)}</td><td class="wrap">${esc(x.reason)}</td><td>${badge(x.status)}</td><td>${esc(x.actionBy)}</td></tr>`),'You have not filed anything yet.')}
+async function initDtr(){if($('ec').options.length)return;const r=await call('getCutoffTabs',S.tok);
+  if(!r.success){$('eDtrBody').innerHTML=`<div class="msg er">${esc(r.message)}</div>`;return}
+  $('ec').innerHTML=r.tabs.map(t=>opt(t,t)).join('')}
+function dtrView(r){if(!r.success)return`<div class="msg er">${esc(r.message)}</div>`;const t=r.totals;
+  return(r.found?'':`<div class="msg er">No attendance found for this employee in ${esc(r.tab)}.</div>`)+(r.shiftSet?'':`<div class="msg er">No shift is set yet, so late and undertime cannot be computed. Ask HR to set it.</div>`)+
+  `<div class="grid" style="margin-top:14px"><div class="stat"><b>${t.daysRendered}</b><span>Days rendered</span></div><div class="stat"><b>${t.hours}</b><span>Hours worked</span></div><div class="stat wa"><b>${t.lateMinutes}</b><span>Late (min)</span></div><div class="stat wa"><b>${t.undertimeMinutes}</b><span>Undertime (min)</span></div><div class="stat er"><b>${t.absences}</b><span>Absences</span></div><div class="stat ok"><b>${t.leaves}</b><span>Leaves</span></div></div>`+
+  table(['Date','Day','Time in','Time out','Hours','Late','Undertime','Status','Filing'],r.rows.map(x=>`<tr><td>${esc(x.date)}</td><td>${esc(x.day)}</td><td>${esc(x.timeIn)}</td><td>${esc(x.timeOut)}</td><td>${esc(x.hours)}</td><td>${esc(x.late)}</td><td>${esc(x.undertime)}</td><td>${badge(x.status)}</td><td>${esc(x.filing)}</td></tr>`),'No dates in this cutoff.')}
+async function loadMyDtr(b){$('eDtrBody').innerHTML='';$('eDtrBody').innerHTML=dtrView(await run(b,'getMyDTR',S.tok,$('ec').value))}
+
+/* ---------- HR ---------- */
+async function loadFilings(){$('hFBody').innerHTML='<div class="empty">Loading...</div>';const r=await call('getHRDashboard',S.tok,$('hfl').value);
+  if(!r.success){$('hFBody').innerHTML=`<div class="msg er">${esc(r.message)}</div>`;return}
+  FIL=r.records;const s=r.stats;
+  $('hStats').innerHTML=`<div class="stat"><b>${s.total}</b><span>Total filings</span></div><div class="stat wa"><b>${s.pending}</b><span>Pending</span></div><div class="stat ok"><b>${s.approved}</b><span>Approved</span></div><div class="stat er"><b>${s.rejected}</b><span>Rejected</span></div>`;renderFilings()}
+function renderFilings(){const f=$('hfs').value;
+  $('hFBody').innerHTML=table(['Reference','Filed','Employee','LDC','Type','Start','End','Days','Reason','Status','Action'],
+    FIL.filter(x=>!f||x.status===f).map(x=>`<tr><td>${esc(x.reference)}</td><td>${esc(x.timestamp)}</td><td>${esc(x.employeeName)}<br><small>${esc(x.employeeId)}</small></td><td>${esc(x.ldc)}</td><td>${esc(x.filingType)}</td><td>${esc(x.startDate)}</td><td>${esc(x.endDate)}</td><td>${esc(x.days)}</td><td class="wrap">${esc(x.reason)}</td><td>${badge(x.status)}${x.actionBy?`<br><small>${esc(x.actionBy)}</small>`:''}</td>
+    <td>${x.status==='PENDING'?`<div class="act"><button class="btn good sm" onclick="decide(this,'${esc(x.reference)}','APPROVED')">Approve</button><button class="btn bad sm" onclick="decide(this,'${esc(x.reference)}','REJECTED')">Reject</button></div>`:''}</td></tr>`),'No filings match these filters.')}
+async function decide(b,ref,st){if(!confirm((st==='APPROVED'?'Approve':'Reject')+' this filing?'))return;
+  const r=await run(b,'updateFilingStatus',S.tok,ref,st);if(!r.success)dlg('Could not update',esc(r.message));loadFilings()}
+
+async function loadEmps(){$('hEBody').innerHTML='<div class="empty">Loading...</div>';const r=await call('getEmployeesForHR',S.tok,$('hel').value);
+  if(!r.success){$('hEBody').innerHTML=`<div class="msg er">${esc(r.message)}</div>`;return}
+  EMPS=r.employees;$('as').innerHTML=shiftOpts('');
+  $('hEBody').innerHTML=table(['ID','Name','LDC','Email','Shift','Status','Registered','Actions'],EMPS.map(e=>`<tr><td>${esc(e.employeeId)}</td><td>${esc(e.employeeName)}</td><td>${esc(e.ldc)}</td><td>${esc(e.email)}</td>
+    <td><select style="width:130px" onchange="setShift(this,'${esc(e.employeeId)}')">${shiftOpts(e.shift)}</select></td><td>${badge(e.status)}</td><td>${e.registered?'Yes':'No'}</td>
+    <td><div class="act"><button class="btn sec sm" onclick="setStatus('${esc(e.employeeId)}','${e.status==='ACTIVE'?'INACTIVE':'ACTIVE'}')">${e.status==='ACTIVE'?'Deactivate':'Activate'}</button>${e.registered?`<button class="btn sec sm" onclick="resetEmp(this,'${esc(e.employeeId)}')">Reset password</button>`:''}<button class="btn bad sm" onclick="rmEmp('${esc(e.employeeId)}','${esc(e.employeeName)}')">Remove</button></div></td></tr>`),'No employees found. Use "Sync from master list" or add one.')}
+async function setShift(sel,id){const r=await call('updateEmployeeShift',S.tok,id,sel.value);if(!r.success)dlg('Could not save shift',esc(r.message))}
+async function setStatus(id,st){const r=await call('updateEmployeeStatus',S.tok,id,st);if(!r.success)dlg('Could not update',esc(r.message));loadEmps()}
+async function resetEmp(b,id){if(!confirm('Reset this employee\'s password?'))return;const r=await run(b,'resetEmployeePassword',S.tok,id);
+  r.success?tempDlg('Password reset',r.employeeName,r.tempPassword):dlg('Could not reset',esc(r.message))}
+async function rmEmp(id,n){if(!confirm('Remove '+n+' permanently? Their login is deleted too.'))return;const r=await call('removeEmployeeFromHR',S.tok,id);if(!r.success)dlg('Could not remove',esc(r.message));loadEmps()}
+async function addEmp(b){const r=await run(b,'addEmployeeFromHR',S.tok,$('an').value,$('al').value,$('as').value);
+  if(!r.success){dlg('Could not add',esc(r.message));return}$('an').value='';loadEmps()}
+async function syncML(b){const r=await run(b,'syncMasterlists',S.tok);
+  r.success?dlg('Master list sync',Object.keys(r.report).map(k=>`<p><b>${esc(k)}:</b> ${esc(r.report[k])}</p>`).join('')):dlg('Sync failed',esc(r.message));loadEmps()}
+
+async function dtrLdc(){const l=$('dl').value;$('dc').innerHTML='';$('de').innerHTML='';$('hDBody').innerHTML='';if(!l)return;
+  const [t,e]=await Promise.all([call('getCutoffTabsForHR',S.tok,l),call('getEmployeesForHR',S.tok,l)]);
+  if(!t.success){$('hDBody').innerHTML=`<div class="msg er">${esc(t.message)}</div>`;return}
+  $('dc').innerHTML=t.tabs.map(x=>opt(x,x)).join('');$('de').innerHTML=(e.employees||[]).map(x=>opt(x.employeeId,x.employeeName+' ('+x.employeeId+')')).join('')}
+async function hrDtr(b){if(!$('de').value)return;$('hDBody').innerHTML=dtrView(await run(b,'getDTRForHR',S.tok,$('de').value,$('dc').value))}
+async function hrSummary(b){if(!$('dl').value)return;const r=await run(b,'getDTRSummaryForHR',S.tok,$('dl').value,$('dc').value);
+  if(!r.success){$('hDBody').innerHTML=`<div class="msg er">${esc(r.message)}</div>`;return}
+  $('hDBody').innerHTML=table(['ID','Name','Shift','Days','Hours','Late (min)','Undertime (min)','Absences','Leaves'],r.rows.map(x=>`<tr><td>${esc(x.employeeId)}</td><td>${esc(x.employeeName)}</td><td>${esc(x.shiftLabel)}</td>${x.found?`<td>${x.totals.daysRendered}</td><td>${x.totals.hours}</td><td>${x.totals.lateMinutes}</td><td>${x.totals.undertimeMinutes}</td><td>${x.totals.absences}</td><td>${x.totals.leaves}</td>`:'<td colspan="6"><small>Not found in this cutoff</small></td>'}</tr>`),'No active employees in this LDC.')}
+
+async function loadHR(){const r=await call('getHRAccountsForOwner',S.tok);if(!r.success){$('hABody').innerHTML=`<div class="msg er">${esc(r.message||'Owner access required.')}</div>`;return}
+  $('hABody').innerHTML=table(['Name','Username','Email','Status','Actions'],r.accounts.map(a=>`<tr><td>${esc(a.name)}${a.isOwner?' (Owner)':''}</td><td>${esc(a.username)}</td><td>${esc(a.email)}</td><td>${badge(a.status)}</td><td>${a.isOwner?'':`<div class="act"><button class="btn sec sm" onclick="rsHR(this,'${esc(a.username)}')">Reset password</button><button class="btn bad sm" onclick="rmHR('${esc(a.username)}')">Remove</button></div>`}</td></tr>`),'No HR accounts.')}
+async function mkHR(b){const r=await run(b,'createHRAccount',S.tok,$('cn').value,$('cu').value,$('cm').value);
+  if(!r.success){dlg('Could not create',esc(r.message));return}['cn','cu','cm'].forEach(i=>$(i).value='');tempDlg('HR account created',r.hrName+' ('+r.username+')',r.tempPassword);loadHR()}
+async function rsHR(b,u){if(!confirm('Reset password for '+u+'?'))return;const r=await run(b,'resetHRPassword',S.tok,u);r.success?tempDlg('Password reset',r.username,r.tempPassword):dlg('Could not reset',esc(r.message))}
+async function rmHR(u){if(!confirm('Remove HR account '+u+'?'))return;const r=await call('removeHRAccount',S.tok,u);if(!r.success)dlg('Could not remove',esc(r.message||''));loadHR()}
+
+document.addEventListener('keydown',e=>{if(e.key!=='Enter'||e.target.tagName==='TEXTAREA')return;
+  const m={le:()=>empLogin($('aLogin').querySelector('.btn')),lp:()=>empLogin($('aLogin').querySelector('.btn')),hu:()=>hrLogin($('aHR').querySelector('.btn')),hp:()=>hrLogin($('aHR').querySelector('.btn'))};m[e.target.id]&&m[e.target.id]()});
+$('as').innerHTML=shiftOpts('');
+</script>
+</body>
+</html>
