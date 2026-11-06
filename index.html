@@ -4,57 +4,33 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Better Edge Solutions Inc. - Employee Portal</title>
-<style>
-:root{--ink:#0f2461;--bg:#f2f5fb;--card:#fff;--line:#d9e0ee;--txt:#18233f;--mut:#5b6784;--pri:#183a93;--pri2:#122c72;--cy:#27cdff;--mg:#d92aa1;--ok:#18794e;--okb:#e1f4ea;--wa:#9a5b00;--wab:#fdf0d5;--er:#b42318;--erb:#fde8e6;--in:#183a93;--inb:#e6ecfa}
-@media(prefers-color-scheme:dark){:root{--ink:#0a1537;--bg:#0c1226;--card:#141c38;--line:#26304f;--txt:#e8ecf7;--mut:#98a3c2;--pri:#5f86f0;--pri2:#86a5f5;--okb:#12382a;--ok:#5dd39e;--wab:#3b2c0d;--wa:#f2b94b;--erb:#3d1a17;--er:#ff8a80;--inb:#1c2a57;--in:#9db8f7}}
-*{box-sizing:border-box}body{margin:0;font:15px/1.5 "Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;background:var(--bg);color:var(--txt)}
-header{background:var(--ink);border-bottom:4px solid;border-image:linear-gradient(90deg,#183a93 0 34%,#27cdff 34% 67%,#d92aa1 67%) 1;color:#fff;padding:14px 24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.logo{display:flex}
-.brand b{display:block;font-size:16px}.brand span{font-size:12px;opacity:.75}
-.who{margin-left:auto;display:flex;align-items:center;gap:12px;font-size:13px}
-main{max-width:1180px;margin:0 auto;padding:24px 16px 60px}
-.auth{max-width:440px;margin:40px auto;border-top:4px solid var(--pri)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px}
-.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:20px;overflow-x:auto}
-.tabs button{background:none;border:0;border-bottom:3px solid transparent;padding:10px 14px;font:inherit;color:var(--mut);cursor:pointer;white-space:nowrap}
-.tabs button.on{color:var(--pri);border-color:var(--mg);font-weight:600}
-h2{margin:0 0 4px;font-size:20px}h3{margin:0 0 12px;font-size:16px}p.sub{margin:0 0 18px;color:var(--mut);font-size:13px}
-label{display:block;font-size:13px;font-weight:600;margin:12px 0 4px}
-input,select,textarea{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:7px;font:inherit;background:var(--card);color:var(--txt)}
-textarea{min-height:80px;resize:vertical}
-input:focus,select:focus,textarea:focus,button:focus-visible{outline:2px solid var(--pri);outline-offset:1px}
-.btn{background:var(--pri);color:#fff;border:0;border-radius:7px;padding:9px 16px;font:inherit;font-weight:600;cursor:pointer}
-.btn:hover{background:var(--pri2)}.btn:disabled{opacity:.55;cursor:wait}
-.btn.sec{background:transparent;color:var(--pri);border:1px solid var(--pri)}.btn.sm{padding:4px 10px;font-size:12.5px}
-.btn.bad{background:var(--er)}.btn.good{background:var(--ok)}.full{width:100%;margin-top:18px}
-header .btn.sec{color:#fff;border-color:#ffffff88}
-.row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end}.row>*{flex:1;min-width:150px}.row .fit{flex:none;min-width:0}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:18px}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;border-left:4px solid var(--pri)}
-.stat b{display:block;font-size:26px;line-height:1.1}.stat span{font-size:12.5px;color:var(--mut)}
-.stat.wa{border-left-color:var(--mg)}.stat.ok{border-left-color:var(--cy)}.stat.er{border-left-color:var(--er)}
-.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;margin-top:12px}
-table{border-collapse:collapse;width:100%;font-size:13.5px}th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
-td.wrap{white-space:normal;min-width:180px}th{background:var(--bg);font-size:12.5px;color:var(--mut);font-weight:600;position:sticky;top:0}tr:last-child td{border-bottom:0}
-.b{display:inline-block;padding:2px 9px;border-radius:99px;font-size:12px;font-weight:600;background:var(--inb);color:var(--in)}
-.b.APPROVED,.b.PRESENT,.b.ACTIVE{background:var(--okb);color:var(--ok)}.b.PENDING,.b.IN\ PROGRESS,.b.ON\ LEAVE,.b.OFF{background:var(--wab);color:var(--wa)}
-.b.REJECTED,.b.ABSENT,.b.INACTIVE,.b.NO\ LOG,.b.NO\ TIME\ OUT,.b.NO\ TIME\ IN{background:var(--erb);color:var(--er)}
-.hide{display:none!important}.msg{margin-top:12px;padding:9px 12px;border-radius:7px;font-size:13.5px}.msg.er{background:var(--erb);color:var(--er)}.msg.ok{background:var(--okb);color:var(--ok)}
-.empty{padding:28px;text-align:center;color:var(--mut)}.act{display:flex;gap:6px}
-dialog{border:1px solid var(--line);border-radius:10px;padding:22px;max-width:420px;width:92%;background:var(--card);color:var(--txt)}dialog::backdrop{background:#0008}
-code{background:var(--bg);padding:3px 8px;border-radius:5px;font-size:15px;user-select:all;border:1px solid var(--line)}
-.hint{font-size:12px;color:var(--mut);margin-top:4px}
-
-.authgrid{display:grid;grid-template-columns:1fr 1fr;max-width:900px;margin:36px auto;border-radius:12px;overflow:hidden;box-shadow:0 10px 30px #0f246126}
-.hero{background:linear-gradient(160deg,#183a93 0%,#0f2461 100%);color:#fff;padding:36px 32px;display:flex;flex-direction:column;gap:18px;position:relative}
-.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:linear-gradient(90deg,#27cdff 50%,#d92aa1 50%)}
-.hero h1{margin:0;font-size:26px;line-height:1.2}.hero p{margin:0;opacity:.85;font-size:14px}
-.hero ul{margin:8px 0 0;padding:0;list-style:none;display:grid;gap:12px;font-size:14px}
-.hero li{padding-left:14px;border-left:3px solid #27cdff}.hero li:nth-child(2){border-color:#d92aa1}
-.authcard{border-radius:0;border:0}
-.wm b{font-size:19px;letter-spacing:.2px}.wm span{font-size:11.5px;opacity:.8;letter-spacing:1.2px}
-.btn{box-shadow:0 1px 0 #0003}.tabs button:hover{color:var(--pri)}
-@media(max-width:760px){.authgrid{grid-template-columns:1fr;margin:16px auto}.hero{padding:22px}.hero ul{display:none}}
+<style> 
+:root{--bg:#eef4fb;--card:#fff;--ink:#172943;--muted:#718198;--line:#e3eaf2;--blue:#167db5;--pale:#e7f3fb;--green:#17a879;--orange:#e99a35;--red:#df5965;--shadow:0 8px 26px rgba(34,70,105,.08)}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#eaf5fb,#f3eff8);color:var(--ink);font:14px/1.5 Inter,"Segoe UI",system-ui,Arial,sans-serif}
+header{height:62px;background:#ffffffed;border-bottom:1px solid var(--line);padding:8px max(14px,calc((100% - 1120px)/2));display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:5}
+.logo svg{width:36px;height:36px}.brand b{display:block;font-size:13px}.brand span{font-size:10px;color:var(--muted);letter-spacing:.8px}.who{margin-left:auto;display:flex;gap:10px;align-items:center}
+main{max-width:1120px;margin:auto;padding:20px 14px 110px}.hide{display:none!important}
+.card{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:19px;box-shadow:var(--shadow)}
+.authgrid{max-width:900px;margin:30px auto;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;border-radius:22px;box-shadow:var(--shadow)}
+.hero{background:linear-gradient(145deg,#dff1fa,#e8e9f8);padding:32px;display:flex;flex-direction:column;justify-content:center;gap:14px}.hero h1{font-size:28px;line-height:1.2;margin:0}.hero p{color:#667b92;margin:0}.hero ul{list-style:none;padding:0;display:grid;gap:12px;color:#526a82}.hero li:before{content:"✓";color:var(--green);font-weight:800;margin-right:10px}.authcard{border:0;border-radius:0;padding:28px}
+.tabs{display:flex;gap:5px;padding:4px;background:#f1f6fa;border:1px solid var(--line);border-radius:12px;margin-bottom:18px;overflow:auto}.tabs button{border:0;background:transparent;border-radius:9px;padding:10px 13px;color:#60758d;cursor:pointer;white-space:nowrap}.tabs button.on{background:#fff;color:var(--blue);box-shadow:0 2px 8px #193d5b12}
+h2{font-size:22px;margin:0 0 4px}h3{font-size:16px;margin:0 0 13px}.sub{color:var(--muted);font-size:12px;margin:0 0 16px}
+label{display:block;font-size:11px;font-weight:700;color:#465b72;margin:12px 0 5px}input,select,textarea{width:100%;border:1px solid var(--line);background:#f8fbfd;color:var(--ink);border-radius:10px;padding:11px 12px;font:inherit;min-height:42px}textarea{min-height:85px}input:focus,select:focus,textarea:focus,button:focus-visible{outline:2px solid #8bc8e7;outline-offset:1px}input[readonly],textarea[readonly]{background:#f2f7fa;color:#61748a}
+.btn{background:var(--blue);color:white;border:0;border-radius:10px;padding:10px 16px;font-weight:600;cursor:pointer;box-shadow:0 3px 8px #167db52a}.btn:hover{background:#0d689d}.btn:disabled{opacity:.55}.btn.sec{background:#e5f2f9;color:var(--blue);box-shadow:none}.btn.bad{background:#fff0f1;color:#bf3948;box-shadow:none}.btn.sm{padding:6px 10px;font-size:11px}.full{width:100%;margin-top:18px}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end}.row>*{flex:1;min-width:140px}.row .fit{flex:none;min-width:0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:14px 0}.stat{background:#f3f8fc;border:1px solid #e4edf5;border-radius:13px;padding:12px}.stat b{display:block;font-size:23px}.stat span{font-size:11px;color:var(--muted)}.stat.wa{background:#fff8ee}.stat.ok{background:#eefaf5}.stat.er{background:#fff2f3}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin-top:12px}table{border-collapse:collapse;width:100%;font-size:12px}th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}td.wrap{white-space:normal;min-width:180px}th{background:#f5f9fc;color:#657990;font-size:11px}tr:last-child td{border:0}
+.b{display:inline-block;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;background:#e8eff8;color:#426184}.b.APPROVED,.b.PRESENT,.b.ACTIVE{background:#e4f7ef;color:#14835d}.b.PENDING,.b.IN\ PROGRESS,.b.ON\ LEAVE,.b.OFF{background:#fff4df;color:#9b650e}.b.REJECTED,.b.ABSENT,.b.INACTIVE,.b.NO\ LOG,.b.NO\ TIME\ OUT,.b.NO\ TIME\ IN{background:#ffeaec;color:#b94351}
+.msg{padding:10px 12px;border-radius:10px;font-size:12px;margin-top:12px}.msg.er{background:#fff0f1;color:#b43b49}.msg.ok{background:#eaf8f1;color:#16815d}.empty{padding:24px;text-align:center;color:var(--muted)}.act{display:flex;gap:6px;flex-wrap:wrap}.hint{font-size:11px;color:var(--muted);margin-top:5px}
+dialog{border:1px solid var(--line);border-radius:16px;padding:22px;max-width:440px;width:92%;background:#fff;color:var(--ink)}dialog::backdrop{background:#14243d66}code{background:#f2f7fa;padding:5px 9px;border-radius:7px;user-select:all}
+.empTop{margin-bottom:13px}.empTop h2{font-size:19px}.empTop p{margin:2px 0 0;color:var(--muted);font-size:12px}
+.empNav{position:fixed;z-index:10;bottom:9px;left:50%;transform:translateX(-50%);width:min(680px,calc(100% - 18px));display:grid;grid-template-columns:repeat(4,1fr);gap:3px;padding:6px;background:#fff;border:1px solid #e5edf3;border-radius:18px;box-shadow:0 8px 28px #233d5528}
+.empNav button{border:0;background:transparent;color:#687b90;border-radius:12px;padding:8px 2px;font-weight:600;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;white-space:nowrap}.empNav button .ico{font-size:18px}.empNav button.on{color:var(--blue);background:#eaf5fb}
+.cutoffRow{display:flex;gap:8px;align-items:center;margin-bottom:13px}.cutoffRow select{max-width:190px;background:#f3f8fc}.cutoffRow .btn{border-radius:22px;padding:9px 18px}
+.calendar{border:1px solid var(--line);border-radius:14px;padding:12px;margin-top:14px}.calHead{font-size:13px;font-weight:700;margin-bottom:10px}.legend{display:flex;gap:9px;flex-wrap:wrap;font-size:10px;color:var(--muted);margin-bottom:10px}.dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:4px}.calendarGrid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}.dayName{text-align:center;font-size:9px;color:var(--muted);padding:3px}.dayCell{min-height:45px;border:1px solid #e7edf3;border-radius:9px;padding:5px 2px;text-align:center;font-size:10px}.dayCell b{display:block;font-size:11px}.dayCell small{display:block;color:var(--muted);font-size:8px;overflow:hidden}.dayCell.present{border-color:#bce8d7;background:#f0fbf6}.dayCell.absent{border-color:#f4c4c8;background:#fff4f5}.dayCell.late{border-color:#f5d9ad;background:#fff9ef}
+.profileHead{display:flex;align-items:center;gap:12px;background:#e9f5fb;border-radius:14px;padding:12px;margin:14px 0}.avatar{width:42px;height:42px;border-radius:12px;background:#acd9ed;color:#126b9a;display:grid;place-items:center;font-weight:800}
+@media(max-width:760px){header{height:56px;padding:7px 12px}main{padding:12px 9px 105px}.authgrid{grid-template-columns:1fr;margin:10px auto}.hero{padding:20px}.hero h1{font-size:23px}.hero ul{display:none}.authcard{padding:20px 17px}.card{padding:15px;border-radius:15px}.row>*{min-width:calc(50% - 8px)}.row .fit{min-width:0}.dayCell{min-height:40px}.grid{gap:8px}.stat{padding:10px}.stat b{font-size:21px}}
+@media(max-width:360px){.empNav button{font-size:9px}.empNav button .ico{font-size:16px}.tabs button{padding:9px 10px}}
 </style>
 </head>
 <body>
@@ -72,7 +48,7 @@ code{background:var(--bg);padding:3px 8px;border-radius:5px;font-size:15px;user-
   </div>
   <div id="aLogin"><h2>Welcome back</h2><p class="sub">Log in with the email you registered with.</p>
     <label>Email</label><input id="le" type="email" autocomplete="username">
-    <label>Password</label><input id="lp" type="password" autocomplete="current-password">
+    <label>6-digit PIN</label><input id="lp" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" autocomplete="current-password">
     <button class="btn full" onclick="empLogin(this)">Log in</button></div>
   <div id="aReg" class="hide"><h2>Create your account</h2><p class="sub">Your name must match the LDC master list.</p>
     <label>LDC</label><select id="rl"><option value="">Select LDC</option><option value="LDC1">LDC 1</option><option value="LDC2">LDC 2</option></select>
@@ -90,19 +66,17 @@ code{background:var(--bg);padding:3px 8px;border-radius:5px;font-size:15px;user-
 
 <!-- EMPLOYEE -->
 <section id="emp" class="hide">
-  <div class="card" style="margin-bottom:16px"><h2 id="eName"></h2><p class="sub" id="eMeta" style="margin:0"></p></div>
-  <div class="tabs" id="empTabs"><button class="on" data-t="eFile">File absence or leave</button><button data-t="eList">My filings</button><button data-t="eDtr">My DTR</button><button data-t="ePw">Password</button></div>
-  <div id="eFile" class="card"><h3>New filing</h3>
-    <div class="row"><div><label>Type</label><select id="ft" onchange="$('fdw').classList.toggle('hide',this.value!=='LEAVE')"><option value="ABSENT">Absent (1 day)</option><option value="LEAVE">Leave (multi-day)</option></select></div>
-    <div><label>Start date</label><input id="fs" type="date"></div>
-    <div id="fdw" class="hide"><label>Days (max 14)</label><input id="fd" type="number" min="1" max="14" value="1"></div></div>
-    <label>Reason</label><textarea id="fr" maxlength="500"></textarea>
-    <button class="btn" style="margin-top:14px" onclick="submitFiling(this)">Submit filing</button><div id="fMsg"></div></div>
-  <div id="eList" class="card hide"><h3>Filing history</h3><div id="eListBody"></div></div>
-  <div id="eDtr" class="card hide"><h3>Daily time record</h3>
-    <div class="row"><div><label>Cutoff</label><select id="ec"></select></div><div class="fit"><button class="btn" onclick="loadMyDtr(this)">View DTR</button></div></div><div id="eDtrBody"></div></div>
-  <div id="ePw" class="card hide" style="max-width:440px"><h3>Change password</h3><div id="ePwBox"></div></div>
+ <div class="card empTop"><h2 id="eName"></h2><p id="eMeta"></p></div>
+ <div id="eDtr" class="card"><h3>My DTR</h3><div class="cutoffRow"><select id="ec"></select><button class="btn" onclick="loadMyDtr(this)">View</button></div><div id="eDtrBody"><div class="empty">Select a cutoff and tap View.</div></div></div>
+ <div id="eFile" class="card hide"><h3>Absent filing</h3><div class="row"><div><label>Type</label><select id="ft" onchange="$('fdw').classList.toggle('hide',this.value!=='LEAVE')"><option value="ABSENT">Absent (1 day)</option><option value="LEAVE">Leave (multi-day)</option></select></div><div><label>Start date</label><input id="fs" type="date"></div><div id="fdw" class="hide"><label>Days (max 14)</label><input id="fd" type="number" min="1" max="14" value="1"></div></div><label>Reason</label><textarea id="fr" maxlength="500"></textarea><button class="btn" style="margin-top:14px" onclick="submitFiling(this)">Submit filing</button><div id="fMsg"></div><h3 style="margin-top:24px">My filings</h3><div id="eListBody"></div></div>
+ <div id="ePw" class="card hide" style="max-width:520px"><h3>PIN</h3><p class="sub">Change your six-digit PIN using your current PIN.</p><div id="ePwBox"></div></div>
+ <div id="eProfile" class="card hide"><div class="row" style="align-items:center"><div><h3 style="margin:0">My profile</h3><p class="sub" style="margin:4px 0 0">Personal and emergency contact details.</p></div><div class="fit"><button class="btn sec" id="profileEditBtn" onclick="toggleProfileEdit()">Edit details</button></div></div><div class="profileHead"><div class="avatar" id="profileAvatar">BE</div><div><strong id="profileNameHead">Employee profile</strong><small id="profileEmailHead"></small></div></div>
+ <div class="row"><div><label>Full name</label><input id="pName" readonly></div><div><label>Date of birth</label><input id="pDob" type="date" readonly></div></div>
+ <div class="row"><div><label>Contact number</label><input id="pPhone" readonly></div><div><label>Emergency contact</label><input id="pEmergency" readonly></div></div>
+ <div class="row"><div><label>Emergency contact number</label><input id="pEmergencyPhone" readonly></div><div><label>Address</label><textarea id="pAddress" readonly></textarea></div></div>
+ <div id="profileActions" class="hide" style="margin-top:14px"><button class="btn" onclick="saveProfile(this)">Save details</button> <button class="btn sec" onclick="cancelProfileEdit()">Cancel</button></div><div id="profileMsg"></div></div>
 </section>
+<nav id="empNav" class="empNav hide"><button class="on" data-t="eDtr"><span class="ico">▦</span>My DTR</button><button data-t="eFile"><span class="ico">▤</span>Absent filing</button><button data-t="ePw"><span class="ico">♙</span>PIN</button><button data-t="eProfile"><span class="ico">♧</span>My profile</button></nav>
 
 <!-- HR -->
 <section id="hr" class="hide">
@@ -159,10 +133,9 @@ function tabs(id){const bar=$(id);bar.addEventListener('click',e=>{const t=e.tar
   [...bar.children].forEach(b=>$(b.dataset.t).classList.toggle('hide',b.dataset.t!==t));
   if(S.mustChange&&t!=='ePw'&&t!=='hP')return;
   const hooks={eList:loadMine,eDtr:initDtr,hE:loadEmps,hD:()=>{},hA:loadHR};hooks[t]&&hooks[t]();$('authMsg').innerHTML=''})}
-['authTabs','empTabs','hrTabs'].forEach(tabs);
+['authTabs','hrTabs'].forEach(tabs);
 function openTab(barId,t){[...$(barId).children].find(b=>b.dataset.t===t).click()}
-function show(which){['auth','emp','hr'].forEach(s=>$(s).classList.toggle('hide',s!==which));
-  $('who').classList.toggle('hide',which==='auth')}
+function show(which){['auth','emp','hr'].forEach(s=>$(s).classList.toggle('hide',s!==which));$('empNav').classList.toggle('hide',which!=='emp');$('who').classList.toggle('hide',which==='auth')}
 function logout(m){S.tok=null;S.role=null;S.mustChange=false;show('auth');
   ['le','lp','hu','hp'].forEach(i=>$(i).value='');$('authMsg').innerHTML=m?`<div class="msg er">${esc(m)}</div>`:''}
 
@@ -174,13 +147,13 @@ function forceChange(tabsId,pwTab,box){S.mustChange=true;openTab(tabsId,pwTab);
   $(box).insertAdjacentHTML('beforebegin',`<div class="msg er" id="${box==='ePwBox'?'eNote':'hNote'}">You are using a temporary password. Set a new one to continue.</div>`)}
 
 /* ---------- AUTH ---------- */
-async function empLogin(b){const r=await run(b,'employeeLogin',$('le').value,$('lp').value);
+async function empLogin(b){if(!/^\d{6}$/.test($('lp').value)){msg('authMsg',{message:'Enter your 6-digit PIN.'});return}const r=await run(b,'employeeLogin',$('le').value,$('lp').value);
   if(!r.success){msg('authMsg',r);return}
   S.tok=r.token;S.role='emp';const e=r.employee;
   $('eName').textContent=e.employeeName;$('eMeta').textContent=`${e.employeeId}  |  ${e.ldc.replace('LDC','LDC ')}  |  Shift: ${e.shiftLabel}`;
   $('whoTxt').textContent=e.employeeName;$('fs').value=new Date().toISOString().slice(0,10);
-  pwForm('ePwBox','changeEmployeePassword');show('emp');openTab('empTabs','eFile');if(r.mustChange)forceChange('empTabs','ePw','ePwBox')}
-async function register(b){const r=await run(b,'registerEmployee',$('rl').value,$('rn').value,$('re').value,$('rp').value,$('rc').value);
+  pinForm();show('emp');openEmpTab('eDtr');loadProfile();initDtr();}
+async function register(b){if(!/^\d{6}$/.test($('rp').value)){msg('authMsg',{message:'PIN must be exactly six digits.'});return}if($('rp').value!==$('rc').value){msg('authMsg',{message:'PINs do not match.'});return}const r=await run(b,'registerEmployee',$('rl').value,$('rn').value,$('re').value,$('rp').value,$('rc').value);
   if(!r.success){msg('authMsg',r);return}
   $('le').value=$('re').value;['rl','rn','re','rp','rc'].forEach(i=>$(i).value='');
   openTab('authTabs','aLogin');msg('authMsg',r,`Welcome, ${r.employeeName}. Your account is ready. Log in to continue.`)}
@@ -200,10 +173,11 @@ async function loadMine(){$('eListBody').innerHTML='<div class="empty">Loading..
 async function initDtr(){if($('ec').options.length)return;const r=await call('getCutoffTabs',S.tok);
   if(!r.success){$('eDtrBody').innerHTML=`<div class="msg er">${esc(r.message)}</div>`;return}
   $('ec').innerHTML=r.tabs.map(t=>opt(t,t)).join('')}
-function dtrView(r){if(!r.success)return`<div class="msg er">${esc(r.message)}</div>`;const t=r.totals;
-  return(r.found?'':`<div class="msg er">No attendance found for this employee in ${esc(r.tab)}.</div>`)+(r.shiftSet?'':`<div class="msg er">No shift is set yet, so late and undertime cannot be computed. Ask HR to set it.</div>`)+
-  `<div class="grid" style="margin-top:14px"><div class="stat"><b>${t.daysRendered}</b><span>Days rendered</span></div><div class="stat"><b>${t.hours}</b><span>Hours worked</span></div><div class="stat wa"><b>${t.lateMinutes}</b><span>Late (min)</span></div><div class="stat wa"><b>${t.undertimeMinutes}</b><span>Undertime (min)</span></div><div class="stat er"><b>${t.absences}</b><span>Absences</span></div><div class="stat ok"><b>${t.leaves}</b><span>Leaves</span></div></div>`+
-  table(['Date','Day','Time in','Time out','Hours','Late','Undertime','Status','Filing'],r.rows.map(x=>`<tr><td>${esc(x.date)}</td><td>${esc(x.day)}</td><td>${esc(x.timeIn)}</td><td>${esc(x.timeOut)}</td><td>${esc(x.hours)}</td><td>${esc(x.late)}</td><td>${esc(x.undertime)}</td><td>${badge(x.status)}</td><td>${esc(x.filing)}</td></tr>`),'No dates in this cutoff.')}
+function dtrView(r){if(!r.success)return`<div class="msg er">${esc(r.message)}</div>`;const t=r.totals||{},rows=r.rows||[];
+ const stat=(v,l,c='')=>`<div class="stat ${c}"><b>${esc(v??0)}</b><span>${l}</span></div>`;
+ const parsed=rows.map(x=>({x,d:new Date(x.date+'T12:00:00')})).filter(z=>!isNaN(z.d));const first=parsed.length?new Date(parsed[0].d.getFullYear(),parsed[0].d.getMonth(),1):new Date();const last=parsed.length?new Date(parsed[parsed.length-1].d.getFullYear(),parsed[parsed.length-1].d.getMonth()+1,0):new Date();const map={};parsed.forEach(z=>map[z.d.getDate()]=z.x);
+ let cal=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(x=>`<div class="dayName">${x}</div>`).join('');for(let k=0;k<first.getDay();k++)cal+='<div></div>';for(let d=1;d<=last.getDate();d++){let x=map[d],st=String(x?.status||'').toUpperCase(),cl=st.includes('ABSENT')?'absent':st.includes('LATE')?'late':x?.timeIn?'present':'';cal+=`<div class="dayCell ${cl}"><b>${d}</b><small>${x?esc(x.timeIn||x.status||'—'):'—'}</small></div>`}
+ return `${r.shiftSet?'':`<div class="msg er">No shift is set yet, so late and undertime cannot be computed. Ask HR to set it.</div>`}<div class="grid">${stat(t.daysRendered,'Days worked')}${stat(t.hours,'Total hours')}${stat(t.overtimeHours||0,'OT hours','ok')}${stat(t.lateMinutes??0,'Late (min)','wa')}</div><div class="calendar"><div class="calHead">Attendance calendar · ${esc(r.tab||'Selected cutoff')}</div><div class="legend"><span><i class="dot" style="background:#17a879"></i>On time</span><span><i class="dot" style="background:#e99a35"></i>Late</span><span><i class="dot" style="background:#8262d8"></i>Undertime</span><span><i class="dot" style="background:#2589c3"></i>Overtime</span><span><i class="dot" style="background:#df5965"></i>Missing time out</span></div><div class="calendarGrid">${cal}</div></div><div class="grid">${stat(t.undertimeMinutes??0,'Undertime (min)','wa')}${stat(t.absences??0,'Absences','er')}</div><h3 style="margin-top:20px">Daily attendance details</h3>${table(['Date','Day','Time in','Time out','Hours','Late','Undertime','Status','Filing'],rows.map(x=>`<tr><td>${esc(x.date)}</td><td>${esc(x.day)}</td><td>${esc(x.timeIn)}</td><td>${esc(x.timeOut)}</td><td>${esc(x.hours)}</td><td>${esc(x.late)}</td><td>${esc(x.undertime)}</td><td>${badge(x.status)}</td><td>${esc(x.filing)}</td></tr>`),'No dates in this cutoff.')}`;}
 async function loadMyDtr(b){$('eDtrBody').innerHTML='';$('eDtrBody').innerHTML=dtrView(await run(b,'getMyDTR',S.tok,$('ec').value))}
 
 /* ---------- HR ---------- */
@@ -221,7 +195,7 @@ async function decide(b,ref,st){if(!confirm((st==='APPROVED'?'Approve':'Reject')
 async function loadEmps(){$('hEBody').innerHTML='<div class="empty">Loading...</div>';const r=await call('getEmployeesForHR',S.tok,$('hel').value);
   if(!r.success){$('hEBody').innerHTML=`<div class="msg er">${esc(r.message)}</div>`;return}
   EMPS=r.employees;$('as').innerHTML=shiftOpts('');
-  $('hEBody').innerHTML=table(['ID','Name','LDC','Email','Shift','Status','Registered','Actions'],EMPS.map(e=>`<tr><td>${esc(e.employeeId)}</td><td>${esc(e.employeeName)}</td><td>${esc(e.ldc)}</td><td>${esc(e.email)}</td>
+  $('hEBody').innerHTML=table(['ID','Name','LDC','Email','Birth date','Contact','Emergency contact','Address','Shift','Status','Registered','Actions'],EMPS.map(e=>`<tr><td>${esc(e.employeeId)}</td><td>${esc(e.employeeName)}</td><td>${esc(e.ldc)}</td><td>${esc(e.email)}</td><td>${esc(e.dateOfBirth||'')}</td><td>${esc(e.contactNumber||'')}</td><td>${esc([e.emergencyContactName,e.emergencyContactNumber].filter(Boolean).join(' / '))}</td><td class="wrap">${esc(e.address||'')}</td>
     <td><select style="width:130px" onchange="setShift(this,'${esc(e.employeeId)}')">${shiftOpts(e.shift)}</select></td><td>${badge(e.status)}</td><td>${e.registered?'Yes':'No'}</td>
     <td><div class="act"><button class="btn sec sm" onclick="setStatus('${esc(e.employeeId)}','${e.status==='ACTIVE'?'INACTIVE':'ACTIVE'}')">${e.status==='ACTIVE'?'Deactivate':'Activate'}</button>${e.registered?`<button class="btn sec sm" onclick="resetEmp(this,'${esc(e.employeeId)}')">Reset password</button>`:''}<button class="btn bad sm" onclick="rmEmp('${esc(e.employeeId)}','${esc(e.employeeName)}')">Remove</button></div></td></tr>`),'No employees found. Use "Sync from master list" or add one.')}
 async function setShift(sel,id){const r=await call('updateEmployeeShift',S.tok,id,sel.value);if(!r.success)dlg('Could not save shift',esc(r.message))}
@@ -249,6 +223,18 @@ async function mkHR(b){const r=await run(b,'createHRAccount',S.tok,$('cn').value
   if(!r.success){dlg('Could not create',esc(r.message));return}['cn','cu','cm'].forEach(i=>$(i).value='');tempDlg('HR account created',r.hrName+' ('+r.username+')',r.tempPassword);loadHR()}
 async function rsHR(b,u){if(!confirm('Reset password for '+u+'?'))return;const r=await run(b,'resetHRPassword',S.tok,u);r.success?tempDlg('Password reset',r.username,r.tempPassword):dlg('Could not reset',esc(r.message))}
 async function rmHR(u){if(!confirm('Remove HR account '+u+'?'))return;const r=await call('removeHRAccount',S.tok,u);if(!r.success)dlg('Could not remove',esc(r.message||''));loadHR()}
+
+
+function openEmpTab(t){['eDtr','eFile','ePw','eProfile'].forEach(id=>$(id).classList.toggle('hide',id!==t));[...$('empNav').children].forEach(b=>b.classList.toggle('on',b.dataset.t===t));if(t==='eFile')loadMine();if(t==='eDtr')initDtr();if(t==='eProfile')loadProfile()}
+$('empNav').addEventListener('click',e=>{const b=e.target.closest('button[data-t]');if(b)openEmpTab(b.dataset.t)});
+function pinForm(){$('ePwBox').innerHTML=`<label>Current 6-digit PIN</label><input id="pinOld" type="password" inputmode="numeric" maxlength="6"><label>New 6-digit PIN</label><input id="pinNew" type="password" inputmode="numeric" maxlength="6"><label>Confirm new PIN</label><input id="pinConfirm" type="password" inputmode="numeric" maxlength="6"><button class="btn" style="margin-top:15px" id="pinSaveBtn">Update PIN</button><div id="pinMsg"></div>`;$('pinSaveBtn').onclick=async()=>{let o=$('pinOld').value,n=$('pinNew').value,c=$('pinConfirm').value;if(!/^\d{6}$/.test(o)||!/^\d{6}$/.test(n)){msg('pinMsg',{message:'Enter a valid six-digit PIN.'});return}if(n!==c){msg('pinMsg',{message:'New PINs do not match.'});return}let r=await run($('pinSaveBtn'),'changeEmployeePIN',S.tok,o,n);msg('pinMsg',r,'PIN updated successfully.');if(r.success)$('pinOld').value=$('pinNew').value=$('pinConfirm').value=''}}
+let PROFILE_SNAPSHOT={};
+function profileVals(){return{employeeName:$('pName').value,dateOfBirth:$('pDob').value,contactNumber:$('pPhone').value,emergencyContactName:$('pEmergency').value,emergencyContactNumber:$('pEmergencyPhone').value,address:$('pAddress').value}}
+function setProfile(p){p=p||{};$('pName').value=p.employeeName||p.name||$('eName').textContent||'';$('pDob').value=(p.dateOfBirth||p.dob||'').slice(0,10);$('pPhone').value=p.contactNumber||'';$('pEmergency').value=p.emergencyContactName||p.emergencyContact||'';$('pEmergencyPhone').value=p.emergencyContactNumber||'';$('pAddress').value=p.address||'';$('profileNameHead').textContent=$('pName').value||'Employee profile';$('profileEmailHead').textContent=p.email||$('le').value;$('profileAvatar').textContent=$('pName').value.split(/\s+/).slice(0,2).map(x=>x[0]||'').join('').toUpperCase()||'BE';PROFILE_SNAPSHOT=profileVals();['pName','pDob','pPhone','pEmergency','pEmergencyPhone','pAddress'].forEach(id=>$(id).readOnly=true);$('profileActions').classList.add('hide');$('profileEditBtn').classList.remove('hide')}
+async function loadProfile(){if(!$('profileMsg'))return;$('profileMsg').innerHTML='';let r=await call('getEmployeeProfile',S.tok);if(r.success)setProfile(r.profile||r.employee||r);else{setProfile({employeeName:$('eName').textContent,email:$('le').value});$('profileMsg').innerHTML=`<div class="msg er">${esc(r.message||'Profile service is not available yet.')}</div>`}}
+function toggleProfileEdit(){['pName','pDob','pPhone','pEmergency','pEmergencyPhone','pAddress'].forEach(id=>$(id).readOnly=false);$('profileActions').classList.remove('hide');$('profileEditBtn').classList.add('hide')}
+function cancelProfileEdit(){setProfile(PROFILE_SNAPSHOT)}
+async function saveProfile(b){let v=profileVals();if(!v.employeeName.trim()){msg('profileMsg',{message:'Full name is required.'});return}let r=await run(b,'updateEmployeeProfile',S.tok,v);msg('profileMsg',r,'Profile details saved. HR/Management can view the updated details.');if(r.success){$('eName').textContent=v.employeeName;setProfile(v)}}
 
 document.addEventListener('keydown',e=>{if(e.key!=='Enter'||e.target.tagName==='TEXTAREA')return;
   const m={le:()=>empLogin($('aLogin').querySelector('.btn')),lp:()=>empLogin($('aLogin').querySelector('.btn')),hu:()=>hrLogin($('aHR').querySelector('.btn')),hp:()=>hrLogin($('aHR').querySelector('.btn'))};m[e.target.id]&&m[e.target.id]()});
