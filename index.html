@@ -31,6 +31,76 @@ dialog{border:1px solid var(--line);border-radius:16px;padding:22px;max-width:44
 .profileHead{display:flex;align-items:center;gap:12px;background:#e9f5fb;border-radius:14px;padding:12px;margin:14px 0}.avatar{width:42px;height:42px;border-radius:12px;background:#acd9ed;color:#126b9a;display:grid;place-items:center;font-weight:800}
 @media(max-width:760px){header{height:56px;padding:7px 12px}main{padding:12px 9px 105px}.authgrid{grid-template-columns:1fr;margin:10px auto}.hero{padding:20px}.hero h1{font-size:23px}.hero ul{display:none}.authcard{padding:20px 17px}.card{padding:15px;border-radius:15px}.row>*{min-width:calc(50% - 8px)}.row .fit{min-width:0}.dayCell{min-height:40px}.grid{gap:8px}.stat{padding:10px}.stat b{font-size:21px}}
 @media(max-width:360px){.empNav button{font-size:9px}.empNav button .ico{font-size:16px}.tabs button{padding:9px 10px}}
+
+/* MANAGEMENT DASHBOARD REDESIGN */
+body.management-mode{background:linear-gradient(115deg,#d9f2fb 0%,#e7edf8 54%,#f1eafa 100%)}
+body.management-mode>header{display:none}
+body.management-mode main{max-width:none;margin:0;padding:0 0 30px 216px}
+.management-shell{min-height:100vh}
+.m-sidebar{position:fixed;left:0;top:0;bottom:0;width:216px;background:#fff;border-right:1px solid #dce7f1;padding:12px;z-index:20;display:flex;flex-direction:column}
+.m-brand{display:flex;gap:9px;align-items:center;padding:0 3px 17px;border-bottom:1px solid #e3ebf3;margin-bottom:10px}
+.m-logo{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#29a8d9,#9b7bd8);color:white;display:grid;place-items:center;font-weight:800}
+.m-brand b{font-size:12px;display:block}.m-brand small{font-size:9px;color:#718198}
+.m-side-label{font-size:10px;color:#64748b;font-weight:700;margin:1px 3px 9px}
+.m-nav{display:grid;gap:5px}
+.m-nav button{display:flex;align-items:center;gap:10px;text-align:left;width:100%;border:1px solid #dce7f1;background:#f7fafd;border-radius:10px;padding:10px 11px;color:#20344d;font-size:11px;font-weight:650;cursor:pointer}
+.m-nav button.active{background:#e3f3fc;border-color:#a9d8f2;color:#0878b8;box-shadow:inset 3px 0 #1688c4}
+.m-nav .m-ico{width:15px;text-align:center;color:#627b96;font-size:14px}
+.m-count{margin-left:auto;border-radius:20px;background:#d83d36;color:#fff;font-size:9px;padding:1px 5px}
+.m-side-bottom{margin-top:auto;border-top:1px solid #e2eaf2;padding-top:11px}
+.m-geofence{display:inline-flex;align-items:center;gap:6px;border:1px solid #dce7f1;border-radius:20px;padding:5px 9px;font-size:9px;margin-bottom:9px;background:#fff}
+.m-geofence:before{content:"";width:6px;height:6px;border-radius:50%;background:#17b78a}
+.m-bottom-actions{display:flex;gap:6px}.m-bottom-actions button{flex:1;border:1px solid #dce7f1;border-radius:20px;padding:8px 5px;background:#f7fafd;color:#536b85;font-size:10px;cursor:pointer}
+.m-main{max-width:1240px;margin:0 auto;padding:17px 24px 40px}
+.m-topline{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}
+.m-eyebrow{font-size:10px;color:#6b8199}.m-title{font-size:19px;font-weight:750;letter-spacing:-.5px}.m-subtitle{font-size:10px;color:#718198}
+.m-toolbar{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.m-toolbar label{margin:0;font-size:9px}.m-toolbar select{width:auto;min-height:30px;padding:5px 9px;font-size:10px;background:#f7fbff}
+.m-pill{border:1px solid #b9d9ee;background:#e7f4fc;color:#0878b8;border-radius:20px;padding:6px 11px;font-size:10px;cursor:pointer}
+.m-primary{background:#147fb8;color:#fff;border:0;border-radius:20px;padding:7px 13px;font-size:10px;font-weight:700;cursor:pointer}
+.m-panel{background:#fff;border:1px solid #e5edf4;border-radius:15px;padding:15px;box-shadow:0 6px 20px #3157790b;margin-bottom:12px}
+.m-panel-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}
+.m-panel h3{font-size:12px;margin:0}.m-muted{font-size:9px;color:#718198}
+.m-attention{display:grid;gap:0}.m-alert{display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #e5edf4}
+.m-alert:last-child{border:0}.m-alert-num{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;font-size:12px;font-weight:800;background:#ffeded;color:#df5359}
+.m-alert-num.warn{background:#fff4df;color:#bb7b13}.m-alert-num.info{background:#e5f3fc;color:#147fb8}
+.m-alert strong{display:block;font-size:10px}.m-alert small{display:block;color:#718198;font-size:9px}
+.m-alert-actions{display:flex;gap:6px}.m-alert-actions button{white-space:nowrap}
+.m-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-bottom:10px}
+.m-metric{background:#fff;border:1px solid #e5edf4;border-radius:14px;padding:12px 14px;box-shadow:0 5px 18px #31577909}
+.m-metric .kicker{font-size:9px;color:#718198}.m-metric b{display:block;font-size:21px;line-height:1.2}.m-metric small{font-size:9px;color:#718198}
+.m-dot{display:inline-block;width:6px;height:6px;border-radius:2px;background:#438fc7;margin-right:6px}
+.m-daily{display:grid;grid-template-columns:165px 1fr;gap:16px;align-items:center}
+.m-daily-stats{display:flex;gap:15px;flex-wrap:wrap;margin-bottom:13px}
+.m-daily-stats div{font-size:9px;color:#718198}.m-daily-stats b{display:block;font-size:16px;color:#172943}
+.m-shift-row{display:grid;grid-template-columns:120px 1fr 40px;gap:10px;align-items:center;margin:9px 0;font-size:9px}
+.m-bar{height:8px;border:1px solid #dce7f1;background:#f5f9fc;border-radius:20px;overflow:hidden}.m-bar span{display:block;height:100%;background:#55a8d6;border-radius:20px}
+.m-ring{width:116px;height:116px;border-radius:50%;background:conic-gradient(#e7a313 0 4%,#edf2f6 4% 100%);display:grid;place-items:center;margin:auto}
+.m-ring-inner{width:88px;height:88px;background:white;border-radius:50%;display:grid;place-items:center;text-align:center;font-size:20px;font-weight:800}
+.m-ring-inner small{display:block;font-size:8px;font-weight:400;color:#718198}
+.m-module{background:#fff;border:1px solid #e5edf4;border-radius:15px;padding:17px;box-shadow:0 6px 20px #3157790b}
+.m-module .tabs{display:none}
+.m-module .card{box-shadow:none;border:0;padding:0}
+.m-module .grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.m-module table{font-size:10px}
+.m-module th{font-size:9px}
+.m-placeholder{border:1px dashed #cbd9e6;border-radius:12px;padding:18px;color:#718198;font-size:11px;background:#fbfdff}
+@media(max-width:850px){
+ body.management-mode main{padding-left:0;padding-top:68px}
+ .m-sidebar{right:0;bottom:auto;width:100%;height:58px;flex-direction:row;align-items:center;padding:7px 10px;overflow-x:auto}
+ .m-brand{border:0;margin:0;padding:0;min-width:150px}.m-side-label,.m-side-bottom{display:none}
+ .m-nav{display:flex;gap:5px}.m-nav button{width:auto;white-space:nowrap;padding:8px 10px}
+ .m-nav .m-ico{display:none}.m-main{padding:12px}
+}
+@media(max-width:600px){
+ .m-topline{align-items:flex-start;flex-direction:column}.m-metrics{grid-template-columns:1fr 1fr}
+ .m-alert{grid-template-columns:30px 1fr}.m-alert-actions{grid-column:2;justify-content:flex-start}
+ .m-daily{grid-template-columns:1fr}.m-ring{width:95px;height:95px}.m-ring-inner{width:72px;height:72px}
+ .m-shift-row{grid-template-columns:105px 1fr 32px}
+ .m-module .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+.dlRow{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 14px}.arc{margin-top:18px}.arc summary{cursor:pointer;font-weight:700;padding:6px 0}
+@media print{header,#empNav,.cutoffRow,.m-sidebar,.dlRow,.row,#hD>h3,.tabs{display:none!important}body{background:#fff}.management-shell{display:block}.card{box-shadow:none;border:0}}
 </style>
 </head>
 <body>
@@ -46,16 +116,16 @@ dialog{border:1px solid var(--line);border-radius:16px;padding:22px;max-width:44
   <div class="tabs" id="authTabs">
     <button class="on" data-t="aLogin">Employee login</button><button data-t="aReg">Register</button><button data-t="aHR">HR login</button>
   </div>
-  <div id="aLogin"><h2>Welcome back</h2><p class="sub">Log in with the email you registered with.</p>
+  <div id="aLogin"><h2>Welcome back</h2><p class="sub">Log in using your registered email and six-digit sorter PIN.</p>
     <label>Email</label><input id="le" type="email" autocomplete="username">
-    <label>6-digit PIN</label><input id="lp" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" autocomplete="current-password">
+    <label>Sorter PIN</label><input id="lp" type="text" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" autocomplete="off" placeholder="Enter your 6-digit PIN">
     <button class="btn full" onclick="empLogin(this)">Log in</button></div>
-  <div id="aReg" class="hide"><h2>Create your account</h2><p class="sub">Your name must match the LDC master list.</p>
+  <div id="aReg" class="hide"><h2>Create your account</h2><p class="sub">Register with your master-list name and create a six-digit PIN for sorter access.</p>
     <label>LDC</label><select id="rl"><option value="">Select LDC</option><option value="LDC1">LDC 1</option><option value="LDC2">LDC 2</option></select>
     <label>Full name</label><input id="rn" placeholder="First and last name">
     <label>Email</label><input id="re" type="email">
-    <label>Password</label><input id="rp" type="password" autocomplete="new-password"><div class="hint">At least 8 characters, with letters and numbers.</div>
-    <label>Confirm password</label><input id="rc" type="password" autocomplete="new-password">
+    <label>Create 6-digit PIN</label><input id="rp" type="text" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" autocomplete="off" placeholder="Create your sorter PIN"><div class="hint">Use exactly six numbers. Do not share your PIN.</div>
+    <label>Confirm 6-digit PIN</label><input id="rc" type="text" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" autocomplete="off" placeholder="Re-enter your PIN">
     <button class="btn full" onclick="register(this)">Create account</button></div>
   <div id="aHR" class="hide"><h2>HR sign in</h2><p class="sub">For authorized HR staff only.</p>
     <label>Username</label><input id="hu" autocomplete="username">
@@ -69,7 +139,7 @@ dialog{border:1px solid var(--line);border-radius:16px;padding:22px;max-width:44
  <div class="card empTop"><h2 id="eName"></h2><p id="eMeta"></p></div>
  <div id="eDtr" class="card"><h3>My DTR</h3><div class="cutoffRow"><select id="ec"></select><button class="btn" onclick="loadMyDtr(this)">View</button></div><div id="eDtrBody"><div class="empty">Select a cutoff and tap View.</div></div></div>
  <div id="eFile" class="card hide"><h3>Absent filing</h3><div class="row"><div><label>Type</label><select id="ft" onchange="$('fdw').classList.toggle('hide',this.value!=='LEAVE')"><option value="ABSENT">Absent (1 day)</option><option value="LEAVE">Leave (multi-day)</option></select></div><div><label>Start date</label><input id="fs" type="date"></div><div id="fdw" class="hide"><label>Days (max 14)</label><input id="fd" type="number" min="1" max="14" value="1"></div></div><label>Reason</label><textarea id="fr" maxlength="500"></textarea><button class="btn" style="margin-top:14px" onclick="submitFiling(this)">Submit filing</button><div id="fMsg"></div><h3 style="margin-top:24px">My filings</h3><div id="eListBody"></div></div>
- <div id="ePw" class="card hide" style="max-width:520px"><h3>PIN</h3><p class="sub">Change your six-digit PIN using your current PIN.</p><div id="ePwBox"></div></div>
+ <div id="ePw" class="card hide" style="max-width:520px"><h3>Change sorter PIN</h3><p class="sub">Update your six-digit PIN using your current PIN.</p><div id="ePwBox"></div></div>
  <div id="eProfile" class="card hide"><div class="row" style="align-items:center"><div><h3 style="margin:0">My profile</h3><p class="sub" style="margin:4px 0 0">Personal and emergency contact details.</p></div><div class="fit"><button class="btn sec" id="profileEditBtn" onclick="toggleProfileEdit()">Edit details</button></div></div><div class="profileHead"><div class="avatar" id="profileAvatar">BE</div><div><strong id="profileNameHead">Employee profile</strong><small id="profileEmailHead"></small></div></div>
  <div class="row"><div><label>Full name</label><input id="pName" readonly></div><div><label>Date of birth</label><input id="pDob" type="date" readonly></div></div>
  <div class="row"><div><label>Contact number</label><input id="pPhone" readonly></div><div><label>Emergency contact</label><input id="pEmergency" readonly></div></div>
@@ -80,11 +150,22 @@ dialog{border:1px solid var(--line);border-radius:16px;padding:22px;max-width:44
 
 <!-- HR -->
 <section id="hr" class="hide">
-  <div class="tabs" id="hrTabs"><button class="on" data-t="hF">Filings</button><button data-t="hE">Employees</button><button data-t="hD">DTR</button><button data-t="hA" id="hAtab" class="hide">HR accounts</button><button data-t="hP">Password</button></div>
+<div class="management-shell">
+ <aside class="m-sidebar">
+  <div class="m-brand"><div class="m-logo">B</div><div><b>Better Edge Solutions</b><small>Employee portal</small></div></div>
+  <div class="m-side-label">Management Dashboard</div>
+  <nav class="m-nav" id="managementNav"><button data-panel="hE"><span class="m-ico">♙</span>Employees</button><button data-panel="hD"><span class="m-ico">◷</span>DTR</button><button data-panel="hF" class="active"><span class="m-ico">▣</span>Filings</button><button data-panel="hP"><span class="m-ico">⚙</span>Management account</button></nav>
+  <div class="m-side-bottom"><div class="m-bottom-actions"><button onclick="document.body.classList.toggle('dark-mode')">◐ Dark</button><button onclick="logout()">Log out</button></div></div>
+ </aside>
+ <div class="m-main">
+  <div class="m-module" id="managementExistingModules">
+  <div class="tabs hide" id="hrTabs"><button class="on" data-t="hF">Filings</button><button data-t="hE">Employees</button><button data-t="hD">DTR</button><button data-t="hA" id="hAtab" class="hide">HR accounts</button><button data-t="hP">Password</button></div>
   <div id="hF"><div class="row" style="margin-bottom:14px"><div class="fit"><label>LDC</label><select id="hfl" onchange="loadFilings()"><option value="">All LDCs</option><option>LDC1</option><option>LDC2</option></select></div>
-    <div class="fit"><label>Status</label><select id="hfs" onchange="renderFilings()"><option value="">All</option><option>PENDING</option><option>APPROVED</option><option>REJECTED</option></select></div></div>
+    <div class="fit"><label>Status</label><select id="hfs" onchange="renderFilings()"><option value="">All</option><option>PENDING</option><option>APPROVED</option><option>REJECTED</option></select></div>
+    <div class="fit"><label>Show</label><select id="hfa" onchange="renderFilings()"><option value="cur">Current cutoff</option><option value="arc">Archive</option><option value="all">All</option></select></div></div>
     <div class="grid" id="hStats"></div><div id="hFBody"></div></div>
   <div id="hE" class="hide card"><div class="row"><div class="fit"><label>LDC</label><select id="hel" onchange="loadEmps()"><option value="">All LDCs</option><option>LDC1</option><option>LDC2</option></select></div>
+    <div class="fit"><label>Show</label><select id="hes" onchange="loadEmps()"><option value="ACTIVE">Active</option><option value="INACTIVE">Archived (inactive)</option><option value="">All</option></select></div>
     <div class="fit"><button class="btn sec" onclick="syncML(this)">Sync from master list</button></div></div>
     <h3 style="margin-top:20px">Add employee</h3><div class="row"><div><label>Full name</label><input id="an"></div><div class="fit"><label>LDC</label><select id="al"><option>LDC1</option><option>LDC2</option></select></div><div class="fit"><label>Shift</label><select class="shiftSel" id="as"></select></div><div class="fit"><button class="btn" onclick="addEmp(this)">Add</button></div></div>
     <div id="hEBody"></div></div>
@@ -93,6 +174,9 @@ dialog{border:1px solid var(--line);border-radius:16px;padding:22px;max-width:44
     <div class="row" style="margin-top:12px"><div class="fit"><button class="btn" onclick="hrDtr(this)">View employee DTR</button></div><div class="fit"><button class="btn sec" onclick="hrSummary(this)">View LDC summary</button></div></div><div id="hDBody"></div></div>
   <div id="hA" class="hide card"><h3>Create HR account</h3><div class="row"><div><label>Name</label><input id="cn"></div><div><label>Username</label><input id="cu"></div><div><label>Email (optional)</label><input id="cm" type="email"></div><div class="fit"><button class="btn" onclick="mkHR(this)">Create</button></div></div><div id="hABody"></div></div>
   <div id="hP" class="hide card" style="max-width:440px"><h3>Change password</h3><div id="hPwBox"></div></div>
+  </div>
+ </div>
+</div>
 </section>
 </main>
 <dialog id="dlg"><h3 id="dT"></h3><div id="dB"></div><div style="text-align:right;margin-top:18px"><button class="btn" onclick="$('dlg').close()">Close</button></div></dialog>
@@ -124,7 +208,7 @@ async function run(btn,fn,...a){const t=btn&&btn.textContent;if(btn){btn.disable
   const r=await call(fn,...a);if(btn){btn.disabled=false;btn.textContent=t}return r}
 function msg(id,r,okText){$(id).innerHTML=`<div class="msg ${r.success?'ok':'er'}">${esc(r.success?okText:r.message)}</div>`}
 function dlg(t,h){$('dT').textContent=t;$('dB').innerHTML=h;$('dlg').showModal()}
-function tempDlg(t,who,pw){dlg(t,`<p>Give this temporary password to <b>${esc(who)}</b>. They must change it at next login. It is shown only once.</p><p><code>${esc(pw)}</code></p>`)}
+function tempDlg(t,who,pin){dlg(t,`<p>Share this temporary PIN securely with <b>${esc(who)}</b>. It is shown only once.</p><p><code>${esc(pin)}</code></p>`)}
 function table(cols,rows,empty){if(!rows.length)return`<div class="tw"><div class="empty">${esc(empty)}</div></div>`;
   return`<div class="tw"><table><thead><tr>${cols.map(c=>`<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>${rows.join('')}</tbody></table></div>`}
 
@@ -136,7 +220,7 @@ function tabs(id){const bar=$(id);bar.addEventListener('click',e=>{const t=e.tar
 ['authTabs','hrTabs'].forEach(tabs);
 function openTab(barId,t){[...$(barId).children].find(b=>b.dataset.t===t).click()}
 function show(which){['auth','emp','hr'].forEach(s=>$(s).classList.toggle('hide',s!==which));$('empNav').classList.toggle('hide',which!=='emp');$('who').classList.toggle('hide',which==='auth')}
-function logout(m){S.tok=null;S.role=null;S.mustChange=false;show('auth');
+function logout(m){S.tok=null;S.role=null;S.mustChange=false;document.body.classList.remove('management-mode');show('auth');
   ['le','lp','hu','hp'].forEach(i=>$(i).value='');$('authMsg').innerHTML=m?`<div class="msg er">${esc(m)}</div>`:''}
 
 function pwForm(box,fn){$(box).innerHTML=`<label>Current password</label><input id="${box}o" type="password"><label>New password</label><input id="${box}n" type="password"><div class="hint">At least 8 characters, with letters and numbers.</div><label>Confirm new password</label><input id="${box}c" type="password"><button class="btn" style="margin-top:16px" id="${box}b">Update password</button><div id="${box}m"></div>`;
@@ -161,24 +245,54 @@ async function hrLogin(b){const r=await run(b,'hrLogin',$('hu').value,$('hp').va
   if(!r.success){msg('authMsg',r);return}
   S.tok=r.token;S.role='hr';S.isOwner=r.isOwner;$('whoTxt').textContent=r.hrName+(r.isOwner?' (Owner)':'');
   $('hAtab').classList.toggle('hide',!r.isOwner);pwForm('hPwBox','changeHRPassword');
-  show('hr');openTab('hrTabs','hF');loadFilings();if(r.mustChange)forceChange('hrTabs','hP','hPwBox')}
+  show('hr');document.body.classList.add('management-mode');managementNav('hF');if(r.mustChange){managementNav('hP');forceChange('hrTabs','hP','hPwBox')}}
+
+
+/* ---------- MANAGEMENT NAVIGATION ---------- */
+const PANELS=['hE','hD','hF','hP'];
+function managementNav(panel){
+  if(S.mustChange&&panel!=='hP')return;
+  PANELS.forEach(id=>$(id).classList.toggle('hide',id!==panel));
+  $('hA').classList.toggle('hide',!(panel==='hP'&&S.isOwner));
+  document.querySelectorAll('#managementNav button').forEach(b=>b.classList.toggle('active',b.dataset.panel===panel));
+  if(panel==='hE')loadEmps();if(panel==='hF')loadFilings();if(panel==='hP'&&S.isOwner)loadHR();
+  if(panel==='hD')$('hDBody').innerHTML='<div class="empty">Choose an LDC, cutoff and employee to view or download a DTR, or open the LDC summary.</div>'}
+$('managementNav').addEventListener('click',e=>{const b=e.target.closest('button[data-panel]');if(b)managementNav(b.dataset.panel)});
+
+/* ---------- CUTOFF ARCHIVE (1-15 and 16-end) ---------- */
+const MON={jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
+function cutEnd(t){t=String(t);const m=t.match(/(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*/i),y=t.match(/\b(20\d\d)\b/),d=t.match(/(\d{1,2})\s*(?:-|–|—|to)\s*(\d{1,2})/);return m&&y&&d?new Date(+y[1],MON[m[1].toLowerCase().slice(0,3)],+d[2],23,59,59):null}
+const isArchCut=t=>{const e=cutEnd(t);return !!e&&Date.now()-e.getTime()>3*864e5};
+function fillCut(sel,tabs){const cur=tabs.filter(t=>!isArchCut(t)),old=tabs.filter(isArchCut),g=(l,a)=>a.length?`<optgroup label="${l}">${a.map(t=>opt(t,t)).join('')}</optgroup>`:'';
+  sel.innerHTML=g('Current cutoff',cur)+g('Archive ('+old.length+')',old);if(cur.length)sel.value=cur[cur.length-1]}
+function curCutStart(){const n=new Date();return new Date(n.getFullYear(),n.getMonth(),n.getDate()<=15?1:16)}
+function isArchFiling(x){if(x.status==='PENDING')return false;const d=new Date((x.endDate||x.startDate)+'T12:00:00');return !isNaN(d)&&d<curCutStart()}
+const arcOk=(x,m)=>m==='all'||(m==='arc'?isArchFiling(x):!isArchFiling(x));
+
+/* ---------- DOWNLOADS ---------- */
+let LASTDTR=null,DTRCTX={},LASTSUM=null;
+const csvCell=v=>'"'+String(v==null?'':v).replace(/"/g,'""')+'"';
+function saveCsv(name,rows){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+rows.map(r=>r.map(csvCell).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8'}));a.download=name.replace(/[^\w.-]+/g,'_')+'.csv';document.body.append(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500)}
+const DLROW=f=>`<div class="dlRow"><button class="btn sec sm" onclick="${f}">Download DTR</button><button class="btn sec sm" onclick="window.print()">Print or save as PDF</button></div>`;
+function dlDtr(){const r=LASTDTR;if(!r||!r.success)return;const t=r.totals||{},c=DTRCTX;saveCsv('DTR_'+c.name+'_'+(r.tab||c.cut),[['Better Edge Solutions Inc.','Daily Time Record'],['Employee',c.name],['Details',c.meta],['Cutoff',r.tab||c.cut],[],['Days worked','Total hours','OT hours','Late (min)','Undertime (min)','Absences'],[t.daysRendered,t.hours,t.overtimeHours||0,t.lateMinutes||0,t.undertimeMinutes||0,t.absences||0],[],['Date','Day','Time in','Time out','Hours','Late','Undertime','Status','Filing'],...(r.rows||[]).map(x=>[x.date,x.day,x.timeIn,x.timeOut,x.hours,x.late,x.undertime,x.status,x.filing])])}
+function dlSummary(){const s=LASTSUM;if(!s)return;saveCsv('DTR_summary_'+s.ldc+'_'+s.cut,[['Better Edge Solutions Inc.','DTR summary',s.ldc,s.cut],[],['ID','Name','Shift','Days','Hours','Late (min)','Undertime (min)','Absences','Leaves'],...s.rows.map(x=>x.found?[x.employeeId,x.employeeName,x.shiftLabel,x.totals.daysRendered,x.totals.hours,x.totals.lateMinutes,x.totals.undertimeMinutes,x.totals.absences,x.totals.leaves]:[x.employeeId,x.employeeName,x.shiftLabel,'Not found in this cutoff'])])}
 
 /* ---------- EMPLOYEE ---------- */
 async function submitFiling(b){const r=await run(b,'submitEmployeeFiling',S.tok,$('ft').value,$('fs').value,$('fd').value,$('fr').value);
   msg('fMsg',r,'Filing submitted. Reference: '+r.reference);if(r.success)$('fr').value=''}
 async function loadMine(){$('eListBody').innerHTML='<div class="empty">Loading...</div>';const r=await call('getEmployeeFilings',S.tok);
   if(!r.success){$('eListBody').innerHTML=`<div class="msg er">${esc(r.message)}</div>`;return}
-  $('eListBody').innerHTML=table(['Filed','Type','Start','End','Days','Reason','Status','Action by'],
-    r.records.map(x=>`<tr><td>${esc(x.timestamp)}</td><td>${esc(x.filingType)}</td><td>${esc(x.startDate)}</td><td>${esc(x.endDate)}</td><td>${esc(x.days)}</td><td class="wrap">${esc(x.reason)}</td><td>${badge(x.status)}</td><td>${esc(x.actionBy)}</td></tr>`),'You have not filed anything yet.')}
+  const cols=['Filed','Type','Start','End','Days','Reason','Status','Action by'],row=x=>`<tr><td>${esc(x.timestamp)}</td><td>${esc(x.filingType)}</td><td>${esc(x.startDate)}</td><td>${esc(x.endDate)}</td><td>${esc(x.days)}</td><td class="wrap">${esc(x.reason)}</td><td>${badge(x.status)}</td><td>${esc(x.actionBy)}</td></tr>`,cur=r.records.filter(x=>!isArchFiling(x)),old=r.records.filter(isArchFiling);
+  $('eListBody').innerHTML=table(cols,cur.map(row),'No filings in the current cutoff.')+(old.length?`<details class="arc"><summary>Archived filings (${old.length})</summary>${table(cols,old.map(row),'')}</details>`:'')}
 async function initDtr(){if($('ec').options.length)return;const r=await call('getCutoffTabs',S.tok);
   if(!r.success){$('eDtrBody').innerHTML=`<div class="msg er">${esc(r.message)}</div>`;return}
-  $('ec').innerHTML=r.tabs.map(t=>opt(t,t)).join('')}
-function dtrView(r){if(!r.success)return`<div class="msg er">${esc(r.message)}</div>`;const t=r.totals||{},rows=r.rows||[];
+  fillCut($('ec'),r.tabs)}
+function dtrView(r){LASTDTR=r;if(!r.success)return`<div class="msg er">${esc(r.message)}</div>`;const t=r.totals||{},rows=r.rows||[];
  const stat=(v,l,c='')=>`<div class="stat ${c}"><b>${esc(v??0)}</b><span>${l}</span></div>`;
  const parsed=rows.map(x=>({x,d:new Date(x.date+'T12:00:00')})).filter(z=>!isNaN(z.d));const first=parsed.length?new Date(parsed[0].d.getFullYear(),parsed[0].d.getMonth(),1):new Date();const last=parsed.length?new Date(parsed[parsed.length-1].d.getFullYear(),parsed[parsed.length-1].d.getMonth()+1,0):new Date();const map={};parsed.forEach(z=>map[z.d.getDate()]=z.x);
  let cal=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(x=>`<div class="dayName">${x}</div>`).join('');for(let k=0;k<first.getDay();k++)cal+='<div></div>';for(let d=1;d<=last.getDate();d++){let x=map[d],st=String(x?.status||'').toUpperCase(),cl=st.includes('ABSENT')?'absent':st.includes('LATE')?'late':x?.timeIn?'present':'';cal+=`<div class="dayCell ${cl}"><b>${d}</b><small>${x?esc(x.timeIn||x.status||'—'):'—'}</small></div>`}
- return `${r.shiftSet?'':`<div class="msg er">No shift is set yet, so late and undertime cannot be computed. Ask HR to set it.</div>`}<div class="grid">${stat(t.daysRendered,'Days worked')}${stat(t.hours,'Total hours')}${stat(t.overtimeHours||0,'OT hours','ok')}${stat(t.lateMinutes??0,'Late (min)','wa')}</div><div class="calendar"><div class="calHead">Attendance calendar · ${esc(r.tab||'Selected cutoff')}</div><div class="legend"><span><i class="dot" style="background:#17a879"></i>On time</span><span><i class="dot" style="background:#e99a35"></i>Late</span><span><i class="dot" style="background:#8262d8"></i>Undertime</span><span><i class="dot" style="background:#2589c3"></i>Overtime</span><span><i class="dot" style="background:#df5965"></i>Missing time out</span></div><div class="calendarGrid">${cal}</div></div><div class="grid">${stat(t.undertimeMinutes??0,'Undertime (min)','wa')}${stat(t.absences??0,'Absences','er')}</div><h3 style="margin-top:20px">Daily attendance details</h3>${table(['Date','Day','Time in','Time out','Hours','Late','Undertime','Status','Filing'],rows.map(x=>`<tr><td>${esc(x.date)}</td><td>${esc(x.day)}</td><td>${esc(x.timeIn)}</td><td>${esc(x.timeOut)}</td><td>${esc(x.hours)}</td><td>${esc(x.late)}</td><td>${esc(x.undertime)}</td><td>${badge(x.status)}</td><td>${esc(x.filing)}</td></tr>`),'No dates in this cutoff.')}`;}
-async function loadMyDtr(b){$('eDtrBody').innerHTML='';$('eDtrBody').innerHTML=dtrView(await run(b,'getMyDTR',S.tok,$('ec').value))}
+ return DLROW('dlDtr()')+`${r.shiftSet?'':`<div class="msg er">No shift is set yet, so late and undertime cannot be computed. Ask HR to set it.</div>`}<div class="grid">${stat(t.daysRendered,'Days worked')}${stat(t.hours,'Total hours')}${stat(t.overtimeHours||0,'OT hours','ok')}${stat(t.lateMinutes??0,'Late (min)','wa')}</div><div class="calendar"><div class="calHead">Attendance calendar · ${esc(r.tab||'Selected cutoff')}</div><div class="legend"><span><i class="dot" style="background:#17a879"></i>On time</span><span><i class="dot" style="background:#e99a35"></i>Late</span><span><i class="dot" style="background:#8262d8"></i>Undertime</span><span><i class="dot" style="background:#2589c3"></i>Overtime</span><span><i class="dot" style="background:#df5965"></i>Missing time out</span></div><div class="calendarGrid">${cal}</div></div><div class="grid">${stat(t.undertimeMinutes??0,'Undertime (min)','wa')}${stat(t.absences??0,'Absences','er')}</div><h3 style="margin-top:20px">Daily attendance details</h3>${table(['Date','Day','Time in','Time out','Hours','Late','Undertime','Status','Filing'],rows.map(x=>`<tr><td>${esc(x.date)}</td><td>${esc(x.day)}</td><td>${esc(x.timeIn)}</td><td>${esc(x.timeOut)}</td><td>${esc(x.hours)}</td><td>${esc(x.late)}</td><td>${esc(x.undertime)}</td><td>${badge(x.status)}</td><td>${esc(x.filing)}</td></tr>`),'No dates in this cutoff.')}`;}
+async function loadMyDtr(b){DTRCTX={name:$('eName').textContent,meta:$('eMeta').textContent,cut:$('ec').value};$('eDtrBody').innerHTML='';$('eDtrBody').innerHTML=dtrView(await run(b,'getMyDTR',S.tok,$('ec').value))}
 
 /* ---------- HR ---------- */
 async function loadFilings(){$('hFBody').innerHTML='<div class="empty">Loading...</div>';const r=await call('getHRDashboard',S.tok,$('hfl').value);
@@ -187,7 +301,7 @@ async function loadFilings(){$('hFBody').innerHTML='<div class="empty">Loading..
   $('hStats').innerHTML=`<div class="stat"><b>${s.total}</b><span>Total filings</span></div><div class="stat wa"><b>${s.pending}</b><span>Pending</span></div><div class="stat ok"><b>${s.approved}</b><span>Approved</span></div><div class="stat er"><b>${s.rejected}</b><span>Rejected</span></div>`;renderFilings()}
 function renderFilings(){const f=$('hfs').value;
   $('hFBody').innerHTML=table(['Reference','Filed','Employee','LDC','Type','Start','End','Days','Reason','Status','Action'],
-    FIL.filter(x=>!f||x.status===f).map(x=>`<tr><td>${esc(x.reference)}</td><td>${esc(x.timestamp)}</td><td>${esc(x.employeeName)}<br><small>${esc(x.employeeId)}</small></td><td>${esc(x.ldc)}</td><td>${esc(x.filingType)}</td><td>${esc(x.startDate)}</td><td>${esc(x.endDate)}</td><td>${esc(x.days)}</td><td class="wrap">${esc(x.reason)}</td><td>${badge(x.status)}${x.actionBy?`<br><small>${esc(x.actionBy)}</small>`:''}</td>
+    FIL.filter(x=>(!f||x.status===f)&&arcOk(x,$('hfa').value)).map(x=>`<tr><td>${esc(x.reference)}</td><td>${esc(x.timestamp)}</td><td>${esc(x.employeeName)}<br><small>${esc(x.employeeId)}</small></td><td>${esc(x.ldc)}</td><td>${esc(x.filingType)}</td><td>${esc(x.startDate)}</td><td>${esc(x.endDate)}</td><td>${esc(x.days)}</td><td class="wrap">${esc(x.reason)}</td><td>${badge(x.status)}${x.actionBy?`<br><small>${esc(x.actionBy)}</small>`:''}</td>
     <td>${x.status==='PENDING'?`<div class="act"><button class="btn good sm" onclick="decide(this,'${esc(x.reference)}','APPROVED')">Approve</button><button class="btn bad sm" onclick="decide(this,'${esc(x.reference)}','REJECTED')">Reject</button></div>`:''}</td></tr>`),'No filings match these filters.')}
 async function decide(b,ref,st){if(!confirm((st==='APPROVED'?'Approve':'Reject')+' this filing?'))return;
   const r=await run(b,'updateFilingStatus',S.tok,ref,st);if(!r.success)dlg('Could not update',esc(r.message));loadFilings()}
@@ -195,13 +309,13 @@ async function decide(b,ref,st){if(!confirm((st==='APPROVED'?'Approve':'Reject')
 async function loadEmps(){$('hEBody').innerHTML='<div class="empty">Loading...</div>';const r=await call('getEmployeesForHR',S.tok,$('hel').value);
   if(!r.success){$('hEBody').innerHTML=`<div class="msg er">${esc(r.message)}</div>`;return}
   EMPS=r.employees;$('as').innerHTML=shiftOpts('');
-  $('hEBody').innerHTML=table(['ID','Name','LDC','Email','Birth date','Contact','Emergency contact','Address','Shift','Status','Registered','Actions'],EMPS.map(e=>`<tr><td>${esc(e.employeeId)}</td><td>${esc(e.employeeName)}</td><td>${esc(e.ldc)}</td><td>${esc(e.email)}</td><td>${esc(e.dateOfBirth||'')}</td><td>${esc(e.contactNumber||'')}</td><td>${esc([e.emergencyContactName,e.emergencyContactNumber].filter(Boolean).join(' / '))}</td><td class="wrap">${esc(e.address||'')}</td>
+  $('hEBody').innerHTML=table(['ID','Name','LDC','Email','Birth date','Contact','Emergency contact','Address','Shift','Status','Registered','Actions'],EMPS.filter(e=>!$('hes').value||String(e.status||'').toUpperCase()===$('hes').value).map(e=>`<tr><td>${esc(e.employeeId)}</td><td>${esc(e.employeeName)}</td><td>${esc(e.ldc)}</td><td>${esc(e.email)}</td><td>${esc(e.dateOfBirth||'')}</td><td>${esc(e.contactNumber||'')}</td><td>${esc([e.emergencyContactName,e.emergencyContactNumber].filter(Boolean).join(' / '))}</td><td class="wrap">${esc(e.address||'')}</td>
     <td><select style="width:130px" onchange="setShift(this,'${esc(e.employeeId)}')">${shiftOpts(e.shift)}</select></td><td>${badge(e.status)}</td><td>${e.registered?'Yes':'No'}</td>
-    <td><div class="act"><button class="btn sec sm" onclick="setStatus('${esc(e.employeeId)}','${e.status==='ACTIVE'?'INACTIVE':'ACTIVE'}')">${e.status==='ACTIVE'?'Deactivate':'Activate'}</button>${e.registered?`<button class="btn sec sm" onclick="resetEmp(this,'${esc(e.employeeId)}')">Reset password</button>`:''}<button class="btn bad sm" onclick="rmEmp('${esc(e.employeeId)}','${esc(e.employeeName)}')">Remove</button></div></td></tr>`),'No employees found. Use "Sync from master list" or add one.')}
+    <td><div class="act"><button class="btn sec sm" onclick="setStatus('${esc(e.employeeId)}','${e.status==='ACTIVE'?'INACTIVE':'ACTIVE'}')">${e.status==='ACTIVE'?'Archive':'Restore'}</button>${e.registered?`<button class="btn sec sm" onclick="resetEmp(this,'${esc(e.employeeId)}')">Reset PIN</button>`:''}<button class="btn bad sm" onclick="rmEmp('${esc(e.employeeId)}','${esc(e.employeeName)}')">Remove</button></div></td></tr>`),'No employees found. Use "Sync from master list" or add one.')}
 async function setShift(sel,id){const r=await call('updateEmployeeShift',S.tok,id,sel.value);if(!r.success)dlg('Could not save shift',esc(r.message))}
 async function setStatus(id,st){const r=await call('updateEmployeeStatus',S.tok,id,st);if(!r.success)dlg('Could not update',esc(r.message));loadEmps()}
-async function resetEmp(b,id){if(!confirm('Reset this employee\'s password?'))return;const r=await run(b,'resetEmployeePassword',S.tok,id);
-  r.success?tempDlg('Password reset',r.employeeName,r.tempPassword):dlg('Could not reset',esc(r.message))}
+async function resetEmp(b,id){if(!confirm('Reset this employee\'s PIN?'))return;const r=await run(b,'resetEmployeePIN',S.tok,id);
+  r.success?tempDlg('PIN reset',r.employeeName,r.tempPassword):dlg('Could not reset',esc(r.message))}
 async function rmEmp(id,n){if(!confirm('Remove '+n+' permanently? Their login is deleted too.'))return;const r=await call('removeEmployeeFromHR',S.tok,id);if(!r.success)dlg('Could not remove',esc(r.message));loadEmps()}
 async function addEmp(b){const r=await run(b,'addEmployeeFromHR',S.tok,$('an').value,$('al').value,$('as').value);
   if(!r.success){dlg('Could not add',esc(r.message));return}$('an').value='';loadEmps()}
@@ -211,23 +325,23 @@ async function syncML(b){const r=await run(b,'syncMasterlists',S.tok);
 async function dtrLdc(){const l=$('dl').value;$('dc').innerHTML='';$('de').innerHTML='';$('hDBody').innerHTML='';if(!l)return;
   const [t,e]=await Promise.all([call('getCutoffTabsForHR',S.tok,l),call('getEmployeesForHR',S.tok,l)]);
   if(!t.success){$('hDBody').innerHTML=`<div class="msg er">${esc(t.message)}</div>`;return}
-  $('dc').innerHTML=t.tabs.map(x=>opt(x,x)).join('');$('de').innerHTML=(e.employees||[]).map(x=>opt(x.employeeId,x.employeeName+' ('+x.employeeId+')')).join('')}
-async function hrDtr(b){if(!$('de').value)return;$('hDBody').innerHTML=dtrView(await run(b,'getDTRForHR',S.tok,$('de').value,$('dc').value))}
+  fillCut($('dc'),t.tabs);$('de').innerHTML=(e.employees||[]).map(x=>opt(x.employeeId,x.employeeName+' ('+x.employeeId+')')).join('')}
+async function hrDtr(b){if(!$('de').value)return;DTRCTX={name:($('de').selectedOptions[0]||{}).text||'',meta:$('dl').value,cut:$('dc').value};$('hDBody').innerHTML=dtrView(await run(b,'getDTRForHR',S.tok,$('de').value,$('dc').value))}
 async function hrSummary(b){if(!$('dl').value)return;const r=await run(b,'getDTRSummaryForHR',S.tok,$('dl').value,$('dc').value);
   if(!r.success){$('hDBody').innerHTML=`<div class="msg er">${esc(r.message)}</div>`;return}
-  $('hDBody').innerHTML=table(['ID','Name','Shift','Days','Hours','Late (min)','Undertime (min)','Absences','Leaves'],r.rows.map(x=>`<tr><td>${esc(x.employeeId)}</td><td>${esc(x.employeeName)}</td><td>${esc(x.shiftLabel)}</td>${x.found?`<td>${x.totals.daysRendered}</td><td>${x.totals.hours}</td><td>${x.totals.lateMinutes}</td><td>${x.totals.undertimeMinutes}</td><td>${x.totals.absences}</td><td>${x.totals.leaves}</td>`:'<td colspan="6"><small>Not found in this cutoff</small></td>'}</tr>`),'No active employees in this LDC.')}
+  LASTSUM={rows:r.rows,ldc:$('dl').value,cut:$('dc').value};$('hDBody').innerHTML=DLROW('dlSummary()').replace('Download DTR','Download summary')+table(['ID','Name','Shift','Days','Hours','Late (min)','Undertime (min)','Absences','Leaves'],r.rows.map(x=>`<tr><td>${esc(x.employeeId)}</td><td>${esc(x.employeeName)}</td><td>${esc(x.shiftLabel)}</td>${x.found?`<td>${x.totals.daysRendered}</td><td>${x.totals.hours}</td><td>${x.totals.lateMinutes}</td><td>${x.totals.undertimeMinutes}</td><td>${x.totals.absences}</td><td>${x.totals.leaves}</td>`:'<td colspan="6"><small>Not found in this cutoff</small></td>'}</tr>`),'No active employees in this LDC.')}
 
 async function loadHR(){const r=await call('getHRAccountsForOwner',S.tok);if(!r.success){$('hABody').innerHTML=`<div class="msg er">${esc(r.message||'Owner access required.')}</div>`;return}
-  $('hABody').innerHTML=table(['Name','Username','Email','Status','Actions'],r.accounts.map(a=>`<tr><td>${esc(a.name)}${a.isOwner?' (Owner)':''}</td><td>${esc(a.username)}</td><td>${esc(a.email)}</td><td>${badge(a.status)}</td><td>${a.isOwner?'':`<div class="act"><button class="btn sec sm" onclick="rsHR(this,'${esc(a.username)}')">Reset password</button><button class="btn bad sm" onclick="rmHR('${esc(a.username)}')">Remove</button></div>`}</td></tr>`),'No HR accounts.')}
+  $('hABody').innerHTML=table(['Name','Username','Email','Status','Actions'],r.accounts.map(a=>`<tr><td>${esc(a.name)}${a.isOwner?' (Owner)':''}</td><td>${esc(a.username)}</td><td>${esc(a.email)}</td><td>${badge(a.status)}</td><td>${a.isOwner?'':`<div class="act"><button class="btn sec sm" onclick="rsHR(this,'${esc(a.username)}')">Reset PIN</button><button class="btn bad sm" onclick="rmHR('${esc(a.username)}')">Remove</button></div>`}</td></tr>`),'No HR accounts.')}
 async function mkHR(b){const r=await run(b,'createHRAccount',S.tok,$('cn').value,$('cu').value,$('cm').value);
   if(!r.success){dlg('Could not create',esc(r.message));return}['cn','cu','cm'].forEach(i=>$(i).value='');tempDlg('HR account created',r.hrName+' ('+r.username+')',r.tempPassword);loadHR()}
-async function rsHR(b,u){if(!confirm('Reset password for '+u+'?'))return;const r=await run(b,'resetHRPassword',S.tok,u);r.success?tempDlg('Password reset',r.username,r.tempPassword):dlg('Could not reset',esc(r.message))}
+async function rsHR(b,u){if(!confirm('Reset PIN for '+u+'?'))return;const r=await run(b,'resetHRPassword',S.tok,u);r.success?tempDlg('PIN reset',r.username,r.tempPassword):dlg('Could not reset',esc(r.message))}
 async function rmHR(u){if(!confirm('Remove HR account '+u+'?'))return;const r=await call('removeHRAccount',S.tok,u);if(!r.success)dlg('Could not remove',esc(r.message||''));loadHR()}
 
 
 function openEmpTab(t){['eDtr','eFile','ePw','eProfile'].forEach(id=>$(id).classList.toggle('hide',id!==t));[...$('empNav').children].forEach(b=>b.classList.toggle('on',b.dataset.t===t));if(t==='eFile')loadMine();if(t==='eDtr')initDtr();if(t==='eProfile')loadProfile()}
 $('empNav').addEventListener('click',e=>{const b=e.target.closest('button[data-t]');if(b)openEmpTab(b.dataset.t)});
-function pinForm(){$('ePwBox').innerHTML=`<label>Current 6-digit PIN</label><input id="pinOld" type="password" inputmode="numeric" maxlength="6"><label>New 6-digit PIN</label><input id="pinNew" type="password" inputmode="numeric" maxlength="6"><label>Confirm new PIN</label><input id="pinConfirm" type="password" inputmode="numeric" maxlength="6"><button class="btn" style="margin-top:15px" id="pinSaveBtn">Update PIN</button><div id="pinMsg"></div>`;$('pinSaveBtn').onclick=async()=>{let o=$('pinOld').value,n=$('pinNew').value,c=$('pinConfirm').value;if(!/^\d{6}$/.test(o)||!/^\d{6}$/.test(n)){msg('pinMsg',{message:'Enter a valid six-digit PIN.'});return}if(n!==c){msg('pinMsg',{message:'New PINs do not match.'});return}let r=await run($('pinSaveBtn'),'changeEmployeePIN',S.tok,o,n);msg('pinMsg',r,'PIN updated successfully.');if(r.success)$('pinOld').value=$('pinNew').value=$('pinConfirm').value=''}}
+function pinForm(){$('ePwBox').innerHTML=`<label>Current 6-digit PIN</label><input id="pinOld" type="text" inputmode="numeric" maxlength="6" autocomplete="off"><label>New 6-digit PIN</label><input id="pinNew" type="text" inputmode="numeric" maxlength="6" autocomplete="off"><label>Confirm new PIN</label><input id="pinConfirm" type="text" inputmode="numeric" maxlength="6" autocomplete="off"><button class="btn" style="margin-top:15px" id="pinSaveBtn">Update PIN</button><div id="pinMsg"></div>`;$('pinSaveBtn').onclick=async()=>{let o=$('pinOld').value,n=$('pinNew').value,c=$('pinConfirm').value;if(!/^\d{6}$/.test(o)||!/^\d{6}$/.test(n)){msg('pinMsg',{message:'Enter a valid six-digit PIN.'});return}if(n!==c){msg('pinMsg',{message:'New PINs do not match.'});return}let r=await run($('pinSaveBtn'),'changeEmployeePIN',S.tok,o,n);msg('pinMsg',r,'PIN updated successfully.');if(r.success)$('pinOld').value=$('pinNew').value=$('pinConfirm').value=''}}
 let PROFILE_SNAPSHOT={};
 function profileVals(){return{employeeName:$('pName').value,dateOfBirth:$('pDob').value,contactNumber:$('pPhone').value,emergencyContactName:$('pEmergency').value,emergencyContactNumber:$('pEmergencyPhone').value,address:$('pAddress').value}}
 function setProfile(p){p=p||{};$('pName').value=p.employeeName||p.name||$('eName').textContent||'';$('pDob').value=(p.dateOfBirth||p.dob||'').slice(0,10);$('pPhone').value=p.contactNumber||'';$('pEmergency').value=p.emergencyContactName||p.emergencyContact||'';$('pEmergencyPhone').value=p.emergencyContactNumber||'';$('pAddress').value=p.address||'';$('profileNameHead').textContent=$('pName').value||'Employee profile';$('profileEmailHead').textContent=p.email||$('le').value;$('profileAvatar').textContent=$('pName').value.split(/\s+/).slice(0,2).map(x=>x[0]||'').join('').toUpperCase()||'BE';PROFILE_SNAPSHOT=profileVals();['pName','pDob','pPhone','pEmergency','pEmergencyPhone','pAddress'].forEach(id=>$(id).readOnly=true);$('profileActions').classList.add('hide');$('profileEditBtn').classList.remove('hide')}
