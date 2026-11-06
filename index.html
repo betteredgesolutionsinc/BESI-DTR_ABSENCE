@@ -386,13 +386,57 @@ body.dark-mode #eProfile.profile-editing input:not(:disabled),body.dark-mode #eP
   color:#e7f0fa!important;-webkit-text-fill-color:#e7f0fa;background:#1b2d43!important;border-color:#6caed0!important
 }
 
+
+/* FIRST-TIME PROFILE ENTRY: OPEN UNTIL FIRST SAVE */
+#eProfile.profile-editing #profileEditBtn{display:none!important}
+#eProfile:not(.profile-editing) #profileSaveBtn,
+#eProfile:not(.profile-editing) #profileCancelBtn{display:none!important}
+#profileMsg .msg.info{margin-top:12px;padding:10px 13px;border-radius:10px;background:#edf7fc;border:1px solid #d7eaf5;color:#4e718a;font-size:10px;line-height:1.5}
+
+
+/* REMEMBERED SORTER EMAIL */
+.remember-note{margin:-3px 0 12px!important;font-size:9px!important;line-height:1.45;color:#8294a7}
+/* PROFILE APP SETTINGS FOOTER */
+.profile-settings{margin-top:23px;padding-top:18px;border-top:1px solid #e6edf3}
+.profile-settings-heading{display:flex;flex-direction:column;gap:4px;margin-bottom:11px}
+.profile-settings-heading b{font-size:12px;color:var(--ink)}
+.profile-settings-heading span{font-size:9px;color:var(--muted)}
+.profile-settings-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.profile-setting-btn{display:flex;align-items:center;gap:11px;min-width:0;padding:12px 13px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(120deg,rgba(247,251,254,.96),rgba(246,245,252,.96));color:var(--ink);text-align:left;cursor:pointer;transition:transform .15s,border-color .15s}
+.profile-setting-btn:hover{transform:translateY(-1px);border-color:#a9d2e7}
+.profile-setting-btn .setting-icon{width:34px;height:34px;flex:0 0 34px;display:grid;place-items:center;border-radius:10px;background:#e5f3fa;color:#2588bd;font-size:17px;font-weight:700}
+.profile-setting-btn>span:nth-child(2){display:flex;flex-direction:column;gap:3px;min-width:0;flex:1}
+.profile-setting-btn b{font-size:10px;line-height:1.3}
+.profile-setting-btn small{font-size:8px;line-height:1.4;color:var(--muted)}
+.profile-setting-btn .setting-chevron{font-size:20px;color:#8da0b2}
+.profile-setting-btn.logout-setting .setting-icon{background:#fff0f1;color:#c65360}
+.profile-setting-btn.logout-setting{border-color:#f0dfe1}
+body.dark-mode .profile-settings{border-color:#344960}
+body.dark-mode .profile-settings-heading b{color:#e7f0fa}
+body.dark-mode .profile-setting-btn{background:linear-gradient(120deg,#1b2d43,#252b43);border-color:#344960;color:#e7f0fa}
+body.dark-mode .profile-setting-btn .setting-icon{background:#23425a;color:#8bd0f0}
+body.dark-mode .profile-setting-btn.logout-setting{border-color:#63414a}
+body.dark-mode .profile-setting-btn.logout-setting .setting-icon{background:#472d38;color:#f19aa4}
+body.dark-mode .remember-note{color:#a8b9cb}
+@media(max-width:600px){
+ .profile-settings-actions{grid-template-columns:1fr}
+ .profile-setting-btn{padding:13px}
+}
+
 </style>
+<meta name="theme-color" content="#eaf5fb">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="BESI Portal">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
 </head>
 <body>
 <header>
   <div class="logo"><svg viewBox="0 0 40 40" width="38" height="38" aria-hidden="true"><rect width="40" height="40" rx="9" fill="#fff"/><path d="M9 6h12a9 9 0 0 1 0 14L9 20z" fill="#183a93"/><path d="M9 20l14 0a9 9 0 0 1 0 14H9z" fill="#d92aa1"/><path d="M9 12l12 8-12 8z" fill="#27cdff"/></svg></div>
   <div class="brand wm"><b>BetterEdge</b><span>SOLUTIONS INC. | EMPLOYEE PORTAL</span></div>
-  <div class="who"><button class="theme-toggle" onclick="toggleTheme()" id="themeToggle" type="button">◐ Dark</button><span class="hide" id="whoTxt"></span><button class="btn sec sm hide" id="headerLogout" onclick="logout()">Log out</button></div>
+  <div class="who" aria-hidden="true"></div>
 </header>
 <main>
 
@@ -403,7 +447,7 @@ body.dark-mode #eProfile.profile-editing input:not(:disabled),body.dark-mode #eP
   <div class="auth-intro"><h1>Welcome back</h1><p>Sign in to record attendance and view your cutoff details.</p></div>
   <div class="tabs auth-role-tabs" id="authTabs"><button class="on" data-t="aLogin">Sorter</button><button data-t="aHR">Management</button></div>
   <div id="aLogin"><p class="sub auth-help">Use the email and six-digit PIN provided during registration.</p>
-    <label>Email address</label><input id="le" type="email" autocomplete="username" placeholder="Enter your registered email">
+    <label>Email address</label><input id="le" type="email" autocomplete="username" placeholder="Your last used email will appear here"><p class="remember-note" id="rememberEmailNote">Your last sorter email is remembered on this device.</p>
     <label>Sorter PIN</label><input id="lp" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" autocomplete="current-password" placeholder="Enter your 6-digit PIN">
     <button class="btn full" onclick="empLogin(this)">Sign in to attendance</button>
     <p class="auth-footnote">Need help accessing your account? Contact management.</p>
@@ -434,6 +478,14 @@ body.dark-mode #eProfile.profile-editing input:not(:disabled),body.dark-mode #eP
  <div class="row"><div><label>Contact number</label><input id="pPhone" readonly disabled></div><div><label>Emergency contact</label><input id="pEmergency" readonly disabled></div></div>
  <div class="row"><div><label>Emergency contact number</label><input id="pEmergencyPhone" readonly disabled></div><div><label>Address</label><textarea id="pAddress" readonly disabled></textarea></div></div>
  <div class="profile-controls"><span class="profile-helper">Keep your contact and emergency details up to date.</span><div class="profile-buttons"><button class="btn" id="profileEditBtn" type="button" onclick="toggleProfileEdit()">Edit details</button><button class="btn hide" id="profileSaveBtn" type="button" onclick="saveProfile(this)">Save changes</button><button class="btn sec hide" id="profileCancelBtn" type="button" onclick="cancelProfileEdit()">Cancel</button></div></div>
+ <div class="profile-settings">
+   <div class="profile-settings-heading"><b>App settings</b><span>Personalize and manage your portal</span></div>
+   <div class="profile-settings-actions">
+     <button class="profile-setting-btn" id="profileThemeToggle" type="button" onclick="toggleTheme()"><span class="setting-icon">◐</span><span><b id="profileThemeLabel">Dark mode</b><small id="profileThemeHint">Switch appearance</small></span><span class="setting-chevron">›</span></button>
+     <button class="profile-setting-btn install-app-btn hide" id="installAppBtn" type="button" onclick="installPortalApp()"><span class="setting-icon">＋</span><span><b>Install app</b><small>Add BESI to your phone home screen</small></span><span class="setting-chevron">›</span></button>
+     <button class="profile-setting-btn logout-setting" type="button" onclick="logout()"><span class="setting-icon">↪</span><span><b>Log out</b><small>Sign out of this sorter account</small></span><span class="setting-chevron">›</span></button>
+   </div>
+ </div>
  <div id="profileMsg"></div></div>
 </section>
 <nav id="empNav" class="empNav hide"><button class="on" data-t="eDtr"><span class="ico">▦</span>My DTR</button><button data-t="eFile"><span class="ico">▤</span>Absent filing</button><button data-t="ePw"><span class="ico">♙</span>PIN</button><button data-t="eProfile"><span class="ico">♧</span>My profile</button></nav>
@@ -445,7 +497,7 @@ body.dark-mode #eProfile.profile-editing input:not(:disabled),body.dark-mode #eP
   <div class="m-brand"><div class="m-logo">B</div><div><b>Better Edge Solutions</b><small>Employee portal</small></div></div>
   <div class="m-side-label">Management Dashboard</div>
   <nav class="m-nav" id="managementNav"><button data-panel="hE"><span class="m-ico">♙</span>Employees</button><button data-panel="hD"><span class="m-ico">◷</span>DTR</button><button data-panel="hF" class="active"><span class="m-ico">▣</span>Filings</button><button data-panel="hP"><span class="m-ico">⚙</span>Management account</button></nav>
-  <div class="m-side-bottom"><div class="m-bottom-actions"><button onclick="toggleTheme()">◐ Dark</button><button onclick="logout()">Log out</button></div></div>
+  <div class="m-side-bottom"><div class="m-bottom-actions"><button data-theme-action onclick="toggleTheme()">◐ Dark</button><button onclick="logout()">Log out</button></div></div>
  </aside>
  <div class="m-main">
   <section class="m-welcome">
@@ -522,11 +574,33 @@ function tabs(id){const bar=$(id);bar.addEventListener('click',e=>{const t=e.tar
 ['authTabs','hrTabs'].forEach(tabs);
 function openTab(barId,t){[...$(barId).children].find(b=>b.dataset.t===t).click()}
 function showRegister(on){$('aLogin').classList.toggle('hide',!!on);$('aReg').classList.toggle('hide',!on);$('aHR').classList.add('hide');$('authMsg').innerHTML='';if(on){$('authTabs').querySelector('[data-t="aLogin"]').classList.add('on');$('authTabs').querySelector('[data-t="aHR"]').classList.remove('on')}}
-function toggleTheme(){document.body.classList.toggle('dark-mode');const dark=document.body.classList.contains('dark-mode');$('themeToggle').textContent=dark?'☀ Light':'◐ Dark';try{localStorage.setItem('besi-theme',dark?'dark':'light')}catch(e){}}
-try{if(localStorage.getItem('besi-theme')==='dark'){document.body.classList.add('dark-mode');$('themeToggle').textContent='☀ Light'}}catch(e){}
-function show(which){['auth','emp','hr'].forEach(s=>$(s).classList.toggle('hide',s!==which));$('empNav').classList.toggle('hide',which!=='emp');$('headerLogout').classList.toggle('hide',which==='auth');$('whoTxt').classList.toggle('hide',which==='auth')}
-function logout(m){S.tok=null;S.role=null;S.mustChange=false;document.body.classList.remove('management-mode');show('auth');
-  ['le','lp','hu','hp'].forEach(i=>$(i).value='');$('authMsg').innerHTML=m?`<div class="msg er">${esc(m)}</div>`:''}
+function syncThemeControls(){
+  const dark=document.body.classList.contains('dark-mode');
+  const label=$('profileThemeLabel'),hint=$('profileThemeHint');
+  if(label)label.textContent=dark?'Switch to light mode':'Switch to dark mode';
+  if(hint)hint.textContent=dark?'Light appearance is active':'Dark appearance is active';
+  document.querySelectorAll('.m-bottom-actions button[data-theme-action]').forEach(b=>b.textContent=dark?'☀ Light':'◐ Dark');
+}
+function toggleTheme(){
+  document.body.classList.toggle('dark-mode');
+  const dark=document.body.classList.contains('dark-mode');
+  try{localStorage.setItem('besi-theme',dark?'dark':'light')}catch(e){}
+  syncThemeControls();
+}
+try{if(localStorage.getItem('besi-theme')==='dark')document.body.classList.add('dark-mode')}catch(e){}
+function show(which){
+  ['auth','emp','hr'].forEach(s=>$(s).classList.toggle('hide',s!==which));
+  $('empNav').classList.toggle('hide',which!=='emp');
+  const who=$('whoTxt');if(who)who.classList.add('hide');
+  const headerLogout=$('headerLogout');if(headerLogout)headerLogout.classList.add('hide');
+}
+function logout(m){
+  S.tok=null;S.role=null;S.mustChange=false;document.body.classList.remove('management-mode');show('auth');
+  // Keep the last sorter email on this device; never remember the PIN.
+  ['lp','hu','hp'].forEach(i=>{const el=$(i);if(el)el.value=''});
+  $('authMsg').innerHTML=m?`<div class="msg er">${esc(m)}</div>`:'';
+  $('lp').focus();
+}
 
 function pwForm(box,fn){$(box).innerHTML=`<label>Current password</label><input id="${box}o" type="password"><label>New password</label><input id="${box}n" type="password"><div class="hint">At least 8 characters, with letters and numbers.</div><label>Confirm new password</label><input id="${box}c" type="password"><button class="btn" style="margin-top:16px" id="${box}b">Update password</button><div id="${box}m"></div>`;
   $(box+'b').onclick=async()=>{if($(box+'n').value!==$(box+'c').value){msg(box+'m',{message:'New passwords do not match.'});return}
@@ -535,16 +609,54 @@ function pwForm(box,fn){$(box).innerHTML=`<label>Current password</label><input 
 function forceChange(tabsId,pwTab,box){S.mustChange=true;openTab(tabsId,pwTab);
   $(box).insertAdjacentHTML('beforebegin',`<div class="msg er" id="${box==='ePwBox'?'eNote':'hNote'}">You are using a temporary password. Set a new one to continue.</div>`)}
 
+/* ---------- DEVICE PREFERENCES / PWA ---------- */
+function rememberSorterEmail(email){
+  const value=String(email||'').trim();
+  if(!value)return;
+  try{localStorage.setItem('besi-last-sorter-email',value)}catch(e){}
+  $('le').value=value;
+  const note=$('rememberEmailNote');if(note)note.textContent='Last used sorter email saved on this device.';
+}
+(function restoreSorterEmail(){
+  try{
+    const saved=localStorage.getItem('besi-last-sorter-email');
+    if(saved){$('le').value=saved;$('rememberEmailNote').textContent='Last used email remembered. Enter your six-digit PIN.'}
+  }catch(e){}
+  syncThemeControls();
+})();
+let deferredInstallPrompt=null;
+window.addEventListener('beforeinstallprompt',event=>{
+  event.preventDefault();deferredInstallPrompt=event;
+  const button=$('installAppBtn');if(button)button.classList.remove('hide');
+});
+window.addEventListener('appinstalled',()=>{
+  deferredInstallPrompt=null;
+  const button=$('installAppBtn');if(button){button.classList.add('hide')}
+});
+async function installPortalApp(){
+  if(deferredInstallPrompt){
+    deferredInstallPrompt.prompt();
+    await deferredInstallPrompt.userChoice;
+    deferredInstallPrompt=null;
+    $('installAppBtn').classList.add('hide');
+    return;
+  }
+  $('profileMsg').innerHTML='<div class="msg info">To install on iPhone, open this portal in Safari and choose Share → Add to Home Screen. On Android, open the browser menu and choose Install app or Add to Home screen.</div>';
+}
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+}
+
 /* ---------- AUTH ---------- */
 async function empLogin(b){if(!/^\d{6}$/.test($('lp').value)){msg('authMsg',{message:'Enter your 6-digit PIN.'});return}const r=await run(b,'employeeLogin',$('le').value,$('lp').value);
   if(!r.success){msg('authMsg',r);return}
-  S.tok=r.token;S.role='emp';const e=r.employee;S.employeeEmail=e.email||$('le').value;
+  S.tok=r.token;S.role='emp';const e=r.employee;S.employeeEmail=e.email||$('le').value;rememberSorterEmail(S.employeeEmail);
   $('eName').textContent=e.employeeName;$('eMeta').textContent=`${e.employeeId}  |  ${e.ldc.replace('LDC','LDC ')}  |  Shift: ${e.shiftLabel}`;
   $('whoTxt').textContent=e.employeeName;$('fs').value=new Date().toISOString().slice(0,10);
   pinForm();show('emp');openEmpTab('eDtr');loadProfile();}
 async function register(b){if(!/^\d{6}$/.test($('rp').value)){msg('authMsg',{message:'PIN must be exactly six digits.'});return}if($('rp').value!==$('rc').value){msg('authMsg',{message:'PINs do not match.'});return}const r=await run(b,'registerEmployee',$('rl').value,$('rn').value,$('re').value,$('rp').value,$('rc').value);
   if(!r.success){msg('authMsg',r);return}
-  $('le').value=$('re').value;['rl','rn','re','rp','rc'].forEach(i=>$(i).value='');
+  $('le').value=$('re').value;rememberSorterEmail($('re').value);['rl','rn','re','rp','rc'].forEach(i=>$(i).value='');
   openTab('authTabs','aLogin');showRegister(false);msg('authMsg',r,`Welcome, ${r.employeeName}. Your account is ready. Log in to continue.`)}
 async function hrLogin(b){const r=await run(b,'hrLogin',$('hu').value,$('hp').value);
   if(!r.success){msg('authMsg',r);return}
@@ -734,7 +846,17 @@ function setProfile(p){
   $('profileEmailHead').textContent=p.email||S.employeeEmail||$('le').value;
   $('profileAvatar').textContent=$('pName').value.split(/\s+/).slice(0,2).map(x=>x[0]||'').join('').toUpperCase()||'BE';
   PROFILE_SNAPSHOT=profileVals();
-  setProfileEditMode(false);
+  // First-time sorter profiles have no saved personal details yet.
+  // Keep the fields open so the sorter can enter details immediately.
+  const hasSavedDetails = !!(
+    p.dateOfBirth || p.dob || p.contactNumber ||
+    p.emergencyContactName || p.emergencyContact ||
+    p.emergencyContactNumber || p.address
+  );
+  setProfileEditMode(!hasSavedDetails);
+  if (!hasSavedDetails) {
+    $('profileMsg').innerHTML = '<div class="msg info">Please enter your personal and emergency contact details, then select Save changes.</div>';
+  }
 }
 let PROFILE_EDITING=false;
 function setProfileEditMode(editing){
