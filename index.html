@@ -337,6 +337,55 @@ body.dark-mode .cutoffSelectWrap label,body.dark-mode .cutoffAutoNote{color:#a8b
 body.dark-mode .dtr-note{background:#1c3448;border-color:#31536c;color:#b6cadd}
 body.dark-mode #eDtrBody>.empty{background:#1b2c41;border-color:#344960;color:#a8b9cb}
 
+
+/* EDITABLE SORTER PROFILE */
+.profile-controls{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:18px;padding-top:15px;border-top:1px solid #e8eff4}
+.profile-helper{font-size:10px;line-height:1.5;color:#8192a4}
+.profile-buttons{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+.profile-buttons .btn{min-width:112px;min-height:39px;border-radius:10px}
+#eProfile input[readonly],#eProfile textarea[readonly]{background:#f1f6fa;color:#657b91;border-color:#dce8f0;cursor:default}
+#eProfile.profile-editing input:not([readonly]),#eProfile.profile-editing textarea:not([readonly]){background:#fff;border-color:#8bc5e2;box-shadow:0 0 0 3px rgba(49,145,191,.09);color:#263e56}
+#eProfile input:focus,#eProfile textarea:focus{outline:none;border-color:#65add2;box-shadow:0 0 0 3px rgba(49,145,191,.12)}
+#profileMsg:empty{display:none}
+#profileMsg .msg{margin-top:12px}
+@media(max-width:600px){
+ .profile-controls{align-items:stretch;flex-direction:column}
+ .profile-buttons{width:100%}
+ .profile-buttons .btn{flex:1;min-width:0}
+}
+body.dark-mode #eProfile input[readonly],body.dark-mode #eProfile textarea[readonly]{background:#1e3047;color:#b8c9d9;border-color:#344960}
+body.dark-mode #eProfile.profile-editing input:not([readonly]),body.dark-mode #eProfile.profile-editing textarea:not([readonly]){background:#1b2d43;color:#e7f0fa;border-color:#6caed0}
+body.dark-mode .profile-controls{border-color:#344960}
+body.dark-mode .profile-helper{color:#a8b9cb}
+
+
+/* HARD LOCK PROFILE FIELDS UNTIL THE USER CHOOSES EDIT DETAILS */
+#eProfile input:disabled,#eProfile textarea:disabled{
+  opacity:1!important;
+  -webkit-text-fill-color:#657b91;
+  color:#657b91!important;
+  background:#f1f6fa!important;
+  border-color:#dce8f0!important;
+  cursor:not-allowed!important;
+  box-shadow:none!important;
+}
+#eProfile.profile-editing input:not(:disabled),#eProfile.profile-editing textarea:not(:disabled){
+  opacity:1!important;
+  -webkit-text-fill-color:#263e56;
+  color:#263e56!important;
+  background:#fff!important;
+  border-color:#8bc5e2!important;
+  cursor:text!important;
+  box-shadow:0 0 0 3px rgba(49,145,191,.09)!important;
+}
+#eProfile:not(.profile-editing) .profile-helper:before{content:"🔒 ";font-size:9px}
+body.dark-mode #eProfile input:disabled,body.dark-mode #eProfile textarea:disabled{
+  color:#b8c9d9!important;-webkit-text-fill-color:#b8c9d9;background:#1e3047!important;border-color:#344960!important
+}
+body.dark-mode #eProfile.profile-editing input:not(:disabled),body.dark-mode #eProfile.profile-editing textarea:not(:disabled){
+  color:#e7f0fa!important;-webkit-text-fill-color:#e7f0fa;background:#1b2d43!important;border-color:#6caed0!important
+}
+
 </style>
 </head>
 <body>
@@ -381,10 +430,11 @@ body.dark-mode #eDtrBody>.empty{background:#1b2c41;border-color:#344960;color:#a
  <div id="eFile" class="card hide"><h3>Absent filing</h3><div class="row"><div><label>Type</label><select id="ft" onchange="$('fdw').classList.toggle('hide',this.value!=='LEAVE')"><option value="ABSENT">Absent (1 day)</option><option value="LEAVE">Leave (multi-day)</option></select></div><div><label>Start date</label><input id="fs" type="date"></div><div id="fdw" class="hide"><label>Days (max 14)</label><input id="fd" type="number" min="1" max="14" value="1"></div></div><label>Reason</label><textarea id="fr" maxlength="500"></textarea><button class="btn" style="margin-top:14px" onclick="submitFiling(this)">Submit filing</button><div id="fMsg"></div><h3 style="margin-top:24px">My filings</h3><div id="eListBody"></div></div>
  <div id="ePw" class="card hide" style="max-width:520px"><h3>Change sorter PIN</h3><p class="sub">Update your six-digit PIN using your current PIN.</p><div id="ePwBox"></div></div>
  <div id="eProfile" class="card hide"><div class="row" style="align-items:center"><div><h3 style="margin:0">My profile</h3><p class="sub" style="margin:4px 0 0">Personal and emergency contact details.</p></div><div class="fit"></div></div><div class="profileHead"><div class="avatar" id="profileAvatar">BE</div><div><strong id="profileNameHead">Employee profile</strong><small id="profileEmailHead"></small></div></div>
- <div class="row"><div><label>Full name</label><input id="pName" readonly></div><div><label>Date of birth</label><input id="pDob" type="date" readonly></div></div>
- <div class="row"><div><label>Contact number</label><input id="pPhone" readonly></div><div><label>Emergency contact</label><input id="pEmergency" readonly></div></div>
- <div class="row"><div><label>Emergency contact number</label><input id="pEmergencyPhone" readonly></div><div><label>Address</label><textarea id="pAddress" readonly></textarea></div></div>
- <div id="profileActions" class="hide" style="margin-top:14px"></div><div id="profileMsg"></div></div>
+ <div class="row"><div><label>Full name</label><input id="pName" readonly></div><div><label>Date of birth</label><input id="pDob" type="date" readonly disabled></div></div>
+ <div class="row"><div><label>Contact number</label><input id="pPhone" readonly disabled></div><div><label>Emergency contact</label><input id="pEmergency" readonly disabled></div></div>
+ <div class="row"><div><label>Emergency contact number</label><input id="pEmergencyPhone" readonly disabled></div><div><label>Address</label><textarea id="pAddress" readonly disabled></textarea></div></div>
+ <div class="profile-controls"><span class="profile-helper">Keep your contact and emergency details up to date.</span><div class="profile-buttons"><button class="btn" id="profileEditBtn" type="button" onclick="toggleProfileEdit()">Edit details</button><button class="btn hide" id="profileSaveBtn" type="button" onclick="saveProfile(this)">Save changes</button><button class="btn sec hide" id="profileCancelBtn" type="button" onclick="cancelProfileEdit()">Cancel</button></div></div>
+ <div id="profileMsg"></div></div>
 </section>
 <nav id="empNav" class="empNav hide"><button class="on" data-t="eDtr"><span class="ico">▦</span>My DTR</button><button data-t="eFile"><span class="ico">▤</span>Absent filing</button><button data-t="ePw"><span class="ico">♙</span>PIN</button><button data-t="eProfile"><span class="ico">♧</span>My profile</button></nav>
 
@@ -488,7 +538,7 @@ function forceChange(tabsId,pwTab,box){S.mustChange=true;openTab(tabsId,pwTab);
 /* ---------- AUTH ---------- */
 async function empLogin(b){if(!/^\d{6}$/.test($('lp').value)){msg('authMsg',{message:'Enter your 6-digit PIN.'});return}const r=await run(b,'employeeLogin',$('le').value,$('lp').value);
   if(!r.success){msg('authMsg',r);return}
-  S.tok=r.token;S.role='emp';const e=r.employee;
+  S.tok=r.token;S.role='emp';const e=r.employee;S.employeeEmail=e.email||$('le').value;
   $('eName').textContent=e.employeeName;$('eMeta').textContent=`${e.employeeId}  |  ${e.ldc.replace('LDC','LDC ')}  |  Shift: ${e.shiftLabel}`;
   $('whoTxt').textContent=e.employeeName;$('fs').value=new Date().toISOString().slice(0,10);
   pinForm();show('emp');openEmpTab('eDtr');loadProfile();}
@@ -670,17 +720,73 @@ function openEmpTab(t){['eDtr','eFile','ePw','eProfile'].forEach(id=>$(id).class
 $('empNav').addEventListener('click',e=>{const b=e.target.closest('button[data-t]');if(b)openEmpTab(b.dataset.t)});
 function pinForm(){$('ePwBox').innerHTML=`<label>Current 6-digit PIN</label><input id="pinOld" type="text" inputmode="numeric" maxlength="6" autocomplete="off"><label>New 6-digit PIN</label><input id="pinNew" type="text" inputmode="numeric" maxlength="6" autocomplete="off"><label>Confirm new PIN</label><input id="pinConfirm" type="text" inputmode="numeric" maxlength="6" autocomplete="off"><button class="btn" style="margin-top:15px" id="pinSaveBtn">Update PIN</button><div id="pinMsg"></div>`;$('pinSaveBtn').onclick=async()=>{let o=$('pinOld').value,n=$('pinNew').value,c=$('pinConfirm').value;if(!/^\d{6}$/.test(o)||!/^\d{6}$/.test(n)){msg('pinMsg',{message:'Enter a valid six-digit PIN.'});return}if(n!==c){msg('pinMsg',{message:'New PINs do not match.'});return}let r=await run($('pinSaveBtn'),'changeEmployeePIN',S.tok,o,n);msg('pinMsg',r,'PIN updated successfully.');if(r.success)$('pinOld').value=$('pinNew').value=$('pinConfirm').value=''}}
 let PROFILE_SNAPSHOT={};
-function profileVals(){return{employeeName:$('pName').value,dateOfBirth:$('pDob').value,contactNumber:$('pPhone').value,emergencyContactName:$('pEmergency').value,emergencyContactNumber:$('pEmergencyPhone').value,address:$('pAddress').value}}
-function setProfile(p){p=p||{};$('pName').value=p.employeeName||p.name||$('eName').textContent||'';$('pDob').value=(p.dateOfBirth||p.dob||'').slice(0,10);$('pPhone').value=p.contactNumber||'';$('pEmergency').value=p.emergencyContactName||p.emergencyContact||'';$('pEmergencyPhone').value=p.emergencyContactNumber||'';$('pAddress').value=p.address||'';$('profileNameHead').textContent=$('pName').value||'Employee profile';$('profileEmailHead').textContent=p.email||$('le').value;$('profileAvatar').textContent=$('pName').value.split(/\s+/).slice(0,2).map(x=>x[0]||'').join('').toUpperCase()||'BE';PROFILE_SNAPSHOT=profileVals();['pName','pDob','pPhone','pEmergency','pEmergencyPhone','pAddress'].forEach(id=>$(id).readOnly=true);$('profileActions').classList.add('hide')}
-function loadProfile(){
+setProfileEditMode(false);
+function profileVals(){return{dateOfBirth:$('pDob').value,contactNumber:$('pPhone').value,emergencyContactName:$('pEmergency').value,emergencyContactNumber:$('pEmergencyPhone').value,address:$('pAddress').value}}
+function setProfile(p){
+  p=p||{};
+  $('pName').value=p.employeeName||p.name||$('eName').textContent||'';
+  $('pDob').value=String(p.dateOfBirth||p.dob||'').slice(0,10);
+  $('pPhone').value=p.contactNumber||'';
+  $('pEmergency').value=p.emergencyContactName||p.emergencyContact||'';
+  $('pEmergencyPhone').value=p.emergencyContactNumber||'';
+  $('pAddress').value=p.address||'';
+  $('profileNameHead').textContent=$('pName').value||'Employee profile';
+  $('profileEmailHead').textContent=p.email||S.employeeEmail||$('le').value;
+  $('profileAvatar').textContent=$('pName').value.split(/\s+/).slice(0,2).map(x=>x[0]||'').join('').toUpperCase()||'BE';
+  PROFILE_SNAPSHOT=profileVals();
+  setProfileEditMode(false);
+}
+let PROFILE_EDITING=false;
+function setProfileEditMode(editing){
+  PROFILE_EDITING=!!editing;
+  ['pDob','pPhone','pEmergency','pEmergencyPhone','pAddress'].forEach(id=>{
+    const field=$(id);
+    field.disabled=!PROFILE_EDITING;
+    field.readOnly=!PROFILE_EDITING;
+    field.setAttribute('aria-readonly',String(!PROFILE_EDITING));
+  });
+  $('profileEditBtn').classList.toggle('hide',PROFILE_EDITING);
+  $('profileSaveBtn').classList.toggle('hide',!PROFILE_EDITING);
+  $('profileCancelBtn').classList.toggle('hide',!PROFILE_EDITING);
+  $('eProfile').classList.toggle('profile-editing',PROFILE_EDITING);
+  $('eProfile').setAttribute('data-editing',PROFILE_EDITING?'true':'false');
+}
+function toggleProfileEdit(){
+  if(PROFILE_EDITING)return;
+  $('profileMsg').innerHTML='';
+  PROFILE_SNAPSHOT=profileVals();
+  setProfileEditMode(true);
+  $('pPhone').focus();
+}
+function cancelProfileEdit(){
+  if(!PROFILE_EDITING)return;
+  $('pDob').value=PROFILE_SNAPSHOT.dateOfBirth||'';
+  $('pPhone').value=PROFILE_SNAPSHOT.contactNumber||'';
+  $('pEmergency').value=PROFILE_SNAPSHOT.emergencyContactName||'';
+  $('pEmergencyPhone').value=PROFILE_SNAPSHOT.emergencyContactNumber||'';
+  $('pAddress').value=PROFILE_SNAPSHOT.address||'';
+  setProfileEditMode(false);
+  $('profileMsg').innerHTML='';
+}
+async function saveProfile(button){
+  if(!PROFILE_EDITING)return;
+  const p=profileVals();
+  if(p.contactNumber.length>30||p.emergencyContactNumber.length>30){$('profileMsg').innerHTML='<div class="msg er">Contact numbers must be 30 characters or fewer.</div>';return}
+  if(p.emergencyContactName.length>100||p.address.length>500){$('profileMsg').innerHTML='<div class="msg er">Please check the length of your emergency contact name or address.</div>';return}
+  const r=await run(button,'updateMyProfile',S.tok,p);
+  if(!r.success){$('profileMsg').innerHTML=`<div class="msg er">${esc(r.message||'Unable to save profile details.')}</div>`;return}
+  PROFILE_SNAPSHOT=p;
+  setProfileEditMode(false);
+  $('profileMsg').innerHTML='<div class="msg ok">Your profile details have been saved.</div>';
+}
+async function loadProfile(){
   if(!$('profileMsg'))return;
   $('profileMsg').innerHTML='';
-  setProfile({employeeName:$('eName').textContent,email:$('le').value});
-  $('pDob').placeholder='Not provided';
-  $('pPhone').placeholder='Not provided';
-  $('pEmergency').placeholder='Not provided';
-  $('pEmergencyPhone').placeholder='Not provided';
-  $('pAddress').placeholder='Not provided';
+  const r=await call('getMyProfile',S.tok);
+  if(r.success){setProfile(r.profile||{});return}
+  if(r.sessionExpired){$('profileMsg').innerHTML='<div class="msg er">Your session has expired. Please sign in again.</div>';return}
+  setProfile({employeeName:$('eName').textContent,email:S.employeeEmail||$('le').value});
+  $('profileMsg').innerHTML=`<div class="msg er">${esc(r.message||'Unable to load your profile details.')}</div>`;
 }
 
 document.addEventListener('keydown',e=>{if(e.key!=='Enter'||e.target.tagName==='TEXTAREA')return;
