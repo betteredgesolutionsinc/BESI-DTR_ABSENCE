@@ -168,6 +168,124 @@ body.dark-mode :is(.m-nav button,.m-bottom-actions button){background:rgba(255,2
 body.dark-mode :is(.btn.sec,.lnk,.pill){background:rgba(143,176,255,.16);color:#c3d4ff;border-color:transparent}body.dark-mode .lnk{background:none;text-decoration:underline}
 body.dark-mode :is(.stat.wa){background:rgba(217,42,161,.12)}body.dark-mode .stat.ok{background:rgba(24,167,122,.14)}body.dark-mode .stat.er{background:rgba(223,89,101,.14)}
 body.dark-mode code{background:rgba(255,255,255,.1)}body.dark-mode .m-eyebrow,body.dark-mode .m-subtitle,body.dark-mode .m-muted{color:#9aa7c7}
+
+/* ===== MANAGEMENT CONSOLE v2 ===== */
+:root{--panel:rgba(255,255,255,.88);--panelb:rgba(255,255,255,.96);--tbl:rgba(255,255,255,.55)}
+body.dark-mode{--panel:rgba(22,32,66,.80);--panelb:rgba(255,255,255,.12);--tbl:rgba(255,255,255,.03)}
+body.management-mode main{max-width:none;margin:0;padding:0 0 0 252px}
+.mg-side{position:fixed;inset:0 auto 0 0;width:252px;z-index:40;background:linear-gradient(180deg,#0f2461,#183a93 75%,#14327f);color:#dfe7ff;display:flex;flex-direction:column;padding:20px 14px 16px}
+.mg-side::after{content:"";position:absolute;top:0;right:0;bottom:0;width:3px;background:linear-gradient(180deg,#27cdff,#d92aa1)}
+.mg-brand{display:flex;gap:11px;align-items:center;padding:2px 6px 18px;border-bottom:1px solid rgba(255,255,255,.14);margin-bottom:18px;min-width:0}
+.mg-brand svg{flex:none;border-radius:10px}.mg-brand b{display:block;font-size:14px;color:#fff}.mg-brand small{font-size:11.5px;color:#a9bbf0}
+.mg-label{font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:#8fa6e6;padding:0 10px;margin-bottom:8px}
+.mg-nav{display:grid;gap:4px}
+.mg-nav button{display:flex;align-items:center;gap:12px;width:100%;padding:11px 12px;border:0;border-radius:10px;background:transparent;color:#cfdaff;font:inherit;font-weight:600;font-size:14px;cursor:pointer;text-align:left;position:relative}
+.mg-nav button svg{flex:none;width:19px;height:19px}.mg-nav button:hover{background:rgba(255,255,255,.09)}
+.mg-nav button.active{background:rgba(255,255,255,.15);color:#fff}
+.mg-nav button.active::before{content:"";position:absolute;left:-14px;top:9px;bottom:9px;width:4px;border-radius:0 4px 4px 0;background:#27cdff}
+.mg-count{margin-left:auto;background:#d92aa1;color:#fff;border-radius:99px;font-size:11px;font-weight:700;padding:1px 8px}
+.mg-side-bot{margin-top:auto;display:grid;gap:10px}
+.mg-user{display:flex;gap:10px;align-items:center;padding:11px 12px;border-radius:12px;background:rgba(255,255,255,.09);min-width:0}
+.mg-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#27cdff,#d92aa1);display:grid;place-items:center;color:#fff;font-weight:700;font-size:13px;flex:none}
+.mg-ut{min-width:0}.mg-un{font-size:13.5px;font-weight:600;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.mg-ur{font-size:11.5px;color:#a9bbf0}
+.mg-sbtn{height:40px;border-radius:10px;border:1px solid rgba(255,255,255,.22);background:transparent;color:#fff;font:inherit;font-weight:600;font-size:13.5px;cursor:pointer}.mg-sbtn:hover{background:rgba(255,255,255,.1)}
+.mg-main{max-width:1320px;margin:0 auto;padding:30px 34px 56px}
+.mg-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.mg-top h1{margin:0;font-size:28px;letter-spacing:-.6px;line-height:1.15}.mg-top p{margin:5px 0 0;color:var(--muted);font-size:14px}
+.mg-card{background:var(--panel);border:1px solid var(--panelb);border-radius:16px;box-shadow:0 8px 26px rgba(24,58,147,.09);padding:22px;margin-bottom:18px;min-width:0}
+.mg-card h2{font-size:18px;margin:0 0 4px}.mg-narrow{max-width:520px}
+.mg-bar{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between}
+.mg-filters{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end}.mg-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.mg-f{display:grid;gap:6px;min-width:160px;align-content:start}
+.mg-f label,.mg-main label{margin:0;font-size:12.5px;font-weight:600;color:var(--muted)}
+.mg-f select,.mg-f input{height:40px;min-height:40px;padding:0 12px;font-size:14px}
+.mgb{height:40px;padding:0 18px;border-radius:10px;border:1px solid transparent;font:inherit;font-weight:600;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap}
+.mgb.p{background:#183a93;color:#fff;box-shadow:0 3px 10px rgba(24,58,147,.25)}.mgb.p:hover{background:#12307a}
+.mgb.s{background:rgba(255,255,255,.7);border-color:rgba(24,58,147,.28);color:#183a93}.mgb.s:hover{background:rgba(24,58,147,.08)}
+.mgb.good{background:#e4f7ef;color:#14835d}.mgb.bad{background:#ffeaec;color:#b94351}.mgb:disabled{opacity:.55;cursor:wait}
+.mgb.tb{height:32px;padding:0 12px;font-size:13px;border-radius:8px}
+summary.mgb{list-style:none;width:max-content}summary.mgb::-webkit-details-marker{display:none}
+.mg-add{margin-top:18px}.mg-addgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;align-items:end;margin-top:16px;padding:18px;border:1px dashed rgba(24,58,147,.25);border-radius:12px;background:rgba(24,58,147,.03)}
+.mg-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin:0 0 18px}
+.mg-kpis .stat{background:var(--panel);border:1px solid var(--panelb);border-left:4px solid #27cdff;border-radius:14px;padding:16px 18px;box-shadow:0 6px 20px rgba(24,58,147,.07)}
+.mg-kpis .stat.wa{border-left-color:#d92aa1}.mg-kpis .stat.ok{border-left-color:#18a77a}.mg-kpis .stat.er{border-left-color:#df5965}
+.mg-main .stat b{font-size:28px;line-height:1.15}.mg-main .stat span{font-size:13px}
+.mg-main .grid{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:16px 0}
+.mg-main .tw,.rt-wrap .tw{border:1px solid var(--line);border-radius:12px;background:var(--tbl);margin-top:18px}
+.mg-main table,#eDtr table{font-size:13.5px}
+.mg-main th,#eDtr th{padding:12px 14px;font-size:11.5px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);background:rgba(24,58,147,.05)}
+.mg-main td,#eDtr td{padding:13px 14px;vertical-align:middle;border-bottom:1px solid var(--line)}
+.mg-main tbody tr:hover td,#eDtr tbody tr:hover td{background:rgba(39,205,255,.07)}
+.c1{font-weight:600}.c2{font-size:12px;color:var(--muted);margin-top:2px;white-space:nowrap}
+.clamp{white-space:normal;min-width:140px;max-width:210px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.mg-main td.act-c{width:1%}.mg-main .act{flex-wrap:nowrap;gap:8px}
+.shSel{height:34px;min-height:34px;width:auto;min-width:130px;font-size:13px;padding:0 8px;border-radius:8px}
+.mg-empty{padding:34px 12px;text-align:center;color:var(--muted);font-size:14px}
+.mg-main .dlRow{margin:0}.mg-main .dlRow .btn.sm{height:36px;padding:0 14px;font-size:13px;border-radius:10px}
+.mg-main .calendar{background:var(--tbl)}
+.dl{display:grid;grid-template-columns:150px 1fr;gap:10px 14px;margin:0;font-size:14px}.dl dt{color:var(--muted);font-weight:600;font-size:12.5px;padding-top:1px}.dl dd{margin:0;word-break:break-word}
+.dlAct{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+@media(max-width:900px){
+ body.management-mode main{padding:64px 0 0}
+ .mg-side{inset:0 0 auto 0;width:100%;height:60px;flex-direction:row;align-items:center;gap:10px;padding:8px 12px}
+ .mg-side::after{inset:auto 0 0 0;width:auto;height:3px;background:linear-gradient(90deg,#27cdff,#d92aa1)}
+ .mg-brand{border:0;margin:0;padding:0}.mg-brand div,.mg-label,.mg-user{display:none}
+ .mg-nav{display:flex;overflow-x:auto;flex:1;gap:2px}.mg-nav button{width:auto;white-space:nowrap;padding:9px 11px;font-size:13px}.mg-nav button svg{display:none}.mg-nav button.active::before{display:none}
+ .mg-side-bot{margin:0;display:flex}.mg-sbtn{height:36px;padding:0 12px}
+ .mg-main{padding:20px 14px 40px}.mg-top h1{font-size:23px}.mg-card{padding:16px}
+ .mg-f,.mg-filters{width:100%}.mg-bar>.mgb,.mg-btns .mgb{width:100%}
+}
+@media(max-width:760px){
+ .rt thead{display:none}.rt,.rt tbody,.rt tr,.rt td{display:block;width:100%}
+ .mg-main .tw,#eDtr .tw{border:0;background:transparent;overflow:visible}
+ .rt tr{border:1px solid var(--line);border-radius:12px;margin:0 0 12px;padding:6px 14px;background:var(--panel)}
+ .rt td{display:flex;justify-content:space-between;align-items:center;gap:14px;border:0;padding:9px 0;text-align:right;white-space:normal}
+ .rt td::before{content:attr(data-label);font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;text-align:left;flex:none}
+ .rt td.act-c{width:100%}.clamp{max-width:none;min-width:0;text-align:right}.c2{white-space:normal}
+ .dl{grid-template-columns:1fr}.dl dt{margin-top:6px}
+}
+body.dark-mode .mgb.s{background:rgba(255,255,255,.07);color:#c3d4ff;border-color:rgba(143,176,255,.35)}
+body.dark-mode .mgb.good{background:rgba(24,167,122,.18);color:#6fe0b6}body.dark-mode .mgb.bad{background:rgba(223,89,101,.2);color:#ff9aa4}
+body.dark-mode .mg-main th{background:rgba(255,255,255,.06)}body.dark-mode .mg-addgrid{background:rgba(255,255,255,.04)}
+body.dark-mode .mg-kpis .stat{background:var(--panel);border-color:var(--panelb)}
+/* fit */
+.mg-main td.act-c .act{justify-content:flex-start}
+@media(max-width:900px){
+ .mg-kpis{grid-template-columns:1fr 1fr;gap:10px}.mg-kpis .stat{padding:12px 14px}.mg-main .stat b{font-size:23px}
+ .mg-top .mgb{height:36px;padding:0 12px;font-size:13px}
+ .mg-nav button{padding:9px 8px;font-size:12.5px;gap:6px}.mg-sbtn{height:34px;padding:0 10px;font-size:12.5px}.mg-count{padding:0 6px}
+ .mg-side{gap:6px;padding:8px 10px}.mg-brand svg{width:34px;height:34px}
+}
+.mg-tact{display:flex;gap:10px}.mg-lo{display:none}
+@media(max-width:900px){.mg-side-bot{display:none}.mg-lo{display:inline-flex}.mg-nav{justify-content:space-around}.mg-nav button{padding:9px 10px;font-size:13px}.mg-tact .mgb{flex:1}}
+@media(max-width:760px){.mg-main .rt td:first-child{display:block;text-align:left;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:4px}.rt td:first-child::before{display:none}}
+#hPwBox label{display:block;margin:16px 0 6px}#hPwBox label:first-child{margin-top:0}#hPwBox .hint{margin:6px 0 0}
+/* DTR result */
+.dtrHead{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:16px}
+.dtrHead b{display:block;font-size:17px}.dtrHead span{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.dtrHead .dlRow{display:flex;gap:10px;flex-wrap:wrap;margin:0}
+.note{padding:12px 14px;border-radius:10px;background:#fff4df;color:#8a5a00;border:1px solid #f1d9a8;font-size:13.5px;margin:0 0 16px}
+body.dark-mode .note{background:rgba(233,154,53,.14);border-color:rgba(233,154,53,.35);color:#f2c46e}
+.dtrStats,.mg-main .dtrStats{grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin:0 0 16px}.dtrStats .stat{padding:12px 14px}.dtrStats .stat b{font-size:24px}
+@media(max-width:1100px){.dtrStats,.mg-main .dtrStats{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:600px){.dtrStats,.mg-main .dtrStats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.calendar{border:1px solid var(--line);border-radius:14px;padding:16px;margin:0 0 6px}
+.calHead{font-size:15px;font-weight:700;margin-bottom:10px}
+.legend{display:flex;gap:8px 16px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-bottom:14px}.dot{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:6px}
+.calendarGrid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.dayName{text-align:center;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;padding:2px 0 4px}
+.dayCell{min-height:78px;border:1px solid var(--line);border-left:4px solid #cfd8e6;border-radius:10px;padding:7px 9px;text-align:left;background:rgba(255,255,255,.6);overflow:hidden;min-width:0}
+.dayCell.empty{visibility:hidden}.dayCell b{display:block;font-size:15px;line-height:1.2;margin-bottom:2px}
+.dayCell small{display:block;font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.dayCell em{display:block;font-style:normal;font-size:10.5px;font-weight:700;margin-top:2px}
+.dayCell.present{border-left-color:#17a879;background:rgba(23,168,121,.09)}.dayCell.late{border-left-color:#e99a35;background:rgba(233,154,53,.12)}.dayCell.late em{color:#a8680f}
+.dayCell.under{border-left-color:#8262d8;background:rgba(130,98,216,.10)}.dayCell.under em{color:#6a48c4}
+.dayCell.absent,.dayCell.missing{border-left-color:#df5965;background:rgba(223,89,101,.09)}.dayCell.absent small,.dayCell.missing small{color:#b94351;font-weight:600}
+.dayCell.leave{border-left-color:#2589c3;background:rgba(37,137,195,.10)}.dayCell.off{border-left-color:#9aa7bd;background:rgba(154,167,189,.12)}
+.dtrH3{font-size:16px;margin:22px 0 0}.warnTxt{color:#b9740f;font-weight:700}
+@media(max-width:760px){.calendarGrid{gap:4px}.dayCell{min-height:46px;padding:5px 3px;text-align:center;border-left-width:1px;border-bottom:4px solid #cfd8e6}.dayCell small,.dayCell em{display:none}.dayCell b{font-size:13px;margin:0}
+ .dayCell.present{border-bottom-color:#17a879}.dayCell.late{border-bottom-color:#e99a35}.dayCell.under{border-bottom-color:#8262d8}.dayCell.absent,.dayCell.missing{border-bottom-color:#df5965}.dayCell.leave{border-bottom-color:#2589c3}.dayCell.off{border-bottom-color:#9aa7bd}
+ .dtrHead .dlRow,.dtrHead .mgb{width:100%}.calendar{padding:12px}}
+@media(max-width:760px){.rt tr.rowEmpty,.rt td.hm{display:none!important}}
 </style>
 </head>
 <body>
@@ -228,34 +346,54 @@ body.dark-mode code{background:rgba(255,255,255,.1)}body.dark-mode .m-eyebrow,bo
 
 <!-- HR -->
 <section id="hr" class="hide">
-<div class="management-shell">
- <aside class="m-sidebar">
-  <div class="m-brand"><div class="m-logo">B</div><div><b>Better Edge Solutions</b><small>Employee portal</small></div></div>
-  <div class="m-side-label">Management Dashboard</div>
-  <nav class="m-nav" id="managementNav"><button data-panel="hE"><span class="m-ico">♙</span>Employees</button><button data-panel="hD"><span class="m-ico">◷</span>DTR</button><button data-panel="hF" class="active"><span class="m-ico">▣</span>Filings</button><button data-panel="hP"><span class="m-ico">⚙</span>Management account</button></nav>
-  <div class="m-side-bottom"><div class="m-bottom-actions"><button onclick="toggleDark()">◐ Dark</button><button onclick="logout()">Log out</button></div></div>
+ <aside class="mg-side">
+  <div class="mg-brand"><svg viewBox="0 0 40 40" width="38" height="38" aria-hidden="true"><rect width="40" height="40" rx="9" fill="#fff"/><path d="M9 6h12a9 9 0 0 1 0 14L9 20z" fill="#183a93"/><path d="M9 20l14 0a9 9 0 0 1 0 14H9z" fill="#d92aa1"/><path d="M9 12l12 8-12 8z" fill="#27cdff"/></svg><div><b>Better Edge Solutions</b><small>Management console</small></div></div>
+  <div class="mg-label">Menu</div>
+  <nav class="mg-nav" id="managementNav">
+   <button data-panel="hF" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg><span>Filings</span><span class="mg-count hide" id="pendCount">0</span></button>
+   <button data-panel="hE"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg><span>Employees</span></button>
+   <button data-panel="hD"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>DTR</span></button>
+   <button data-panel="hP"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Account</span></button>
+  </nav>
+  <div class="mg-side-bot"><div class="mg-user"><div class="mg-av" id="mgAv">M</div><div class="mg-ut"><div class="mg-un" id="mgUser">Management</div><div class="mg-ur" id="mgRole">Management</div></div></div>
+  <button class="mg-sbtn" onclick="logout()">Log out</button></div>
  </aside>
- <div class="m-main">
-  <div class="m-module" id="managementExistingModules">
+ <div class="mg-main">
+  <div class="mg-top"><div><h1 id="mgTitle">Filings</h1><p id="mgSub"></p></div><div class="mg-tact"><button class="mgb s" onclick="toggleDark()">&#9680; Dark mode</button><button class="mgb s mg-lo" onclick="logout()">Log out</button></div></div>
   <div class="tabs hide" id="hrTabs"><button class="on" data-t="hF">Filings</button><button data-t="hE">Employees</button><button data-t="hD">DTR</button><button data-t="hA" id="hAtab" class="hide">HR accounts</button><button data-t="hP">Password</button></div>
-  <div id="hF"><div class="row" style="margin-bottom:14px"><div class="fit"><label>LDC</label><select id="hfl" onchange="loadFilings()"><option value="">All LDCs</option><option>LDC1</option><option>LDC2</option></select></div>
-    <div class="fit"><label>Status</label><select id="hfs" onchange="renderFilings()"><option value="">All</option><option>PENDING</option><option>APPROVED</option><option>REJECTED</option></select></div>
-    <div class="fit"><label>Show</label><select id="hfa" onchange="renderFilings()"><option value="cur">Current cutoff</option><option value="arc">Archive</option><option value="all">All</option></select></div></div>
-    <div class="dlRow"><button class="btn sec sm" onclick="dlFilings()">Download filings (Excel)</button></div><div class="grid" id="hStats"></div><div id="hFBody"></div></div>
-  <div id="hE" class="hide card"><div class="row"><div class="fit"><label>LDC</label><select id="hel" onchange="loadEmps()"><option value="">All LDCs</option><option>LDC1</option><option>LDC2</option></select></div>
-    <div class="fit"><label>Show</label><select id="hes" onchange="loadEmps()"><option value="ACTIVE">Active</option><option value="INACTIVE">Archived (inactive)</option><option value="">All</option></select></div>
-    <div class="fit"><button class="btn sec" onclick="syncML(this)">Sync from master list</button></div></div>
-    <h3 style="margin-top:20px">Add employee</h3><div class="row"><div><label>Full name</label><input id="an"></div><div class="fit"><label>LDC</label><select id="al"><option>LDC1</option><option>LDC2</option></select></div><div class="fit"><label>Shift</label><select class="shiftSel" id="as"></select></div><div class="fit"><button class="btn" onclick="addEmp(this)">Add</button></div></div>
-    <div id="hEBody"></div></div>
-  <div id="hD" class="hide card"><h3>DTR viewer</h3>
-    <div class="row"><div><label>LDC</label><select id="dl" onchange="dtrLdc()"><option value="">Select LDC</option><option>LDC1</option><option>LDC2</option></select></div><div><label>Cutoff</label><select id="dc"></select></div><div><label>Employee</label><select id="de"></select></div></div>
-    <div class="row" style="margin-top:12px"><div class="fit"><button class="btn" onclick="hrDtr(this)">View employee DTR</button></div><div class="fit"><button class="btn sec" onclick="hrSummary(this)">View LDC summary</button></div></div><div id="hDBody"></div></div>
-  <div id="hA" class="hide card"><h3>Create HR account</h3><div class="row"><div><label>Name</label><input id="cn"></div><div><label>Username</label><input id="cu"></div><div><label>Email (optional)</label><input id="cm" type="email"></div><div class="fit"><button class="btn" onclick="mkHR(this)">Create</button></div></div><div id="hABody"></div></div>
-  <div id="hP" class="hide card" style="max-width:440px"><h3>Change password</h3><div id="hPwBox"></div></div>
-  </div>
+
+  <div id="hF"><div class="mg-kpis" id="hStats"></div>
+   <div class="mg-card"><div class="mg-bar"><div class="mg-filters">
+    <div class="mg-f"><label for="hfl">LDC</label><select id="hfl" onchange="loadFilings()"><option value="">All LDCs</option><option>LDC1</option><option>LDC2</option></select></div>
+    <div class="mg-f"><label for="hfs">Status</label><select id="hfs" onchange="renderFilings()"><option value="">All</option><option>PENDING</option><option>APPROVED</option><option>REJECTED</option></select></div>
+    <div class="mg-f"><label for="hfa">Show</label><select id="hfa" onchange="renderFilings()"><option value="cur">Current cutoff</option><option value="arc">Archive</option><option value="all">All</option></select></div>
+   </div><button class="mgb p" onclick="dlFilings()">Download Excel</button></div>
+   <div id="hFBody"></div></div></div>
+
+  <div id="hE" class="hide"><div class="mg-card"><div class="mg-bar"><div class="mg-filters">
+    <div class="mg-f"><label for="hel">LDC</label><select id="hel" onchange="loadEmps()"><option value="">All LDCs</option><option>LDC1</option><option>LDC2</option></select></div>
+    <div class="mg-f"><label for="hes">Show</label><select id="hes" onchange="loadEmps()"><option value="ACTIVE">Active</option><option value="INACTIVE">Archived (inactive)</option><option value="">All</option></select></div>
+   </div><button class="mgb s" onclick="syncML(this)">Sync from master list</button></div>
+   <details class="mg-add"><summary class="mgb p">+ Add employee</summary><div class="mg-addgrid">
+    <div class="mg-f"><label for="an">Full name</label><input id="an" placeholder="First and last name"></div>
+    <div class="mg-f"><label for="al">LDC</label><select id="al" ><option>LDC1</option><option>LDC2</option></select></div>
+    <div class="mg-f"><label for="as">Shift</label><select class="shiftSel" id="as"></select></div>
+    <div class="mg-f"><label>&nbsp;</label><button class="mgb p" onclick="addEmp(this)">Add employee</button></div></div></details>
+   <div id="hEBody"></div></div></div>
+
+  <div id="hD" class="hide"><div class="mg-card"><div class="mg-filters">
+    <div class="mg-f"><label for="dl">LDC</label><select id="dl" onchange="dtrLdc()"><option value="">Select LDC</option><option>LDC1</option><option>LDC2</option></select></div>
+    <div class="mg-f"><label for="dc">Cutoff</label><select id="dc" ></select></div><div class="mg-f"><label for="de">Employee</label><select id="de" ></select></div></div>
+    <div class="mg-btns"><button class="mgb p" onclick="hrDtr(this)">View employee DTR</button><button class="mgb s" onclick="hrSummary(this)">View LDC summary</button></div></div>
+   <div class="mg-card"><div id="hDBody"></div></div></div>
+
+  <div id="hP" class="hide"><div class="mg-card mg-narrow"><h2>Change password</h2><p class="sub">Use a strong password that only you know.</p><div id="hPwBox"></div></div></div>
+  <div id="hA" class="hide"><div class="mg-card"><h2>HR accounts</h2><p class="sub">Owner only. New accounts get a temporary password shown once.</p>
+   <div class="mg-addgrid" style="margin-top:0"><div class="mg-f"><label for="cn">Name</label><input id="cn"></div><div class="mg-f"><label for="cu">Username</label><input id="cu"></div><div class="mg-f"><label for="cm">Email (optional)</label><input id="cm" type="email"></div><div class="mg-f"><label>&nbsp;</label><button class="mgb p" onclick="mkHR(this)">Create account</button></div></div>
+   <div id="hABody"></div></div></div>
  </div>
-</div>
 </section>
+
 </main>
 <dialog id="dlg"><h3 id="dT"></h3><div id="dB"></div><div style="text-align:right;margin-top:18px"><button class="btn" onclick="$('dlg').close()">Close</button></div></dialog>
 
@@ -351,7 +489,7 @@ const arcOk=(x,m)=>m==='all'||(m==='arc'?isArchFiling(x):!isArchFiling(x));
 let LASTDTR=null,DTRCTX={},LASTSUM=null;
 const csvCell=v=>'"'+String(v==null?'':v).replace(/"/g,'""')+'"';
 function saveCsv(name,rows){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+rows.map(r=>r.map(csvCell).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8'}));a.download=name.replace(/[^\w.-]+/g,'_')+'.csv';document.body.append(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500)}
-const DLROW=f=>`<div class="dlRow"><button class="btn sm" onclick="${f}">Download Excel</button><button class="btn sec sm" onclick="window.print()">Print or save as PDF</button></div>`;
+const DLROW=f=>`<div class="dlRow"><button class="mgb p" onclick="${f}">Download Excel</button><button class="mgb s" onclick="window.print()">Print / save as PDF</button></div>`;
 function saveXlsx(name,sheets){
   if(!window.XLSX){saveCsv(name,sheets[0].rows);dlg('Downloaded as CSV','The Excel library could not load (check your internet connection), so a CSV file was saved instead. It opens in Excel too.');return}
   const wb=XLSX.utils.book_new();
@@ -377,11 +515,26 @@ async function loadMine(){$('eListBody').innerHTML='<div class="empty">Loading..
 async function initDtr(){if($('ec').options.length)return;const r=await call('getCutoffTabs',S.tok);
   if(!r.success){$('eDtrBody').innerHTML=`<div class="msg er">${esc(r.message)}</div>`;return}
   fillCut($('ec'),r.tabs)}
-function dtrView(r){LASTDTR=r;if(!r.success)return`<div class="msg er">${esc(r.message)}</div>`;const t=r.totals||{},rows=r.rows||[];
- const stat=(v,l,c='')=>`<div class="stat ${c}"><b>${esc(v??0)}</b><span>${l}</span></div>`;
- const parsed=rows.map(x=>({x,d:new Date(x.date+'T12:00:00')})).filter(z=>!isNaN(z.d));const first=parsed.length?new Date(parsed[0].d.getFullYear(),parsed[0].d.getMonth(),1):new Date();const last=parsed.length?new Date(parsed[parsed.length-1].d.getFullYear(),parsed[parsed.length-1].d.getMonth()+1,0):new Date();const map={};parsed.forEach(z=>map[z.d.getDate()]=z.x);
- let cal=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(x=>`<div class="dayName">${x}</div>`).join('');for(let k=0;k<first.getDay();k++)cal+='<div></div>';for(let d=1;d<=last.getDate();d++){let x=map[d],st=String(x?.status||'').toUpperCase(),cl=st.includes('ABSENT')?'absent':st.includes('LATE')?'late':x?.timeIn?'present':'';cal+=`<div class="dayCell ${cl}"><b>${d}</b><small>${x?esc(x.timeIn||x.status||'—'):'—'}</small></div>`}
- return DLROW('dlDtr()')+`${r.shiftSet?'':`<div class="msg er">No shift is set yet, so late and undertime cannot be computed. Ask HR to set it.</div>`}<div class="grid">${stat(t.daysRendered,'Days worked')}${stat(t.hours,'Total hours')}${stat(t.overtimeHours||0,'OT hours','ok')}${stat(t.lateMinutes??0,'Late (min)','wa')}</div><div class="calendar"><div class="calHead">Attendance calendar · ${esc(r.tab||'Selected cutoff')}</div><div class="legend"><span><i class="dot" style="background:#17a879"></i>On time</span><span><i class="dot" style="background:#e99a35"></i>Late</span><span><i class="dot" style="background:#8262d8"></i>Undertime</span><span><i class="dot" style="background:#2589c3"></i>Overtime</span><span><i class="dot" style="background:#df5965"></i>Missing time out</span></div><div class="calendarGrid">${cal}</div></div><div class="grid">${stat(t.undertimeMinutes??0,'Undertime (min)','wa')}${stat(t.absences??0,'Absences','er')}</div><h3 style="margin-top:20px">Daily attendance details</h3>${table(['Date','Day','Time in','Time out','Hours','Late','Undertime','Status','Filing'],rows.map(x=>`<tr><td>${esc(x.date)}</td><td>${esc(x.day)}</td><td>${esc(x.timeIn)}</td><td>${esc(x.timeOut)}</td><td>${esc(x.hours)}</td><td>${esc(x.late)}</td><td>${esc(x.undertime)}</td><td>${badge(x.status)}</td><td>${esc(x.filing)}</td></tr>`),'No dates in this cutoff.')}`;}
+function dayInfo(x){if(!x)return['','',''];const st=String(x.status||'').toUpperCase(),late=Number(x.late)>0,ut=Number(x.undertime)>0;
+ if(st.includes('ABSENT')||st==='NO LOG')return['absent',x.status||'Absent',''];
+ if(st.includes('LEAVE'))return['leave','On leave',''];if(st==='OFF')return['off','Day off',''];
+ if(st.includes('NO TIME'))return['missing',x.status,''];
+ if(!x.timeIn&&!x.timeOut)return['','',''];
+ return[late?'late':ut?'under':'present','',late?'Late '+x.late+'m':ut?'Short '+x.undertime+'m':'']}
+function dtrView(r){LASTDTR=r;if(!r.success)return`<div class="msg er">${esc(r.message)}</div>`;const t=r.totals||{},rows=r.rows||[],c=DTRCTX||{};
+ const stat=(v,l,k='')=>`<div class="stat ${k}"><b>${esc(v??0)}</b><span>${l}</span></div>`;
+ const parsed=rows.map(x=>({x,d:new Date(String(x.date)+'T12:00:00')})).filter(z=>!isNaN(z.d));
+ let cal='';if(parsed.length){const f=parsed[0].d;cal=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(n=>`<div class="dayName">${n}</div>`).join('')+'<div class="dayCell empty"></div>'.repeat(f.getDay())
+  +parsed.map(z=>{const[k,lab,sub]=dayInfo(z.x),tip=[z.x.date,z.x.status,z.x.timeIn&&('In '+z.x.timeIn),z.x.timeOut&&('Out '+z.x.timeOut)].filter(Boolean).join(' | ');
+   return`<div class="dayCell ${k}" title="${esc(tip)}"><b>${z.d.getDate()}</b>${z.x.timeIn||z.x.timeOut?`<small>${esc(z.x.timeIn||'--')}</small><small>${esc(z.x.timeOut||'--')}</small>`:`<small>${esc(lab)}</small>`}${sub?`<em>${esc(sub)}</em>`:''}</div>`}).join('')}
+ const cell=(v,bad)=>`<span${Number(v)>0&&bad?' class="warnTxt"':''}>${esc(v??'')}</span>`;
+ return`<div class="dtrHead"><div><b>${esc(c.name||'Employee')}</b><span>${esc(c.meta||'')}${c.meta?' &middot; ':''}${esc(r.tab||c.cut||'')}</span></div>${DLROW('dlDtr()')}</div>`
+ +(r.shiftSet?'':`<div class="note">No shift is set for this employee yet, so late and undertime cannot be computed. Set it in Employees.</div>`)
+ +`<div class="grid dtrStats">${stat(t.daysRendered,'Days worked')}${stat(t.hours,'Total hours')}${stat(t.overtimeHours||0,'OT hours','ok')}${stat(t.lateMinutes??0,'Late (min)','wa')}${stat(t.undertimeMinutes??0,'Undertime (min)','wa')}${stat(t.absences??0,'Absences','er')}</div>`
+ +`<div class="calendar"><div class="calHead">Attendance calendar</div><div class="legend"><span><i class="dot" style="background:#17a879"></i>On time</span><span><i class="dot" style="background:#e99a35"></i>Late</span><span><i class="dot" style="background:#8262d8"></i>Undertime</span><span><i class="dot" style="background:#df5965"></i>Absent / missing</span><span><i class="dot" style="background:#2589c3"></i>Leave</span><span><i class="dot" style="background:#9aa7bd"></i>Day off</span></div>${cal?`<div class="calendarGrid">${cal}</div>`:'<div class="mg-empty">No dates in this cutoff.</div>'}</div>`
+ +`<h3 class="dtrH3">Daily attendance details</h3>`
+ +mtable(['Date','Time in','Time out','Hours','Late','Undertime','Status','Filing'],rows.map(x=>`<tr${x.timeIn||x.timeOut||x.status?'':' class="rowEmpty"'}>`+td('Date',`<span class="c1">${esc(x.date)} &middot; ${esc(x.day)}</span>`)+td('Time in',esc(x.timeIn||'-'))+td('Time out',esc(x.timeOut||'-'))+td('Hours',esc(x.hours||'-'))+td('Late',cell(x.late,1))+td('Undertime',cell(x.undertime,1))+td('Status',badge(x.status))+td('Filing',esc(x.filing||'-'),x.filing?'':'hm')+'</tr>'),'No dates in this cutoff.')}
+
 async function loadMyDtr(b){DTRCTX={name:$('eName').textContent,meta:$('eMeta').textContent,cut:$('ec').value};$('eDtrBody').innerHTML='';$('eDtrBody').innerHTML=dtrView(await run(b,'getMyDTR',S.tok,$('ec').value))}
 
 /* ---------- HR ---------- */
@@ -456,6 +609,52 @@ try{if(localStorage.getItem('besi-dark')==='1')toggleDark(true)}catch(e){}
 document.addEventListener('keydown',e=>{if(e.key!=='Enter'||e.target.tagName==='TEXTAREA')return;
   const m={le:()=>empLogin($('aLogin').querySelector('.btn')),lp:()=>empLogin($('aLogin').querySelector('.btn')),hu:()=>hrLogin($('aHR').querySelector('.btn')),hp:()=>hrLogin($('aHR').querySelector('.btn'))};m[e.target.id]&&m[e.target.id]()});
 $('as').innerHTML=shiftOpts('');
+</script>
+<script>
+/* ---------- MANAGEMENT CONSOLE v2: renderers ---------- */
+const fd=s=>{const d=new Date(String(s).slice(0,10)+'T12:00:00');return isNaN(d)?esc(s||''):d.toLocaleDateString('en-US',{month:'short',day:'numeric'})};
+const mtable=(cols,rows,empty)=>rows.length?`<div class="tw"><table class="rt"><thead><tr>${cols.map(c=>`<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>${rows.join('')}</tbody></table></div>`:`<div class="mg-empty">${esc(empty)}</div>`;
+const td=(l,h,c)=>`<td data-label="${l}"${c?` class="${c}"`:''}>${h}</td>`;
+const TITLES={hF:['Filings','Review and action absence and leave filings.'],hE:['Employees','Manage the roster, shifts and profiles.'],hD:['DTR','View attendance by cutoff and download it to Excel.'],hP:['Account','Update your password and manage HR access.']};
+(function(){const orig=window.managementNav;
+ window.managementNav=function(p){orig(p);const a=document.querySelector('#managementNav button.active'),t=TITLES[a?a.dataset.panel:'hF'];
+  $('mgTitle').textContent=t[0];$('mgSub').textContent=t[1];
+  const n=($('whoTxt').textContent||'Management').replace(' (Owner)','');$('mgUser').textContent=n;$('mgRole').textContent=S.isOwner?'Owner':'Management';
+  $('mgAv').textContent=n.split(/\s+/).map(w=>w[0]).slice(0,2).join('').toUpperCase()||'M';window.scrollTo(0,0)}})();
+
+function renderFilings(){const f=$('hfs').value,pc=FIL.filter(x=>x.status==='PENDING').length;
+ $('pendCount').textContent=pc;$('pendCount').classList.toggle('hide',!pc);
+ const rows=FIL.filter(x=>(!f||x.status===f)&&arcOk(x,$('hfa').value)).map(x=>{const range=x.endDate&&x.endDate!==x.startDate?`${fd(x.startDate)} &rarr; ${fd(x.endDate)}`:fd(x.startDate),d=Number(x.days)||1;
+  return'<tr>'+td('Employee',`<div class="c1">${esc(x.employeeName)}</div><div class="c2">${esc(x.employeeId)} &middot; ${esc(x.reference)}</div>`)
+  +td('Type',`<div class="c1">${esc(x.filingType)}</div><div class="c2">${esc(x.ldc)}</div>`)
+  +td('Dates',`<div class="c1">${range}</div><div class="c2" title="Filed ${esc(x.timestamp)}">${d} day${d>1?'s':''} &middot; filed ${fd(x.timestamp)}</div>`)
+  +td('Reason',`<div class="clamp" title="${esc(x.reason)}">${esc(x.reason)}</div>`)
+  +td('Status',badge(x.status)+(x.actionBy?`<div class="c2">by ${esc(x.actionBy)}</div>`:''))
+  +td('Action',x.status==='PENDING'?`<div class="act"><button class="mgb tb good" onclick="decide(this,'${esc(x.reference)}','APPROVED')">Approve</button><button class="mgb tb bad" onclick="decide(this,'${esc(x.reference)}','REJECTED')">Reject</button></div>`:'<span class="c2">&mdash;</span>','act-c')+'</tr>'});
+ $('hFBody').innerHTML=mtable(['Employee','Type','Dates','Reason','Status','Action'],rows,'No filings match these filters.')}
+
+async function loadEmps(){$('hEBody').innerHTML='<div class="mg-empty">Loading...</div>';const r=await call('getEmployeesForHR',S.tok,$('hel').value);
+ if(!r.success){$('hEBody').innerHTML=`<div class="msg er">${esc(r.message)}</div>`;return}
+ EMPS=r.employees;$('as').innerHTML=shiftOpts('');
+ const list=EMPS.filter(e=>!$('hes').value||String(e.status||'').toUpperCase()===$('hes').value);
+ $('hEBody').innerHTML=mtable(['Employee','LDC','Shift','Status','Registered','Actions'],list.map(e=>{const id=esc(e.employeeId),on=e.status==='ACTIVE';
+  return'<tr>'+td('Employee',`<div class="c1">${esc(e.employeeName)}</div><div class="c2">${id} &middot; ${esc(e.email||'Not registered yet')}</div>`)
+  +td('LDC',esc(e.ldc))+td('Shift',`<select class="shSel" onchange="setShift(this,'${id}')">${shiftOpts(e.shift)}</select>`)
+  +td('Status',badge(e.status))+td('Registered',e.registered?'Yes':'No')
+  +td('Actions',`<div class="act"><button class="mgb tb s" onclick="empDetails('${id}')">Details</button><button class="mgb tb s" onclick="setStatus('${id}','${on?'INACTIVE':'ACTIVE'}')">${on?'Archive':'Restore'}</button></div>`,'act-c')+'</tr>'}),'No employees found. Use "Sync from master list" or add one.')}
+function empDetails(id){const e=EMPS.find(x=>x.employeeId===id);if(!e)return;const v=x=>esc(x||'Not provided');
+ dlg('Employee details',`<dl class="dl"><dt>Name</dt><dd>${v(e.employeeName)}</dd><dt>Employee ID</dt><dd>${v(e.employeeId)}</dd><dt>LDC</dt><dd>${v(e.ldc)}</dd><dt>Email</dt><dd>${v(e.email)}</dd><dt>Birth date</dt><dd>${v(e.dateOfBirth)}</dd><dt>Contact number</dt><dd>${v(e.contactNumber)}</dd><dt>Emergency contact</dt><dd>${v(e.emergencyContactName)}${e.emergencyContactNumber?' &middot; '+esc(e.emergencyContactNumber):''}</dd><dt>Address</dt><dd>${v(e.address)}</dd></dl>
+ <div class="dlAct">${e.registered?`<button class="mgb tb s" onclick="$('dlg').close();resetEmp(this,'${esc(id)}')">Reset PIN</button>`:''}<button class="mgb tb bad" onclick="$('dlg').close();rmEmp('${esc(id)}','${esc(e.employeeName)}')">Remove employee</button></div>`)}
+
+async function hrSummary(b){if(!$('dl').value)return;const r=await run(b,'getDTRSummaryForHR',S.tok,$('dl').value,$('dc').value);
+ if(!r.success){$('hDBody').innerHTML=`<div class="msg er">${esc(r.message)}</div>`;return}
+ LASTSUM={rows:r.rows,ldc:$('dl').value,cut:$('dc').value};
+ $('hDBody').innerHTML=DLROW('dlSummary()')+mtable(['Employee','Shift','Days','Hours','Late (min)','Undertime (min)','Absences','Leaves'],r.rows.map(x=>'<tr>'+td('Employee',`<div class="c1">${esc(x.employeeName)}</div><div class="c2">${esc(x.employeeId)}</div>`)+td('Shift',esc(x.shiftLabel))
+  +(x.found?td('Days',x.totals.daysRendered)+td('Hours',x.totals.hours)+td('Late (min)',x.totals.lateMinutes)+td('Undertime (min)',x.totals.undertimeMinutes)+td('Absences',x.totals.absences)+td('Leaves',x.totals.leaves):`<td colspan="6" data-label="Attendance"><span class="c2">Not found in this cutoff</span></td>`)+'</tr>'),'No active employees in this LDC.')}
+
+async function loadHR(){const r=await call('getHRAccountsForOwner',S.tok);if(!r.success){$('hABody').innerHTML=`<div class="msg er">${esc(r.message||'Owner access required.')}</div>`;return}
+ $('hABody').innerHTML=mtable(['Name','Username','Email','Status','Actions'],r.accounts.map(a=>{const u=esc(a.username);return'<tr>'+td('Name',`<div class="c1">${esc(a.name)}${a.isOwner?' (Owner)':''}</div>`)+td('Username',u)+td('Email',esc(a.email||'-'))+td('Status',badge(a.status))
+  +td('Actions',a.isOwner?'<span class="c2">&mdash;</span>':`<div class="act"><button class="mgb tb s" onclick="rsHR(this,'${u}')">Reset PIN</button><button class="mgb tb bad" onclick="rmHR('${u}')">Remove</button></div>`,'act-c')+'</tr>'}),'No HR accounts.')}
 </script>
 </body>
 </html>
