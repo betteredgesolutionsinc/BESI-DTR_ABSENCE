@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#183a93">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <title>Better Edge Solutions Inc. - Employee Portal</title>
 <style> 
 :root{--bg:#eef4fb;--card:#fff;--ink:#172943;--muted:#718198;--line:#e3eaf2;--blue:#167db5;--pale:#e7f3fb;--green:#17a879;--orange:#e99a35;--red:#df5965;--shadow:0 8px 26px rgba(34,70,105,.08)}
@@ -102,391 +104,125 @@ body.management-mode main{max-width:none;margin:0;padding:0 0 30px 216px}
 .dlRow{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 14px}.arc{margin-top:18px}.arc summary{cursor:pointer;font-weight:700;padding:6px 0}
 @media print{header,#empNav,.cutoffRow,.m-sidebar,.dlRow,.row,#hD>h3,.tabs{display:none!important}body{background:#fff}.management-shell{display:block}.card{box-shadow:none;border:0}}
 
-/* BESI polished glass / mirror interface */
-:root{--bg:#eaf4fa;--card:rgba(255,255,255,.94);--ink:#172b45;--muted:#71839a;--line:#dfeaf2;--blue:#1683bd;--pale:#e8f5fc;--shadow:0 12px 34px rgba(34,75,111,.09)}
-body{background:radial-gradient(ellipse at 12% 4%,rgba(113,203,231,.24),transparent 34%),radial-gradient(ellipse at 90% 8%,rgba(180,164,229,.2),transparent 32%),linear-gradient(135deg,#edf7fb,#f4f2fa 58%,#edf6fb);background-attachment:fixed}
-header{backdrop-filter:blur(18px);background:rgba(255,255,255,.78);border-color:rgba(215,229,239,.9)}
-.auth-screen{max-width:480px;display:block;margin:24px auto 42px;border:1px solid rgba(255,255,255,.9);border-radius:25px;overflow:visible;background:linear-gradient(145deg,rgba(255,255,255,.72),rgba(237,247,252,.52));box-shadow:0 24px 65px rgba(42,91,128,.12);padding:7px}
-.auth-screen .authcard{border-radius:20px;padding:25px 24px 22px;background:rgba(255,255,255,.88);backdrop-filter:blur(22px);box-shadow:inset 0 1px 0 #fff,0 7px 24px rgba(53,97,130,.06)}
-.auth-brand{display:flex;align-items:center;gap:11px;margin-bottom:20px}.auth-mark{height:42px;width:42px;border-radius:12px;background:linear-gradient(145deg,#29a9d7,#8e83d5);color:#fff;display:grid;place-items:center;font-size:20px;font-weight:800;box-shadow:0 6px 15px #328db333}.auth-brand b{display:block;font-size:12px;letter-spacing:-.2px}.auth-brand span{display:block;font-size:9px;letter-spacing:1px;color:#72869e;font-weight:700;margin-top:2px}
-.secure-tag{display:inline-flex;align-items:center;gap:7px;padding:5px 10px;border-radius:20px;background:#e9f6fc;color:#1685b9;font-size:9px;font-weight:800;letter-spacing:.8px}.secure-tag i{height:7px;width:7px;border-radius:50%;background:#16b68e;box-shadow:0 0 0 3px #d5f2e9}.auth-intro{margin:12px 0 16px}.auth-intro h1{font-size:25px;letter-spacing:-1px;line-height:1.2;margin:0 0 5px}.auth-intro p{font-size:12px;color:var(--muted);margin:0;max-width:330px}.auth-role-tabs{margin:0 0 10px;padding:4px;background:#f3f7fa;border-color:#e5edf3;display:grid;grid-template-columns:1fr 1fr}.auth-role-tabs button{padding:10px 12px;font-size:12px}.auth-role-tabs button.on{background:linear-gradient(180deg,#fff,#fafdff);color:#0879b5;box-shadow:0 2px 8px rgba(37,87,121,.12);border:1px solid #dcebf4}
-.auth-help{margin:0 0 14px}.auth-screen label{margin:12px 0 6px;font-size:10px;color:#334b64}.auth-screen input,.auth-screen select{background:#fbfdff;border-color:#e2ebf2;border-radius:10px;min-height:44px;font-size:12px}.auth-screen .full{margin-top:17px;min-height:45px;border-radius:10px;background:linear-gradient(100deg,#1685bd,#177bb2);box-shadow:0 5px 13px rgba(22,125,181,.2)}.auth-footnote{text-align:center;color:#71839a;font-size:10px;margin:8px 0 2px}.register-prompt{text-align:left;margin:5px 0 0;font-size:10px;color:#5d728a}.register-prompt a{color:#087db8;text-decoration:none;font-weight:700}.register-prompt a:hover{text-decoration:underline}
-.card{backdrop-filter:blur(12px)}.empTop{background:linear-gradient(120deg,rgba(255,255,255,.98),rgba(237,247,252,.94));border-color:#e1edf4}.empTop h2{letter-spacing:-.4px}.empTop p{font-size:11px}.cutoffRow{align-items:center}.cutoffRow select{border-radius:10px;border-color:#e1eaf1;min-height:39px}.cutoffRow .btn{border-radius:22px}.stat{background:linear-gradient(145deg,#f8fcff,#eff6fb);border-color:#e3edf4}.stat b{letter-spacing:-.6px}.calendar{background:linear-gradient(145deg,#fff,#fbfdff);border-color:#e4edf4}.dayCell{background:rgba(255,255,255,.8);min-height:48px}.dayCell b{font-size:11px}.dayCell small{font-size:8px}.empNav{backdrop-filter:blur(18px);background:rgba(255,255,255,.9);border-color:#e1eaf1;box-shadow:0 12px 32px rgba(30,67,97,.16)}
-.btn{transition:transform .16s ease,box-shadow .16s ease}.btn:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(22,125,181,.16)}.theme-toggle{border:1px solid #dce8f0;background:rgba(255,255,255,.8);color:#526a82;border-radius:20px;padding:7px 12px;font-size:10px;font-weight:700;cursor:pointer;white-space:nowrap}.who{gap:9px}
-/* Management layout spacing and theme */
-body.management-mode{background:radial-gradient(ellipse at 75% 0%,rgba(168,188,233,.18),transparent 36%),linear-gradient(125deg,#edf7fb,#f3f1fa)}
-.m-sidebar{background:rgba(255,255,255,.88);backdrop-filter:blur(20px);border-color:#e0eaf2}.m-main{max-width:1320px;padding:22px 28px 46px}.m-panel,.m-module,.m-metric{box-shadow:0 8px 26px rgba(35,79,112,.06);border-color:#e3edf4}.m-module{border-radius:17px}.m-nav button{padding:11px 12px;border-radius:11px}.m-nav button.active{background:linear-gradient(100deg,#e5f5fc,#f0f4ff);border-color:#c5e3f3}.m-title{font-size:21px}.m-metric{border-radius:15px}.dlRow{gap:8px}.dlRow .btn{min-height:34px}
-body.dark-mode{--bg:#101b2b;--card:#18263a;--ink:#e7f0fa;--muted:#9aacc1;--line:#2b3d54;--blue:#45a9dc;--pale:#203c54;--shadow:0 12px 34px rgba(0,0,0,.25);background:radial-gradient(ellipse at 10% 0%,rgba(35,110,145,.2),transparent 35%),radial-gradient(ellipse at 90% 0%,rgba(104,83,154,.18),transparent 32%),linear-gradient(135deg,#101b2b,#172238 60%,#111e30);color:var(--ink)}
-body.dark-mode header,body.dark-mode .auth-screen .authcard,body.dark-mode .card,body.dark-mode .m-sidebar,body.dark-mode .m-module,body.dark-mode .m-panel,body.dark-mode .m-metric,body.dark-mode .empNav{background:rgba(24,38,58,.94);border-color:#2b3d54;color:var(--ink)}
-body.dark-mode .auth-screen{background:linear-gradient(145deg,rgba(37,58,82,.85),rgba(24,38,58,.72));border-color:#33475f}body.dark-mode .auth-role-tabs,body.dark-mode .tabs,body.dark-mode .stat,body.dark-mode .dayCell,body.dark-mode th,body.dark-mode input,body.dark-mode select,body.dark-mode textarea{background:#1e3047;border-color:#344960;color:#e7f0fa}body.dark-mode .tabs button.on{background:#293d56;color:#70c5ed;border-color:#3a5874}body.dark-mode .auth-brand span,body.dark-mode .auth-intro p,body.dark-mode .auth-help,body.dark-mode .auth-footnote,body.dark-mode .register-prompt,body.dark-mode label,body.dark-mode .m-muted,body.dark-mode .m-eyebrow,body.dark-mode .m-subtitle{color:#a5b7ca}body.dark-mode .secure-tag{background:#1c3d52;color:#7ed0f2}body.dark-mode .m-nav button{background:#1c2c41;border-color:#344960;color:#dce8f5}body.dark-mode .m-nav button.active{background:#203e56;color:#7ac9ee;border-color:#3d6b88}body.dark-mode .m-bottom-actions button,body.dark-mode .theme-toggle{background:#1e3047;color:#dce8f5;border-color:#344960}body.dark-mode .calendar{background:#192a40;border-color:#344960}body.dark-mode .dayCell.present{background:#173b37;border-color:#27665a}body.dark-mode .dayCell.absent{background:#422a36;border-color:#71404b}body.dark-mode .dayCell.late{background:#413729;border-color:#6d5736}body.dark-mode .profileHead{background:#203e56}body.dark-mode .m-ring-inner{background:#18263a;color:#e7f0fa}body.dark-mode .tw{border-color:#344960}body.dark-mode td{border-color:#2b3d54}body.dark-mode .b{background:#2b405a;color:#c5d8eb}
-@media(max-width:600px){.auth-screen{margin:12px auto 28px;padding:5px;border-radius:21px}.auth-screen .authcard{padding:21px 17px 19px}.auth-intro h1{font-size:23px}.m-main{padding:12px}.empNav{bottom:7px}.calendar{padding:10px}.calendarGrid{gap:4px}.dayCell{min-height:43px;padding:5px 1px}.cutoffRow select{max-width:none;flex:1}.cutoffRow{gap:7px}}
-@media(min-width:761px){.auth-screen{margin-top:36px}.auth-screen .authcard{padding:30px 30px 25px}}
-
-
-/* EXQUISITE MANAGEMENT EXPERIENCE */
-body.management-mode{
-  background:
-    radial-gradient(ellipse at 82% -8%,rgba(160,164,226,.22),transparent 34%),
-    radial-gradient(ellipse at 22% 0%,rgba(105,196,225,.20),transparent 32%),
-    linear-gradient(135deg,#edf7fb 0%,#f4f2fa 52%,#eef5fb 100%);
-}
-body.management-mode .m-sidebar{
-  width:236px;padding:18px 14px;background:rgba(255,255,255,.82);
-  border-right:1px solid rgba(208,225,238,.9);
-  box-shadow:12px 0 38px rgba(43,83,117,.045);
-}
-body.management-mode main{padding-left:236px}
-body.management-mode .m-brand{padding:4px 5px 20px;margin-bottom:18px}
-body.management-mode .m-logo{
-  width:38px;height:38px;border-radius:13px;font-size:16px;
-  background:linear-gradient(145deg,#259ed0 0%,#7d83cb 100%);
-  box-shadow:0 7px 18px rgba(54,133,177,.24);
-}
-body.management-mode .m-brand b{font-size:12px;letter-spacing:-.25px}
-body.management-mode .m-brand small{font-size:9px;letter-spacing:.35px}
-body.management-mode .m-side-label{font-size:9px;letter-spacing:1.2px;text-transform:uppercase;margin:0 5px 10px}
-body.management-mode .m-nav{gap:7px}
-body.management-mode .m-nav button{
-  min-height:43px;padding:11px 12px;border:1px solid transparent;
-  border-radius:12px;background:transparent;color:#5b6f86;font-size:11px;
-  transition:all .18s ease;
-}
-body.management-mode .m-nav button:hover{background:#f1f7fb;border-color:#e3edf4;transform:translateX(2px)}
-body.management-mode .m-nav button.active{
-  background:linear-gradient(105deg,#e4f4fb 0%,#f0effb 100%);
-  border-color:#d6e8f4;color:#147eae;box-shadow:inset 3px 0 #268fc1,0 5px 14px rgba(65,119,157,.06);
-}
-body.management-mode .m-nav .m-ico{font-size:15px;width:18px}
-body.management-mode .m-side-bottom{border-color:#e7edf3;padding-top:14px}
-body.management-mode .m-bottom-actions button{border-radius:11px;padding:9px 7px;background:#f7fafc;border-color:#e4edf3}
-body.management-mode .m-main{max-width:1500px;padding:25px 34px 54px}
-.m-welcome{
-  position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:18px;
-  padding:23px 25px;margin:0 0 19px;border:1px solid rgba(255,255,255,.92);border-radius:20px;
-  background:linear-gradient(112deg,rgba(255,255,255,.92),rgba(238,247,253,.82) 58%,rgba(240,237,250,.88));
-  box-shadow:0 12px 32px rgba(49,91,126,.07),inset 0 1px 0 #fff;
-}
-.m-welcome:after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;right:7%;top:-145px;background:radial-gradient(circle,rgba(128,174,222,.18),transparent 70%);pointer-events:none}
-.m-welcome-copy{position:relative;z-index:1}
-.m-welcome-kicker{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#5483a2;font-weight:800;margin-bottom:6px}
-.m-welcome h1{font-size:23px;line-height:1.2;letter-spacing:-.8px;margin:0 0 5px;color:#1a3049}
-.m-welcome p{font-size:11px;color:#75869a;margin:0}
-.m-welcome-mark{position:relative;z-index:1;width:48px;height:48px;border-radius:16px;display:grid;place-items:center;color:#fff;font-size:20px;background:linear-gradient(145deg,#2a9ac9,#8a83cb);box-shadow:0 9px 22px rgba(76,131,177,.22)}
-.m-module{padding:20px;border-radius:19px;background:rgba(255,255,255,.82);backdrop-filter:blur(18px);box-shadow:0 12px 32px rgba(44,83,119,.055),inset 0 1px 0 rgba(255,255,255,.9)}
-#hE.card,#hD.card,#hA.card,#hP.card{background:transparent}
-#hE{padding:0}
-#hE>.row:first-child,#hF>.row:first-child{
-  align-items:end;padding:13px 15px;margin:0 0 13px;border:1px solid #e5edf4;border-radius:14px;
-  background:linear-gradient(110deg,#f8fcff,#f7f6fc);
-}
-#hE h3{font-size:14px;letter-spacing:-.2px;margin:20px 0 10px}
-.m-search-wrap{position:relative;flex:1 1 260px;min-width:220px}
-.m-search-wrap .m-search-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:15px;color:#8296aa;pointer-events:none}
-.m-search{
-  width:100%;min-height:42px;padding:10px 13px 10px 38px;border-radius:12px;
-  background:rgba(255,255,255,.95);border:1px solid #dfeaf2;color:#243b53;font-size:11px;
-  box-shadow:inset 0 1px 2px rgba(38,76,108,.025);transition:border-color .18s,box-shadow .18s;
-}
-.m-search:focus{outline:0;border-color:#83bfdf;box-shadow:0 0 0 3px rgba(67,158,204,.12)}
-.m-search-meta{font-size:10px;color:#8292a5;white-space:nowrap;padding:0 2px 3px}
-.m-add-panel{padding:15px 16px 16px;border:1px solid #e4edf4;border-radius:15px;background:linear-gradient(120deg,#fbfdff,#f7f6fc)}
-.m-add-panel h3{margin:0 0 7px!important}
-#hEBody{margin-top:14px}
-#hEBody .tw,#hFBody .tw,#hABody .tw{border:1px solid #e4edf4;border-radius:14px;background:rgba(255,255,255,.8);box-shadow:0 5px 18px rgba(43,82,116,.035)}
-#hEBody table,#hFBody table{font-size:10px}
-#hEBody th,#hFBody th{position:sticky;top:0;background:#f1f7fb;color:#5f748b;font-size:9px;letter-spacing:.2px;text-transform:uppercase}
-#hEBody td,#hFBody td{padding:10px 11px}
-#hEBody tbody tr:hover,#hFBody tbody tr:hover{background:#f7fbfe}
-#hEBody .act{min-width:165px}
-#hEBody .btn.sm{border-radius:8px}
-#hF{padding:0}
-#hStats .stat{border-radius:14px;padding:14px 15px;background:linear-gradient(145deg,#fff,#f3f8fc);box-shadow:0 5px 17px rgba(42,82,116,.04)}
-#hStats .stat b{font-size:24px}
-#hD h3,#hA h3,#hP h3{font-size:15px}
-#hD>.row:first-of-type{padding:14px;border:1px solid #e5edf4;border-radius:14px;background:#f8fbfd}
-#hD>.row:nth-of-type(2){margin:12px 0 4px}
-body.dark-mode.management-mode .m-welcome{background:linear-gradient(110deg,rgba(28,45,67,.96),rgba(32,47,70,.9) 58%,rgba(48,43,73,.9));border-color:#344960}
-body.dark-mode.management-mode .m-welcome h1{color:#e7f0fa}
-body.dark-mode.management-mode .m-welcome p,body.dark-mode.management-mode .m-welcome-kicker{color:#a7bdd0}
-body.dark-mode.management-mode .m-nav button:hover{background:#20334a;border-color:#344960}
-body.dark-mode.management-mode .m-add-panel,body.dark-mode.management-mode #hE>.row:first-child,body.dark-mode.management-mode #hF>.row:first-child,body.dark-mode.management-mode #hD>.row:first-of-type{background:#1b2d43;border-color:#344960}
-body.dark-mode.management-mode .m-search{background:#1e3047;border-color:#344960;color:#e7f0fa}
-body.dark-mode.management-mode #hEBody .tw,body.dark-mode.management-mode #hFBody .tw,body.dark-mode.management-mode #hABody .tw{background:#192a40;border-color:#344960}
-body.dark-mode.management-mode #hEBody th,body.dark-mode.management-mode #hFBody th{background:#22364e;color:#b7c9dc}
-body.dark-mode.management-mode #hEBody tbody tr:hover,body.dark-mode.management-mode #hFBody tbody tr:hover{background:#20334a}
-@media(max-width:850px){
- body.management-mode main{padding-left:0;padding-top:72px}
- body.management-mode .m-sidebar{width:100%;height:64px;padding:7px 10px}
- body.management-mode .m-brand{min-width:145px;padding:0;margin:0}
- body.management-mode .m-nav button{min-height:38px}
- body.management-mode .m-main{padding:13px 12px 35px}
-}
-@media(max-width:600px){
- .m-welcome{padding:18px 17px;margin-bottom:13px;border-radius:16px}
- .m-welcome h1{font-size:19px}
- .m-welcome-mark{width:40px;height:40px;border-radius:13px}
- .m-module{padding:13px;border-radius:16px}
- .m-search-wrap{min-width:100%;flex-basis:100%}
- .m-search-meta{white-space:normal}
- #hE>.row:first-child,#hF>.row:first-child{padding:11px;gap:8px}
- #hE .row>*{min-width:100%}
- #hE .row .fit{min-width:100%}
- #hE .m-add-panel .row>*{min-width:calc(50% - 8px)}
-}
-
-
-/* SORTER DTR: FULL-CUTOFF CALENDAR + PROFILE SPACING */
-.empTop{padding:20px 22px!important;border-radius:18px!important;margin-bottom:16px!important;background:linear-gradient(115deg,rgba(255,255,255,.96),rgba(239,248,253,.94) 62%,rgba(244,241,251,.94))!important;border:1px solid rgba(216,231,241,.9);box-shadow:0 9px 25px rgba(43,83,117,.055)}
-.empTop h2{font-size:21px!important;line-height:1.3;margin:0 0 7px!important;letter-spacing:-.45px}
-.empTop p{font-size:11px!important;line-height:1.65!important;margin:0!important;color:#71849a!important}
-#eDtr.card{padding:20px!important}
-#eDtr>h3{font-size:16px;margin:0 0 14px}
-.cutoffRow{padding:12px 13px;border:1px solid #e4edf4;border-radius:13px;background:linear-gradient(110deg,#f7fbfe,#f7f6fc);margin-bottom:15px;gap:10px}
-.cutoffRow select{max-width:none;min-width:190px;min-height:39px;border-radius:10px}
-.cutoffRow .btn{min-height:39px;padding:9px 19px}
-.dtr-calendar{padding:17px!important;border-radius:17px!important;background:linear-gradient(145deg,rgba(255,255,255,.97),rgba(247,251,254,.95))!important;border-color:#e3edf4!important;margin-top:16px!important;box-shadow:0 8px 24px rgba(43,83,117,.045)}
-.dtr-calendar-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:13px}
-.dtr-eyebrow{display:block;font-size:8px;font-weight:800;letter-spacing:1.35px;color:#7d91a7;margin-bottom:5px}
-.dtr-calendar .calHead{font-size:14px;margin:0 0 4px;line-height:1.35}
-.dtr-calendar-heading p{margin:0;font-size:10px;line-height:1.5;color:#8493a5}
-.dtr-calendar-icon{width:39px;height:39px;flex:0 0 39px;border-radius:13px;display:grid;place-items:center;color:#2589bc;background:linear-gradient(145deg,#e6f5fb,#eeedfa);font-size:19px}
-.dtr-calendar .legend{gap:8px 13px;padding:10px 0 13px;border-bottom:1px solid #edf1f5;margin-bottom:12px;font-size:9px}
-.dtr-month{margin-top:8px}
-.dtr-month+.dtr-month{margin-top:19px;padding-top:16px;border-top:1px solid #e9eff4}
-.dtr-month-title{display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:750;color:#334b64;margin-bottom:9px}
-.dtr-month-title span{font-size:9px;font-weight:600;color:#8a9aad;background:#f0f5f8;border-radius:20px;padding:4px 8px}
-.dtr-calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
-.dtr-weekday{text-align:center;padding:4px 0 6px;font-size:9px;font-weight:700;color:#8797a8}
-.dtr-blank{min-height:68px}
-.dtr-date{min-width:0;min-height:72px;border:1px solid #e6edf3;border-radius:11px;padding:7px 6px;background:#fff;display:flex;flex-direction:column;gap:4px;overflow:hidden}
-.dtr-date-top{display:flex;align-items:center;justify-content:space-between;gap:3px}
-.dtr-date-top b{font-size:12px;line-height:1.2;color:#263c53}
-.dtr-status-dot{width:6px;height:6px;border-radius:50%;background:#aab7c5;flex:0 0 6px}
-.dtr-status-label{font-size:8px;line-height:1.25;font-weight:700;color:#66798e;white-space:normal;overflow-wrap:anywhere}
-.dtr-date small{display:block;font-size:8px;line-height:1.25;color:#71849a;white-space:normal;overflow-wrap:anywhere}
-.dtr-date .dtr-hours{font-weight:700;color:#526d85}
-.dtr-date.ontime{background:#f0faf6;border-color:#c9ecdc}.dtr-date.ontime .dtr-status-dot{background:#17a879}.dtr-date.ontime .dtr-status-label{color:#16865f}
-.dtr-date.late{background:#fff8ed;border-color:#f2dfbd}.dtr-date.late .dtr-status-dot{background:#e99a35}.dtr-date.late .dtr-status-label{color:#a76b19}
-.dtr-date.undertime{background:#f6f2ff;border-color:#ded3fa}.dtr-date.undertime .dtr-status-dot{background:#8262d8}.dtr-date.undertime .dtr-status-label{color:#7154bd}
-.dtr-date.overtime{background:#eff8fd;border-color:#cce5f3}.dtr-date.overtime .dtr-status-dot{background:#2589c3}.dtr-date.overtime .dtr-status-label{color:#247eae}
-.dtr-date.missing,.dtr-date.absent{background:#fff3f4;border-color:#f3d0d3}.dtr-date.missing .dtr-status-dot,.dtr-date.absent .dtr-status-dot{background:#df5965}.dtr-date.missing .dtr-status-label,.dtr-date.absent .dtr-status-label{color:#bf4e5a}
-.dtr-date.no-record{background:#f8fafc;border-style:dashed;border-color:#e3eaf0}.dtr-date.no-record .dtr-status-label{color:#9aa7b5;font-weight:500}
-.profileHead{display:flex!important;align-items:center!important;gap:14px!important;padding:16px 18px!important;margin:18px 0 20px!important;border:1px solid #deebf3;background:linear-gradient(110deg,#edf8fc,#f4f2fb)!important;border-radius:16px!important}
-.profileHead .avatar{width:48px!important;height:48px!important;flex:0 0 48px;border-radius:15px!important;font-size:16px;box-shadow:0 5px 14px rgba(41,126,169,.12)}
-.profileHead>div:last-child{display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:center!important;gap:5px!important;min-width:0;flex:1}
-.profileHead strong{display:block!important;max-width:100%;font-size:14px!important;line-height:1.35!important;white-space:normal!important;overflow-wrap:anywhere;color:#243b53}
-.profileHead small{display:block!important;max-width:100%;font-size:10px!important;line-height:1.45!important;white-space:normal!important;overflow-wrap:anywhere;color:#71849a}
-#eProfile>.row{gap:14px!important;margin:12px 0!important}
-#eProfile>.row>div{min-width:0;flex:1}
-#eProfile label{display:block;margin:0 0 6px;font-size:10px;font-weight:700}
-#eProfile input,#eProfile textarea{width:100%;min-width:0;box-sizing:border-box;border-radius:10px}
-#eProfile .row input,#eProfile .row textarea{min-height:42px}
-@media(max-width:600px){
- #eDtr.card{padding:14px!important}
- .empTop{padding:16px!important}
- .dtr-calendar{padding:12px!important}
- .dtr-calendar-grid{gap:4px}
- .dtr-date{min-height:65px;padding:6px 4px;border-radius:9px}
- .dtr-date-top b{font-size:11px}
- .dtr-status-label,.dtr-date small{font-size:7px}
- .dtr-blank{min-height:65px}
- .dtr-weekday{font-size:8px}
- .dtr-calendar .legend{gap:7px 10px}
- .profileHead{padding:13px!important;gap:12px!important}
- #eProfile>.row{display:flex;flex-direction:column;gap:10px!important}
- #eProfile>.row>div{width:100%;min-width:0}
-}
-@media(prefers-color-scheme:dark){
- body.dark-mode .dtr-calendar{background:linear-gradient(145deg,#1b2b40,#202b43)!important;border-color:#344960!important}
- body.dark-mode .dtr-month-title,body.dark-mode .dtr-date-top b,body.dark-mode .profileHead strong{color:#e4edf7}
- body.dark-mode .dtr-month+.dtr-month{border-color:#344960}
- body.dark-mode .dtr-date{background:#1c2d43;border-color:#344960}
- body.dark-mode .dtr-date.ontime{background:#183a35;border-color:#286354}
- body.dark-mode .dtr-date.late{background:#3b3020;border-color:#66502d}
- body.dark-mode .dtr-date.undertime{background:#302747;border-color:#54427c}
- body.dark-mode .dtr-date.overtime{background:#1c3448;border-color:#315d79}
- body.dark-mode .dtr-date.missing,body.dark-mode .dtr-date.absent{background:#40272f;border-color:#70414a}
- body.dark-mode .dtr-date.no-record{background:#202e41}
- body.dark-mode .dtr-calendar-heading p,body.dark-mode .dtr-date small,body.dark-mode .profileHead small{color:#a8b9cb}
- body.dark-mode .profileHead{background:linear-gradient(110deg,#1d3548,#2d2a45)!important;border-color:#344960}
-}
-
-
-/* FINAL DTR / PROFILE CLEANUP */
-#eDtr.card{padding:20px!important}
-#eDtr>h3{font-size:16px;margin:0 0 14px}
-.cutoffRow{display:flex;align-items:end;justify-content:space-between;gap:14px;padding:13px 15px;border:1px solid #e1ebf3;border-radius:14px;background:linear-gradient(110deg,#f7fbfe,#f7f6fc);margin-bottom:16px}
-.cutoffSelectWrap{display:flex;flex-direction:column;gap:6px;flex:1;min-width:0}
-.cutoffSelectWrap label{font-size:10px;font-weight:700;color:#60758c;margin:0}
-.cutoffSelectWrap select{width:100%;min-height:42px;border-radius:10px}
-.cutoffAutoNote{font-size:9px;color:#8797a8;line-height:1.5;padding-bottom:4px;max-width:230px;text-align:right}
-.dtr-note{padding:10px 13px;margin:0 0 14px;border:1px solid #dcebf5;border-radius:11px;background:#f1f8fc;color:#5e7890;font-size:10px;line-height:1.55}
-#eDtrBody>.empty{padding:22px;text-align:center;border:1px dashed #dbe7ef;border-radius:13px;background:#fafcfe;color:#8293a5;font-size:11px}
-#profileMsg:empty{display:none}
-#eProfile .profileHead{align-items:center}
-#eProfile .profileHead>div:last-child{min-width:0}
-#eProfile .profileHead strong,#eProfile .profileHead small{overflow-wrap:anywhere;word-break:break-word}
-@media(max-width:600px){
- #eDtr.card{padding:14px!important}
- .cutoffRow{align-items:stretch;flex-direction:column;gap:8px}
- .cutoffAutoNote{max-width:none;text-align:left;padding:0}
- .dtr-note{font-size:9px}
-}
-body.dark-mode .cutoffRow{background:linear-gradient(110deg,#1b2d43,#252b43);border-color:#344960}
-body.dark-mode .cutoffSelectWrap label,body.dark-mode .cutoffAutoNote{color:#a8b9cb}
-body.dark-mode .dtr-note{background:#1c3448;border-color:#31536c;color:#b6cadd}
-body.dark-mode #eDtrBody>.empty{background:#1b2c41;border-color:#344960;color:#a8b9cb}
-
-
-/* EDITABLE SORTER PROFILE */
-.profile-controls{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:18px;padding-top:15px;border-top:1px solid #e8eff4}
-.profile-helper{font-size:10px;line-height:1.5;color:#8192a4}
-.profile-buttons{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap}
-.profile-buttons .btn{min-width:112px;min-height:39px;border-radius:10px}
-#eProfile input[readonly],#eProfile textarea[readonly]{background:#f1f6fa;color:#657b91;border-color:#dce8f0;cursor:default}
-#eProfile.profile-editing input:not([readonly]),#eProfile.profile-editing textarea:not([readonly]){background:#fff;border-color:#8bc5e2;box-shadow:0 0 0 3px rgba(49,145,191,.09);color:#263e56}
-#eProfile input:focus,#eProfile textarea:focus{outline:none;border-color:#65add2;box-shadow:0 0 0 3px rgba(49,145,191,.12)}
-#profileMsg:empty{display:none}
-#profileMsg .msg{margin-top:12px}
-@media(max-width:600px){
- .profile-controls{align-items:stretch;flex-direction:column}
- .profile-buttons{width:100%}
- .profile-buttons .btn{flex:1;min-width:0}
-}
-body.dark-mode #eProfile input[readonly],body.dark-mode #eProfile textarea[readonly]{background:#1e3047;color:#b8c9d9;border-color:#344960}
-body.dark-mode #eProfile.profile-editing input:not([readonly]),body.dark-mode #eProfile.profile-editing textarea:not([readonly]){background:#1b2d43;color:#e7f0fa;border-color:#6caed0}
-body.dark-mode .profile-controls{border-color:#344960}
-body.dark-mode .profile-helper{color:#a8b9cb}
-
-
-/* HARD LOCK PROFILE FIELDS UNTIL THE USER CHOOSES EDIT DETAILS */
-#eProfile input:disabled,#eProfile textarea:disabled{
-  opacity:1!important;
-  -webkit-text-fill-color:#657b91;
-  color:#657b91!important;
-  background:#f1f6fa!important;
-  border-color:#dce8f0!important;
-  cursor:not-allowed!important;
-  box-shadow:none!important;
-}
-#eProfile.profile-editing input:not(:disabled),#eProfile.profile-editing textarea:not(:disabled){
-  opacity:1!important;
-  -webkit-text-fill-color:#263e56;
-  color:#263e56!important;
-  background:#fff!important;
-  border-color:#8bc5e2!important;
-  cursor:text!important;
-  box-shadow:0 0 0 3px rgba(49,145,191,.09)!important;
-}
-#eProfile:not(.profile-editing) .profile-helper:before{content:"🔒 ";font-size:9px}
-body.dark-mode #eProfile input:disabled,body.dark-mode #eProfile textarea:disabled{
-  color:#b8c9d9!important;-webkit-text-fill-color:#b8c9d9;background:#1e3047!important;border-color:#344960!important
-}
-body.dark-mode #eProfile.profile-editing input:not(:disabled),body.dark-mode #eProfile.profile-editing textarea:not(:disabled){
-  color:#e7f0fa!important;-webkit-text-fill-color:#e7f0fa;background:#1b2d43!important;border-color:#6caed0!important
-}
-
-
-/* FIRST-TIME PROFILE ENTRY: OPEN UNTIL FIRST SAVE */
-#eProfile.profile-editing #profileEditBtn{display:none!important}
-#eProfile:not(.profile-editing) #profileSaveBtn,
-#eProfile:not(.profile-editing) #profileCancelBtn{display:none!important}
-#profileMsg .msg.info{margin-top:12px;padding:10px 13px;border-radius:10px;background:#edf7fc;border:1px solid #d7eaf5;color:#4e718a;font-size:10px;line-height:1.5}
-
-
-/* REMEMBERED SORTER EMAIL */
-.remember-note{margin:-3px 0 12px!important;font-size:9px!important;line-height:1.45;color:#8294a7}
-/* PROFILE APP SETTINGS FOOTER */
-.profile-settings{margin-top:23px;padding-top:18px;border-top:1px solid #e6edf3}
-.profile-settings-heading{display:flex;flex-direction:column;gap:4px;margin-bottom:11px}
-.profile-settings-heading b{font-size:12px;color:var(--ink)}
-.profile-settings-heading span{font-size:9px;color:var(--muted)}
-.profile-settings-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
-.profile-setting-btn{display:flex;align-items:center;gap:11px;min-width:0;padding:12px 13px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(120deg,rgba(247,251,254,.96),rgba(246,245,252,.96));color:var(--ink);text-align:left;cursor:pointer;transition:transform .15s,border-color .15s}
-.profile-setting-btn:hover{transform:translateY(-1px);border-color:#a9d2e7}
-.profile-setting-btn .setting-icon{width:34px;height:34px;flex:0 0 34px;display:grid;place-items:center;border-radius:10px;background:#e5f3fa;color:#2588bd;font-size:17px;font-weight:700}
-.profile-setting-btn>span:nth-child(2){display:flex;flex-direction:column;gap:3px;min-width:0;flex:1}
-.profile-setting-btn b{font-size:10px;line-height:1.3}
-.profile-setting-btn small{font-size:8px;line-height:1.4;color:var(--muted)}
-.profile-setting-btn .setting-chevron{font-size:20px;color:#8da0b2}
-.profile-setting-btn.logout-setting .setting-icon{background:#fff0f1;color:#c65360}
-.profile-setting-btn.logout-setting{border-color:#f0dfe1}
-body.dark-mode .profile-settings{border-color:#344960}
-body.dark-mode .profile-settings-heading b{color:#e7f0fa}
-body.dark-mode .profile-setting-btn{background:linear-gradient(120deg,#1b2d43,#252b43);border-color:#344960;color:#e7f0fa}
-body.dark-mode .profile-setting-btn .setting-icon{background:#23425a;color:#8bd0f0}
-body.dark-mode .profile-setting-btn.logout-setting{border-color:#63414a}
-body.dark-mode .profile-setting-btn.logout-setting .setting-icon{background:#472d38;color:#f19aa4}
-body.dark-mode .remember-note{color:#a8b9cb}
-@media(max-width:600px){
- .profile-settings-actions{grid-template-columns:1fr}
- .profile-setting-btn{padding:13px}
-}
-
+/* ===== BESI BRAND + GLASS ("mirror") THEME ===== */
+:root{--blue:#183a93;--cy:#27cdff;--mg:#d92aa1;--ink:#14213d;--muted:#66728f;--line:rgba(24,58,147,.13);--pale:#e8eefc}
+body{min-height:100vh;color:var(--ink);background:radial-gradient(900px 520px at 6% -8%,rgba(39,205,255,.30),transparent 60%),radial-gradient(800px 520px at 100% 0,rgba(217,42,161,.18),transparent 60%),radial-gradient(900px 600px at 50% 112%,rgba(24,58,147,.24),transparent 60%),#eef2fb;background-attachment:fixed}
+.card,.m-panel,.m-metric,.m-module,.empNav,header,.m-sidebar,dialog{background:linear-gradient(180deg,rgba(255,255,255,.80),rgba(255,255,255,.56));-webkit-backdrop-filter:blur(18px) saturate(1.5);backdrop-filter:blur(18px) saturate(1.5);border:1px solid rgba(255,255,255,.88);box-shadow:0 10px 30px rgba(24,58,147,.10),inset 0 1px 0 #fff,inset 0 -1px 0 rgba(24,58,147,.05)}
+.card,.m-panel,.m-metric,.m-module{border-radius:18px;min-width:0}
+header{position:sticky;top:0;z-index:30;height:auto;min-height:62px;flex-wrap:nowrap;border-radius:0;padding-top:max(8px,env(safe-area-inset-top))}
+header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,#183a93 0 34%,#27cdff 34% 67%,#d92aa1 67%)}
+.brand{min-width:0;flex:1 1 auto}.brand b,.brand span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand b{font-size:13px;letter-spacing:.3px}.brand span{font-size:10.5px;color:var(--muted);letter-spacing:.4px}
+.hdrR{margin-left:auto;display:flex;align-items:center;gap:8px;flex:0 0 auto}.who{margin-left:0;gap:8px}
+#whoTxt{max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;font-weight:600}
+main{padding-bottom:calc(110px + env(safe-area-inset-bottom))}
+.empNav{bottom:calc(9px + env(safe-area-inset-bottom));z-index:25}
+.btn{background:linear-gradient(135deg,#183a93,#2b5fd6);border-radius:12px;box-shadow:0 4px 12px rgba(24,58,147,.28)}
+.btn:hover{background:linear-gradient(135deg,#142f78,#244fb5)}
+.btn.sec{background:rgba(24,58,147,.08);color:#183a93;box-shadow:none}.btn.sec:hover{background:rgba(24,58,147,.15)}
+.btn.good{background:#e4f7ef;color:#14835d;box-shadow:none}.btn.bad{background:#ffeaec;color:#b94351}
+input,select,textarea{background:rgba(255,255,255,.85);border-color:rgba(24,58,147,.18);border-radius:12px}
+input:focus,select:focus,textarea:focus,button:focus-visible{outline:2px solid #27cdff;outline-offset:1px}
+.tabs{background:rgba(24,58,147,.06);border-color:rgba(24,58,147,.12);border-radius:16px;padding:5px}
+.tabs button{border-radius:12px;font-weight:700}.tabs button.on{background:#fff;color:#183a93;box-shadow:0 2px 10px rgba(24,58,147,.14)}
+th{background:rgba(24,58,147,.05)}.tw{background:rgba(255,255,255,.55);max-width:100%}
+.stat{background:rgba(255,255,255,.7);border-color:rgba(24,58,147,.10);border-top:3px solid #27cdff}.stat.wa{border-top-color:#d92aa1}.stat.er{border-top-color:#df5965}.stat.ok{border-top-color:#18a77a}
+.empNav button.on{color:#183a93;background:rgba(24,58,147,.09)}
+.m-logo{background:linear-gradient(135deg,#183a93,#27cdff 60%,#d92aa1)}
+.m-nav button{background:rgba(255,255,255,.55);border-color:rgba(24,58,147,.12)}
+.m-nav button.active{background:rgba(24,58,147,.09);border-color:rgba(24,58,147,.25);color:#183a93;box-shadow:inset 3px 0 #d92aa1}
+.m-primary{background:#183a93}.m-pill{color:#183a93;border-color:rgba(24,58,147,.25);background:rgba(24,58,147,.07)}
+.m-bar span{background:linear-gradient(90deg,#27cdff,#183a93)}.m-dot{background:#27cdff}
+body.management-mode{background:radial-gradient(900px 520px at 6% -8%,rgba(39,205,255,.28),transparent 60%),radial-gradient(800px 520px at 100% 0,rgba(217,42,161,.16),transparent 60%),#eef2fb;background-attachment:fixed}
+.m-module .tw,.tw{-webkit-overflow-scrolling:touch}
+.dlRow{align-items:center}.dlRow .btn.sm{white-space:nowrap}
+/* login */
+.authwrap{max-width:460px;margin:22px auto 0}
+.loginCard{padding:28px 26px}
+.lcBrand{display:flex;gap:13px;align-items:center;margin-bottom:20px;min-width:0}
+.lcBrand svg{flex:none;border-radius:13px;box-shadow:0 6px 16px rgba(24,58,147,.22)}
+.lcBrand b{display:block;font-size:15px;letter-spacing:.3px}.lcBrand span{display:block;font-size:10.5px;letter-spacing:1.8px;color:var(--muted)}
+.pill{display:inline-flex;align-items:center;gap:7px;font-size:10.5px;font-weight:700;letter-spacing:1px;color:#183a93;background:rgba(24,58,147,.07);border:1px solid rgba(24,58,147,.18);padding:5px 12px;border-radius:99px}
+.pill:before{content:"";width:7px;height:7px;border-radius:50%;background:#18a77a}
+.loginCard h1{font-size:32px;line-height:1.1;margin:16px 0 6px;letter-spacing:-.8px}
+.loginCard .sub{font-size:13px;margin-bottom:18px}.loginCard .tabs{margin-bottom:16px}
+#authTabs button{flex:1;padding:12px 10px;font-size:14px}
+.hintTop{font-size:12px;color:var(--muted);margin:0 0 4px}
+.pwWrap{position:relative}.pwWrap input{padding-right:48px}
+.eye{position:absolute;right:5px;top:50%;transform:translateY(-50%);width:38px;height:38px;border:0;background:transparent;color:var(--muted);cursor:pointer;border-radius:10px;display:grid;place-items:center}
+.eye:hover{background:rgba(24,58,147,.08);color:#183a93}
+.loginCard .full{padding:14px;font-size:15px;border-radius:14px;margin-top:20px}
+.fine{text-align:center;font-size:12px;color:var(--muted);margin:14px 0 0;line-height:1.7}
+.lnk{background:none;border:0;padding:0;font:inherit;font-weight:700;color:#183a93;cursor:pointer;text-decoration:underline}
+@media(max-width:760px){.authwrap{margin-top:8px}.loginCard{padding:22px 18px}.loginCard h1{font-size:28px}}
+@media(max-width:480px){#whoTxt{display:none}.brand span{font-size:9.5px}}
+/* dark */
+body.dark-mode{--ink:#e8ecf7;--muted:#9aa7c7;--line:rgba(255,255,255,.12);--blue:#8fb0ff;color:#e8ecf7;background:radial-gradient(900px 520px at 6% -8%,rgba(39,205,255,.16),transparent 60%),radial-gradient(800px 520px at 100% 0,rgba(217,42,161,.16),transparent 60%),#0a1128;background-attachment:fixed}
+body.dark-mode :is(.card,.m-panel,.m-metric,.m-module,.empNav,header,.m-sidebar,dialog){background:linear-gradient(180deg,rgba(34,46,90,.74),rgba(18,26,54,.64));border-color:rgba(255,255,255,.12);box-shadow:0 10px 30px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.08);color:#e8ecf7}
+body.dark-mode :is(input,select,textarea,.cutoffRow select,.m-toolbar select){background:rgba(255,255,255,.07);color:#e8ecf7;border-color:rgba(255,255,255,.16)}
+body.dark-mode :is(label,.m-title,.m-nav button,.stat b,.m-metric b,.lcBrand b){color:#e8ecf7}
+body.dark-mode th{background:rgba(255,255,255,.06);color:#aab6d6}body.dark-mode .tw{background:rgba(255,255,255,.03)}
+body.dark-mode :is(.tabs,.stat,.dayCell,.profileHead,.calendar){background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)}
+body.dark-mode :is(.tabs button.on,.empNav button.on,.m-nav button.active){background:rgba(143,176,255,.18);color:#c3d4ff}
+body.dark-mode :is(.m-nav button,.m-bottom-actions button){background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12);color:#cfd8f0}
+body.dark-mode :is(.btn.sec,.lnk,.pill){background:rgba(143,176,255,.16);color:#c3d4ff;border-color:transparent}body.dark-mode .lnk{background:none;text-decoration:underline}
+body.dark-mode :is(.stat.wa){background:rgba(217,42,161,.12)}body.dark-mode .stat.ok{background:rgba(24,167,122,.14)}body.dark-mode .stat.er{background:rgba(223,89,101,.14)}
+body.dark-mode code{background:rgba(255,255,255,.1)}body.dark-mode .m-eyebrow,body.dark-mode .m-subtitle,body.dark-mode .m-muted{color:#9aa7c7}
 </style>
-<meta name="theme-color" content="#eaf5fb">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="BESI Portal">
-<link rel="manifest" href="./manifest.webmanifest">
-<link rel="apple-touch-icon" href="./icons/icon-192.png">
 </head>
 <body>
 <header>
   <div class="logo"><svg viewBox="0 0 40 40" width="38" height="38" aria-hidden="true"><rect width="40" height="40" rx="9" fill="#fff"/><path d="M9 6h12a9 9 0 0 1 0 14L9 20z" fill="#183a93"/><path d="M9 20l14 0a9 9 0 0 1 0 14H9z" fill="#d92aa1"/><path d="M9 12l12 8-12 8z" fill="#27cdff"/></svg></div>
-  <div class="brand wm"><b>BetterEdge</b><span>SOLUTIONS INC. | EMPLOYEE PORTAL</span></div>
-  <div class="who" aria-hidden="true"></div>
+  <div class="brand"><b>BETTER EDGE SOLUTIONS INC.</b><span>Sorter attendance portal</span></div>
+  <div class="hdrR"><div class="who hide" id="who"><span id="whoTxt"></span><button class="btn sec sm" onclick="logout()">Log out</button></div><button class="btn sec sm" id="darkBtn" onclick="toggleDark()">&#9680; Dark</button></div>
 </header>
 <main>
 
 <!-- AUTH -->
-<section id="auth" class="authgrid auth-screen"><div class="card authcard">
-  <div class="auth-brand"><div class="auth-mark">B</div><div><b>BETTER EDGE SOLUTIONS INC.</b><span>SORTER ATTENDANCE PORTAL</span></div></div>
-  <div class="secure-tag"><i></i> SECURE ACCESS</div>
-  <div class="auth-intro"><h1>Welcome back</h1><p>Sign in to record attendance and view your cutoff details.</p></div>
-  <div class="tabs auth-role-tabs" id="authTabs"><button class="on" data-t="aLogin">Sorter</button><button data-t="aHR">Management</button></div>
-  <div id="aLogin"><p class="sub auth-help">Use the email and six-digit PIN provided during registration.</p>
-    <label>Email address</label><input id="le" type="email" autocomplete="username" placeholder="Your last used email will appear here"><p class="remember-note" id="rememberEmailNote">Your last sorter email is remembered on this device.</p>
-    <label>Sorter PIN</label><input id="lp" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" autocomplete="current-password" placeholder="Enter your 6-digit PIN">
-    <button class="btn full" onclick="empLogin(this)">Sign in to attendance</button>
-    <p class="auth-footnote">Need help accessing your account? Contact management.</p>
-    <p class="register-prompt">New sorter? <a href="#register" onclick="showRegister(true);return false">Register here.</a></p>
+<section id="auth" class="authwrap"><div class="card loginCard">
+  <div class="lcBrand"><svg viewBox="0 0 40 40" width="46" height="46" aria-hidden="true"><rect width="40" height="40" rx="9" fill="#fff"/><path d="M9 6h12a9 9 0 0 1 0 14L9 20z" fill="#183a93"/><path d="M9 20l14 0a9 9 0 0 1 0 14H9z" fill="#d92aa1"/><path d="M9 12l12 8-12 8z" fill="#27cdff"/></svg><div><b>BETTER EDGE SOLUTIONS INC.</b><span>SORTER ATTENDANCE PORTAL</span></div></div>
+  <span class="pill">SECURE ACCESS</span>
+  <h1 id="authH">Welcome back</h1>
+  <p class="sub" id="authSub">Sign in to record attendance and view your cutoff details.</p>
+  <div class="tabs" id="authTabs"><button class="on" data-t="aLogin">Sorter</button><button data-t="aHR">Management</button></div>
+  <div id="aLogin">
+    <div id="sLog">
+      <p class="hintTop">Use the email and PIN provided by management.</p>
+      <label for="le">Email</label><input id="le" type="email" autocomplete="username" placeholder="name@email.com">
+      <label for="lp">6-digit PIN</label><div class="pwWrap"><input id="lp" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" autocomplete="off" placeholder="Enter your PIN"><button type="button" class="eye" aria-label="Show or hide" onclick="togglePw('lp')"></button></div>
+      <button class="btn full" onclick="empLogin(this)">Sign in to attendance</button>
+      <p class="fine">Contact management to change your PIN.<br>New sorter? <button type="button" class="lnk" onclick="showReg(true)">Register here.</button></p>
+    </div>
+    <div id="aReg" class="hide">
+      <label for="rl">LDC</label><select id="rl"><option value="">Select LDC</option><option value="LDC1">LDC 1</option><option value="LDC2">LDC 2</option></select>
+      <label for="rn">Full name</label><input id="rn" placeholder="First and last name (as in master list)">
+      <label for="re">Email</label><input id="re" type="email" placeholder="name@email.com">
+      <label for="rp">Create 6-digit PIN</label><div class="pwWrap"><input id="rp" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" autocomplete="off" placeholder="Create your PIN"><button type="button" class="eye" aria-label="Show or hide" onclick="togglePw('rp')"></button></div><div class="hint">Use exactly six numbers. Do not share your PIN.</div>
+      <label for="rc">Confirm PIN</label><div class="pwWrap"><input id="rc" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" autocomplete="off" placeholder="Re-enter your PIN"><button type="button" class="eye" aria-label="Show or hide" onclick="togglePw('rc')"></button></div>
+      <button class="btn full" onclick="register(this)">Create account</button>
+      <p class="fine">Already registered? <button type="button" class="lnk" onclick="showReg(false)">Sign in.</button></p>
+    </div>
   </div>
-  <div id="aReg" class="hide"><h2>Create your sorter account</h2><p class="sub">Register using the name on your employee master list.</p>
-    <label>LDC</label><select id="rl"><option value="">Select LDC</option><option value="LDC1">LDC 1</option><option value="LDC2">LDC 2</option></select>
-    <label>Full name</label><input id="rn" placeholder="First and last name">
-    <label>Email address</label><input id="re" type="email" placeholder="you@example.com">
-    <label>Create 6-digit PIN</label><input id="rp" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" autocomplete="new-password" placeholder="Create your sorter PIN"><div class="hint">Use exactly six numbers. Keep your PIN private.</div>
-    <label>Confirm 6-digit PIN</label><input id="rc" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" autocomplete="new-password" placeholder="Re-enter your PIN">
-    <button class="btn full" onclick="register(this)">Create account</button><p class="register-prompt"><a href="#login" onclick="showRegister(false);return false">Back to sorter login</a></p></div>
-  <div id="aHR" class="hide"><h2>Management sign in</h2><p class="sub">Authorized management access only.</p>
-    <label>Username</label><input id="hu" autocomplete="username" placeholder="Enter your username">
-    <label>Password</label><input id="hp" type="password" autocomplete="current-password" placeholder="Enter your password">
-    <button class="btn full" onclick="hrLogin(this)">Sign in to management</button></div>
+  <div id="aHR" class="hide">
+    <p class="hintTop">For authorized management staff only.</p>
+    <label for="hu">Username</label><input id="hu" autocomplete="username" placeholder="Username">
+    <label for="hp">Password</label><div class="pwWrap"><input id="hp" type="password" autocomplete="current-password" placeholder="Enter your password"><button type="button" class="eye" aria-label="Show or hide" onclick="togglePw('hp')"></button></div>
+    <button class="btn full" onclick="hrLogin(this)">Sign in to management</button>
+  </div>
   <div id="authMsg"></div>
 </div></section>
 
 <!-- EMPLOYEE -->
 <section id="emp" class="hide">
  <div class="card empTop"><h2 id="eName"></h2><p id="eMeta"></p></div>
- <div id="eDtr" class="card"><h3>My DTR</h3><div class="cutoffRow"><div class="cutoffSelectWrap"><label for="ec">Select cutoff period</label><select id="ec" aria-label="Select DTR cutoff period"></select></div><span class="cutoffAutoNote">Calendar updates automatically when you change the cutoff.</span></div><div id="eDtrBody"><div class="empty">Loading your latest cutoff calendar…</div></div></div>
+ <div id="eDtr" class="card"><h3>My DTR</h3><div class="cutoffRow"><select id="ec"></select><button class="btn" onclick="loadMyDtr(this)">View</button></div><div id="eDtrBody"><div class="empty">Select a cutoff and tap View.</div></div></div>
  <div id="eFile" class="card hide"><h3>Absent filing</h3><div class="row"><div><label>Type</label><select id="ft" onchange="$('fdw').classList.toggle('hide',this.value!=='LEAVE')"><option value="ABSENT">Absent (1 day)</option><option value="LEAVE">Leave (multi-day)</option></select></div><div><label>Start date</label><input id="fs" type="date"></div><div id="fdw" class="hide"><label>Days (max 14)</label><input id="fd" type="number" min="1" max="14" value="1"></div></div><label>Reason</label><textarea id="fr" maxlength="500"></textarea><button class="btn" style="margin-top:14px" onclick="submitFiling(this)">Submit filing</button><div id="fMsg"></div><h3 style="margin-top:24px">My filings</h3><div id="eListBody"></div></div>
  <div id="ePw" class="card hide" style="max-width:520px"><h3>Change sorter PIN</h3><p class="sub">Update your six-digit PIN using your current PIN.</p><div id="ePwBox"></div></div>
- <div id="eProfile" class="card hide"><div class="row" style="align-items:center"><div><h3 style="margin:0">My profile</h3><p class="sub" style="margin:4px 0 0">Personal and emergency contact details.</p></div><div class="fit"></div></div><div class="profileHead"><div class="avatar" id="profileAvatar">BE</div><div><strong id="profileNameHead">Employee profile</strong><small id="profileEmailHead"></small></div></div>
- <div class="row"><div><label>Full name</label><input id="pName" readonly></div><div><label>Date of birth</label><input id="pDob" type="date" readonly disabled></div></div>
- <div class="row"><div><label>Contact number</label><input id="pPhone" readonly disabled></div><div><label>Emergency contact</label><input id="pEmergency" readonly disabled></div></div>
- <div class="row"><div><label>Emergency contact number</label><input id="pEmergencyPhone" readonly disabled></div><div><label>Address</label><textarea id="pAddress" readonly disabled></textarea></div></div>
- <div class="profile-controls"><span class="profile-helper">Keep your contact and emergency details up to date.</span><div class="profile-buttons"><button class="btn" id="profileEditBtn" type="button" onclick="toggleProfileEdit()">Edit details</button><button class="btn hide" id="profileSaveBtn" type="button" onclick="saveProfile(this)">Save changes</button><button class="btn sec hide" id="profileCancelBtn" type="button" onclick="cancelProfileEdit()">Cancel</button></div></div>
- <div class="profile-settings">
-   <div class="profile-settings-heading"><b>App settings</b><span>Personalize and manage your portal</span></div>
-   <div class="profile-settings-actions">
-     <button class="profile-setting-btn" id="profileThemeToggle" type="button" onclick="toggleTheme()"><span class="setting-icon">◐</span><span><b id="profileThemeLabel">Dark mode</b><small id="profileThemeHint">Switch appearance</small></span><span class="setting-chevron">›</span></button>
-     <button class="profile-setting-btn install-app-btn hide" id="installAppBtn" type="button" onclick="installPortalApp()"><span class="setting-icon">＋</span><span><b>Install app</b><small>Add BESI to your phone home screen</small></span><span class="setting-chevron">›</span></button>
-     <button class="profile-setting-btn logout-setting" type="button" onclick="logout()"><span class="setting-icon">↪</span><span><b>Log out</b><small>Sign out of this sorter account</small></span><span class="setting-chevron">›</span></button>
-   </div>
- </div>
- <div id="profileMsg"></div></div>
+ <div id="eProfile" class="card hide"><div class="row" style="align-items:center"><div><h3 style="margin:0">My profile</h3><p class="sub" style="margin:4px 0 0">Personal and emergency contact details.</p></div><div class="fit"><button class="btn sec" id="profileEditBtn" onclick="toggleProfileEdit()">Edit details</button></div></div><div class="profileHead"><div class="avatar" id="profileAvatar">BE</div><div><strong id="profileNameHead">Employee profile</strong><small id="profileEmailHead"></small></div></div>
+ <div class="row"><div><label>Full name</label><input id="pName" readonly></div><div><label>Date of birth</label><input id="pDob" type="date" readonly></div></div>
+ <div class="row"><div><label>Contact number</label><input id="pPhone" readonly></div><div><label>Emergency contact</label><input id="pEmergency" readonly></div></div>
+ <div class="row"><div><label>Emergency contact number</label><input id="pEmergencyPhone" readonly></div><div><label>Address</label><textarea id="pAddress" readonly></textarea></div></div>
+ <div id="profileActions" class="hide" style="margin-top:14px"><button class="btn" onclick="saveProfile(this)">Save details</button> <button class="btn sec" onclick="cancelProfileEdit()">Cancel</button></div><div id="profileMsg"></div></div>
 </section>
 <nav id="empNav" class="empNav hide"><button class="on" data-t="eDtr"><span class="ico">▦</span>My DTR</button><button data-t="eFile"><span class="ico">▤</span>Absent filing</button><button data-t="ePw"><span class="ico">♙</span>PIN</button><button data-t="eProfile"><span class="ico">♧</span>My profile</button></nav>
 
@@ -497,32 +233,20 @@ body.dark-mode .remember-note{color:#a8b9cb}
   <div class="m-brand"><div class="m-logo">B</div><div><b>Better Edge Solutions</b><small>Employee portal</small></div></div>
   <div class="m-side-label">Management Dashboard</div>
   <nav class="m-nav" id="managementNav"><button data-panel="hE"><span class="m-ico">♙</span>Employees</button><button data-panel="hD"><span class="m-ico">◷</span>DTR</button><button data-panel="hF" class="active"><span class="m-ico">▣</span>Filings</button><button data-panel="hP"><span class="m-ico">⚙</span>Management account</button></nav>
-  <div class="m-side-bottom"><div class="m-bottom-actions"><button data-theme-action onclick="toggleTheme()">◐ Dark</button><button onclick="logout()">Log out</button></div></div>
+  <div class="m-side-bottom"><div class="m-bottom-actions"><button onclick="toggleDark()">◐ Dark</button><button onclick="logout()">Log out</button></div></div>
  </aside>
  <div class="m-main">
-  <section class="m-welcome">
-   <div class="m-welcome-copy"><div class="m-welcome-kicker">BETTER EDGE SOLUTIONS INC. · MANAGEMENT</div><h1>Management workspace</h1><p>People, attendance and employee requests — thoughtfully organized in one place.</p></div>
-   <div class="m-welcome-mark" aria-hidden="true">B</div>
-  </section>
   <div class="m-module" id="managementExistingModules">
   <div class="tabs hide" id="hrTabs"><button class="on" data-t="hF">Filings</button><button data-t="hE">Employees</button><button data-t="hD">DTR</button><button data-t="hA" id="hAtab" class="hide">HR accounts</button><button data-t="hP">Password</button></div>
-  <div id="hF"><div class="row" style="margin-bottom:14px"><div class="m-search-wrap"><span class="m-search-icon">⌕</span><input class="m-search" id="filingSearch" type="search" placeholder="Search employee, reference or filing reason..." oninput="renderFilings()"></div><div class="fit"><label>LDC</label><select id="hfl" onchange="loadFilings()"><option value="">All LDCs</option><option>LDC1</option><option>LDC2</option></select></div>
+  <div id="hF"><div class="row" style="margin-bottom:14px"><div class="fit"><label>LDC</label><select id="hfl" onchange="loadFilings()"><option value="">All LDCs</option><option>LDC1</option><option>LDC2</option></select></div>
     <div class="fit"><label>Status</label><select id="hfs" onchange="renderFilings()"><option value="">All</option><option>PENDING</option><option>APPROVED</option><option>REJECTED</option></select></div>
     <div class="fit"><label>Show</label><select id="hfa" onchange="renderFilings()"><option value="cur">Current cutoff</option><option value="arc">Archive</option><option value="all">All</option></select></div></div>
-    <div class="grid" id="hStats"></div><div id="hFBody"></div></div>
-  <div id="hE" class="hide card">
-    <div class="row">
-      <div class="m-search-wrap"><span class="m-search-icon">⌕</span><input class="m-search" id="employeeSearch" type="search" placeholder="Search name, employee ID, email or contact..." oninput="renderEmployees()"></div>
-      <div class="fit"><label>LDC</label><select id="hel" onchange="loadEmps()"><option value="">All LDCs</option><option>LDC1</option><option>LDC2</option></select></div>
-      <div class="fit"><label>Employee status</label><select id="hes" onchange="renderEmployees()"><option value="ACTIVE">Active</option><option value="INACTIVE">Archived (inactive)</option><option value="">All employees</option></select></div>
-      <div class="fit"><button class="btn sec" onclick="syncML(this)">↻ Sync master list</button></div>
-    </div>
-    <div class="m-search-meta" id="employeeCount">Search your employee directory</div>
-    <div class="m-add-panel"><h3>Add employee</h3><p class="m-muted">Create an employee record and assign their LDC and shift.</p>
-      <div class="row"><div><label>Full name</label><input id="an" placeholder="Enter employee full name"></div><div class="fit"><label>LDC</label><select id="al"><option>LDC1</option><option>LDC2</option></select></div><div class="fit"><label>Shift</label><select class="shiftSel" id="as"></select></div><div class="fit"><button class="btn" onclick="addEmp(this)">＋ Add employee</button></div></div>
-    </div>
-    <div id="hEBody"></div>
-  </div>
+    <div class="dlRow"><button class="btn sec sm" onclick="dlFilings()">Download filings (Excel)</button></div><div class="grid" id="hStats"></div><div id="hFBody"></div></div>
+  <div id="hE" class="hide card"><div class="row"><div class="fit"><label>LDC</label><select id="hel" onchange="loadEmps()"><option value="">All LDCs</option><option>LDC1</option><option>LDC2</option></select></div>
+    <div class="fit"><label>Show</label><select id="hes" onchange="loadEmps()"><option value="ACTIVE">Active</option><option value="INACTIVE">Archived (inactive)</option><option value="">All</option></select></div>
+    <div class="fit"><button class="btn sec" onclick="syncML(this)">Sync from master list</button></div></div>
+    <h3 style="margin-top:20px">Add employee</h3><div class="row"><div><label>Full name</label><input id="an"></div><div class="fit"><label>LDC</label><select id="al"><option>LDC1</option><option>LDC2</option></select></div><div class="fit"><label>Shift</label><select class="shiftSel" id="as"></select></div><div class="fit"><button class="btn" onclick="addEmp(this)">Add</button></div></div>
+    <div id="hEBody"></div></div>
   <div id="hD" class="hide card"><h3>DTR viewer</h3>
     <div class="row"><div><label>LDC</label><select id="dl" onchange="dtrLdc()"><option value="">Select LDC</option><option>LDC1</option><option>LDC2</option></select></div><div><label>Cutoff</label><select id="dc"></select></div><div><label>Employee</label><select id="de"></select></div></div>
     <div class="row" style="margin-top:12px"><div class="fit"><button class="btn" onclick="hrDtr(this)">View employee DTR</button></div><div class="fit"><button class="btn sec" onclick="hrSummary(this)">View LDC summary</button></div></div><div id="hDBody"></div></div>
@@ -573,34 +297,9 @@ function tabs(id){const bar=$(id);bar.addEventListener('click',e=>{const t=e.tar
   const hooks={eList:loadMine,eDtr:initDtr,hE:loadEmps,hD:()=>{},hA:loadHR};hooks[t]&&hooks[t]();$('authMsg').innerHTML=''})}
 ['authTabs','hrTabs'].forEach(tabs);
 function openTab(barId,t){[...$(barId).children].find(b=>b.dataset.t===t).click()}
-function showRegister(on){$('aLogin').classList.toggle('hide',!!on);$('aReg').classList.toggle('hide',!on);$('aHR').classList.add('hide');$('authMsg').innerHTML='';if(on){$('authTabs').querySelector('[data-t="aLogin"]').classList.add('on');$('authTabs').querySelector('[data-t="aHR"]').classList.remove('on')}}
-function syncThemeControls(){
-  const dark=document.body.classList.contains('dark-mode');
-  const label=$('profileThemeLabel'),hint=$('profileThemeHint');
-  if(label)label.textContent=dark?'Switch to light mode':'Switch to dark mode';
-  if(hint)hint.textContent=dark?'Light appearance is active':'Dark appearance is active';
-  document.querySelectorAll('.m-bottom-actions button[data-theme-action]').forEach(b=>b.textContent=dark?'☀ Light':'◐ Dark');
-}
-function toggleTheme(){
-  document.body.classList.toggle('dark-mode');
-  const dark=document.body.classList.contains('dark-mode');
-  try{localStorage.setItem('besi-theme',dark?'dark':'light')}catch(e){}
-  syncThemeControls();
-}
-try{if(localStorage.getItem('besi-theme')==='dark')document.body.classList.add('dark-mode')}catch(e){}
-function show(which){
-  ['auth','emp','hr'].forEach(s=>$(s).classList.toggle('hide',s!==which));
-  $('empNav').classList.toggle('hide',which!=='emp');
-  const who=$('whoTxt');if(who)who.classList.add('hide');
-  const headerLogout=$('headerLogout');if(headerLogout)headerLogout.classList.add('hide');
-}
-function logout(m){
-  S.tok=null;S.role=null;S.mustChange=false;document.body.classList.remove('management-mode');show('auth');
-  // Keep the last sorter email on this device; never remember the PIN.
-  ['lp','hu','hp'].forEach(i=>{const el=$(i);if(el)el.value=''});
-  $('authMsg').innerHTML=m?`<div class="msg er">${esc(m)}</div>`:'';
-  $('lp').focus();
-}
+function show(which){['auth','emp','hr'].forEach(s=>$(s).classList.toggle('hide',s!==which));$('empNav').classList.toggle('hide',which!=='emp');$('who').classList.toggle('hide',which==='auth')}
+function logout(m){S.tok=null;S.role=null;S.mustChange=false;document.body.classList.remove('management-mode');show('auth');
+  ['le','lp','hu','hp'].forEach(i=>$(i).value='');$('authMsg').innerHTML=m?`<div class="msg er">${esc(m)}</div>`:''}
 
 function pwForm(box,fn){$(box).innerHTML=`<label>Current password</label><input id="${box}o" type="password"><label>New password</label><input id="${box}n" type="password"><div class="hint">At least 8 characters, with letters and numbers.</div><label>Confirm new password</label><input id="${box}c" type="password"><button class="btn" style="margin-top:16px" id="${box}b">Update password</button><div id="${box}m"></div>`;
   $(box+'b').onclick=async()=>{if($(box+'n').value!==$(box+'c').value){msg(box+'m',{message:'New passwords do not match.'});return}
@@ -609,55 +308,17 @@ function pwForm(box,fn){$(box).innerHTML=`<label>Current password</label><input 
 function forceChange(tabsId,pwTab,box){S.mustChange=true;openTab(tabsId,pwTab);
   $(box).insertAdjacentHTML('beforebegin',`<div class="msg er" id="${box==='ePwBox'?'eNote':'hNote'}">You are using a temporary password. Set a new one to continue.</div>`)}
 
-/* ---------- DEVICE PREFERENCES / PWA ---------- */
-function rememberSorterEmail(email){
-  const value=String(email||'').trim();
-  if(!value)return;
-  try{localStorage.setItem('besi-last-sorter-email',value)}catch(e){}
-  $('le').value=value;
-  const note=$('rememberEmailNote');if(note)note.textContent='Last used sorter email saved on this device.';
-}
-(function restoreSorterEmail(){
-  try{
-    const saved=localStorage.getItem('besi-last-sorter-email');
-    if(saved){$('le').value=saved;$('rememberEmailNote').textContent='Last used email remembered. Enter your six-digit PIN.'}
-  }catch(e){}
-  syncThemeControls();
-})();
-let deferredInstallPrompt=null;
-window.addEventListener('beforeinstallprompt',event=>{
-  event.preventDefault();deferredInstallPrompt=event;
-  const button=$('installAppBtn');if(button)button.classList.remove('hide');
-});
-window.addEventListener('appinstalled',()=>{
-  deferredInstallPrompt=null;
-  const button=$('installAppBtn');if(button){button.classList.add('hide')}
-});
-async function installPortalApp(){
-  if(deferredInstallPrompt){
-    deferredInstallPrompt.prompt();
-    await deferredInstallPrompt.userChoice;
-    deferredInstallPrompt=null;
-    $('installAppBtn').classList.add('hide');
-    return;
-  }
-  $('profileMsg').innerHTML='<div class="msg info">To install on iPhone, open this portal in Safari and choose Share → Add to Home Screen. On Android, open the browser menu and choose Install app or Add to Home screen.</div>';
-}
-if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
-}
-
 /* ---------- AUTH ---------- */
 async function empLogin(b){if(!/^\d{6}$/.test($('lp').value)){msg('authMsg',{message:'Enter your 6-digit PIN.'});return}const r=await run(b,'employeeLogin',$('le').value,$('lp').value);
   if(!r.success){msg('authMsg',r);return}
-  S.tok=r.token;S.role='emp';const e=r.employee;S.employeeEmail=e.email||$('le').value;rememberSorterEmail(S.employeeEmail);
+  S.tok=r.token;S.role='emp';const e=r.employee;
   $('eName').textContent=e.employeeName;$('eMeta').textContent=`${e.employeeId}  |  ${e.ldc.replace('LDC','LDC ')}  |  Shift: ${e.shiftLabel}`;
   $('whoTxt').textContent=e.employeeName;$('fs').value=new Date().toISOString().slice(0,10);
-  pinForm();show('emp');openEmpTab('eDtr');loadProfile();}
+  pinForm();show('emp');openEmpTab('eDtr');loadProfile();initDtr();}
 async function register(b){if(!/^\d{6}$/.test($('rp').value)){msg('authMsg',{message:'PIN must be exactly six digits.'});return}if($('rp').value!==$('rc').value){msg('authMsg',{message:'PINs do not match.'});return}const r=await run(b,'registerEmployee',$('rl').value,$('rn').value,$('re').value,$('rp').value,$('rc').value);
   if(!r.success){msg('authMsg',r);return}
-  $('le').value=$('re').value;rememberSorterEmail($('re').value);['rl','rn','re','rp','rc'].forEach(i=>$(i).value='');
-  openTab('authTabs','aLogin');showRegister(false);msg('authMsg',r,`Welcome, ${r.employeeName}. Your account is ready. Log in to continue.`)}
+  $('le').value=$('re').value;['rl','rn','re','rp','rc'].forEach(i=>$(i).value='');
+  showReg(false);msg('authMsg',r,`Welcome, ${r.employeeName}. Your account is ready. Log in to continue.`)}
 async function hrLogin(b){const r=await run(b,'hrLogin',$('hu').value,$('hp').value);
   if(!r.success){msg('authMsg',r);return}
   S.tok=r.token;S.role='hr';S.isOwner=r.isOwner;$('whoTxt').textContent=r.hrName+(r.isOwner?' (Owner)':'');
@@ -688,11 +349,23 @@ const arcOk=(x,m)=>m==='all'||(m==='arc'?isArchFiling(x):!isArchFiling(x));
 
 /* ---------- DOWNLOADS ---------- */
 let LASTDTR=null,DTRCTX={},LASTSUM=null;
-const xmlEsc=v=>String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-function saveExcel(name,sheets){const sheetXml=sheets.map((sh,i)=>`<Worksheet ss:Name="${xmlEsc(sh.name).slice(0,31)}"><Table>${sh.rows.map(row=>`<Row>${row.map(v=>{const n=typeof v==='number'&&Number.isFinite(v);return `<Cell><Data ss:Type="${n?'Number':'String'}">${xmlEsc(v)}</Data></Cell>`}).join('')}</Row>`).join('')}</Table></Worksheet>`).join('');const xml=`<?xml version="1.0"?><Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">${sheetXml}</Workbook>`;const blob=new Blob([xml],{type:'application/vnd.ms-excel;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name.replace(/[^\w.-]+/g,'_')+'.xls';document.body.append(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500)}
-const DLROW=f=>`<div class="dlRow"><button class="btn sec sm" onclick="${f}">Download Excel workbook</button><button class="btn sec sm" onclick="window.print()">Print / Save PDF</button></div>`;
-function dlDtr(){const r=LASTDTR;if(!r||!r.success)return;const t=r.totals||{},c=DTRCTX;const summary=[['BETTER EDGE SOLUTIONS INC.','DAILY TIME RECORD'],['Employee',c.name],['Details',c.meta],['Cutoff',r.tab||c.cut],[],['Days worked','Total hours','OT hours','Late (min)','Undertime (min)','Absences'],[t.daysRendered,t.hours,t.overtimeHours||0,t.lateMinutes||0,t.undertimeMinutes||0,t.absences||0]];const attendance=[['Date','Day','Time in','Time out','Hours','Late','Undertime','Status','Filing'],...(r.rows||[]).map(x=>[x.date,x.day,x.timeIn,x.timeOut,x.hours,x.late,x.undertime,x.status,x.filing])];saveExcel('BESI_DTR_'+c.name+'_'+(r.tab||c.cut),[{name:'DTR Summary',rows:summary},{name:'Attendance',rows:attendance}])}
-function dlSummary(){const s=LASTSUM;if(!s)return;saveExcel('BESI_Attendance_Summary_'+s.ldc+'_'+s.cut,[{name:'Attendance Summary',rows:[['BETTER EDGE SOLUTIONS INC.','ATTENDANCE SUMMARY',s.ldc,s.cut],[],['ID','Name','Shift','Days','Hours','Late (min)','Undertime (min)','Absences','Leaves'],...s.rows.map(x=>x.found?[x.employeeId,x.employeeName,x.shiftLabel,x.totals.daysRendered,x.totals.hours,x.totals.lateMinutes,x.totals.undertimeMinutes,x.totals.absences,x.totals.leaves]:[x.employeeId,x.employeeName,x.shiftLabel,'Not found in this cutoff'])]}])}
+const csvCell=v=>'"'+String(v==null?'':v).replace(/"/g,'""')+'"';
+function saveCsv(name,rows){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+rows.map(r=>r.map(csvCell).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8'}));a.download=name.replace(/[^\w.-]+/g,'_')+'.csv';document.body.append(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500)}
+const DLROW=f=>`<div class="dlRow"><button class="btn sm" onclick="${f}">Download Excel</button><button class="btn sec sm" onclick="window.print()">Print or save as PDF</button></div>`;
+function saveXlsx(name,sheets){
+  if(!window.XLSX){saveCsv(name,sheets[0].rows);dlg('Downloaded as CSV','The Excel library could not load (check your internet connection), so a CSV file was saved instead. It opens in Excel too.');return}
+  const wb=XLSX.utils.book_new();
+  sheets.forEach(s=>{const ws=XLSX.utils.aoa_to_sheet(s.rows);ws['!cols']=(s.widths||[]).map(w=>({wch:w}));XLSX.utils.book_append_sheet(wb,ws,s.name.slice(0,31))});
+  XLSX.writeFile(wb,name.replace(/[^\w.-]+/g,'_')+'.xlsx')}
+function dlDtr(){const r=LASTDTR;if(!r||!r.success)return;const t=r.totals||{},c=DTRCTX,cut=r.tab||c.cut;
+  saveXlsx('DTR_'+c.name+'_'+cut,[
+   {name:'Summary',widths:[22,34,12,12,16,12],rows:[['Better Edge Solutions Inc.'],['Daily Time Record'],[],['Employee',c.name],['Details',c.meta],['Cutoff',cut],[],['Days worked','Total hours','OT hours','Late (min)','Undertime (min)','Absences'],[t.daysRendered||0,t.hours||0,t.overtimeHours||0,t.lateMinutes||0,t.undertimeMinutes||0,t.absences||0]]},
+   {name:'Attendance',widths:[12,8,11,11,9,9,11,14,24],rows:[['Date','Day','Time in','Time out','Hours','Late','Undertime','Status','Filing'],...(r.rows||[]).map(x=>[x.date,x.day,x.timeIn,x.timeOut,x.hours,x.late,x.undertime,x.status,x.filing])]}])}
+function dlSummary(){const s=LASTSUM;if(!s)return;
+  saveXlsx('DTR_summary_'+s.ldc+'_'+s.cut,[{name:'LDC summary',widths:[12,30,14,8,9,11,15,10,8],rows:[['Better Edge Solutions Inc. - DTR summary',s.ldc,s.cut],[],['ID','Name','Shift','Days','Hours','Late (min)','Undertime (min)','Absences','Leaves'],...s.rows.map(x=>x.found?[x.employeeId,x.employeeName,x.shiftLabel,x.totals.daysRendered,x.totals.hours,x.totals.lateMinutes,x.totals.undertimeMinutes,x.totals.absences,x.totals.leaves]:[x.employeeId,x.employeeName,x.shiftLabel,'Not found in this cutoff'])]}])}
+function dlFilings(){const f=$('hfs').value,rows=FIL.filter(x=>(!f||x.status===f)&&arcOk(x,$('hfa').value));
+  if(!rows.length){dlg('Nothing to download','No filings match the current filters.');return}
+  saveXlsx('Filings_'+new Date().toISOString().slice(0,10),[{name:'Filings',widths:[16,18,26,12,8,10,12,12,6,36,11,18],rows:[['Reference','Filed','Employee','Employee ID','LDC','Type','Start','End','Days','Reason','Status','Action by'],...rows.map(x=>[x.reference,x.timestamp,x.employeeName,x.employeeId,x.ldc,x.filingType,x.startDate,x.endDate,x.days,x.reason,x.status,x.actionBy])]}])}
 
 /* ---------- EMPLOYEE ---------- */
 async function submitFiling(b){const r=await run(b,'submitEmployeeFiling',S.tok,$('ft').value,$('fs').value,$('fd').value,$('fr').value);
@@ -701,73 +374,15 @@ async function loadMine(){$('eListBody').innerHTML='<div class="empty">Loading..
   if(!r.success){$('eListBody').innerHTML=`<div class="msg er">${esc(r.message)}</div>`;return}
   const cols=['Filed','Type','Start','End','Days','Reason','Status','Action by'],row=x=>`<tr><td>${esc(x.timestamp)}</td><td>${esc(x.filingType)}</td><td>${esc(x.startDate)}</td><td>${esc(x.endDate)}</td><td>${esc(x.days)}</td><td class="wrap">${esc(x.reason)}</td><td>${badge(x.status)}</td><td>${esc(x.actionBy)}</td></tr>`,cur=r.records.filter(x=>!isArchFiling(x)),old=r.records.filter(isArchFiling);
   $('eListBody').innerHTML=table(cols,cur.map(row),'No filings in the current cutoff.')+(old.length?`<details class="arc"><summary>Archived filings (${old.length})</summary>${table(cols,old.map(row),'')}</details>`:'')}
-let DTR_INIT_PROMISE=null;
-async function initDtr(){
-  if(DTR_INIT_PROMISE){await DTR_INIT_PROMISE;return}
-  if($('ec').options.length){if(!$('eDtrBody').dataset.loaded)await loadMyDtr();return}
-  DTR_INIT_PROMISE=(async()=>{
-    const r=await call('getCutoffTabs',S.tok);
-    if(!r.success){$('eDtrBody').innerHTML=`<div class="empty">DTR cutoff periods are temporarily unavailable. Please try again later.</div>`;return}
-    fillCut($('ec'),r.tabs||[]);
-    $('ec').onchange=()=>loadMyDtr();
-    if($('ec').value)await loadMyDtr();
-    else $('eDtrBody').innerHTML='<div class="empty">No cutoff periods are available yet.</div>';
-  })();
-  try{await DTR_INIT_PROMISE}finally{DTR_INIT_PROMISE=null}
-}
-function dtrView(r){
- LASTDTR=r;
- if(!r.success)return`<div class="msg er">${esc(r.message)}</div>`;
- const t=r.totals||{},rows=r.rows||[];
+async function initDtr(){if($('ec').options.length)return;const r=await call('getCutoffTabs',S.tok);
+  if(!r.success){$('eDtrBody').innerHTML=`<div class="msg er">${esc(r.message)}</div>`;return}
+  fillCut($('ec'),r.tabs)}
+function dtrView(r){LASTDTR=r;if(!r.success)return`<div class="msg er">${esc(r.message)}</div>`;const t=r.totals||{},rows=r.rows||[];
  const stat=(v,l,c='')=>`<div class="stat ${c}"><b>${esc(v??0)}</b><span>${l}</span></div>`;
- const parsed=rows.map(x=>{const raw=String(x.date||'').trim();let d=null;const iso=raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);if(iso)d=new Date(Number(iso[1]),Number(iso[2])-1,Number(iso[3]),12);else{const m=raw.match(/^([A-Za-z]{3})\s+(\d{1,2}),\s*(\d{4})$/);if(m){const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];d=new Date(Number(m[3]),months.indexOf(m[1]),Number(m[2]),12)}else{const parsedDate=new Date(raw);if(!isNaN(parsedDate))d=new Date(parsedDate.getFullYear(),parsedDate.getMonth(),parsedDate.getDate(),12)}}return{x,d}}).filter(z=>z.d&&!isNaN(z.d.getTime())).sort((a,b)=>a.d-b.d);
- let cal='';
- if(parsed.length){
-   const first=new Date(parsed[0].d.getFullYear(),parsed[0].d.getMonth(),parsed[0].d.getDate());
-   const last=new Date(parsed[parsed.length-1].d.getFullYear(),parsed[parsed.length-1].d.getMonth(),parsed[parsed.length-1].d.getDate());
-   const map={};parsed.forEach(z=>map[`${z.d.getFullYear()}-${String(z.d.getMonth()+1).padStart(2,'0')}-${String(z.d.getDate()).padStart(2,'0')}`]=z.x);
-   const monthLabel=d=>d.toLocaleDateString('en-PH',{month:'long',year:'numeric'});
-   let cursor=new Date(first),monthBlocks=[];
-   while(cursor<=last){
-     const monthStart=new Date(cursor.getFullYear(),cursor.getMonth(),1);
-     const monthEnd=new Date(cursor.getFullYear(),cursor.getMonth()+1,0);
-     const blockStart=new Date(Math.max(cursor.getTime(),first.getTime()));
-     const blockEnd=new Date(Math.min(monthEnd.getTime(),last.getTime()));
-     let cells=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(day=>`<div class="dtr-weekday">${day}</div>`).join('');
-     for(let n=0;n<blockStart.getDay();n++)cells+='<div class="dtr-blank" aria-hidden="true"></div>';
-     for(let day=new Date(blockStart);day<=blockEnd;day.setDate(day.getDate()+1)){
-       const key=`${day.getFullYear()}-${String(day.getMonth()+1).padStart(2,'0')}-${String(day.getDate()).padStart(2,'0')}`;
-       const x=map[key],st=String(x?.status||'').toUpperCase();
-       let cls='no-record',label=x?(x.status||'Recorded'):'No record';
-       if(st.includes('ABSENT'))cls='absent';
-       else if(st.includes('MISSING')||st.includes('NO TIME OUT'))cls='missing';
-       else if(st.includes('LATE')||Number(x?.late||0)>0)cls='late';
-       else if(st.includes('UNDERTIME')||Number(x?.undertime||0)>0)cls='undertime';
-       else if(st.includes('OVERTIME')||(Number(x?.overtime||0)>0))cls='overtime';
-       else if(x?.timeIn)cls='ontime';
-       const inTime=x?.timeIn?`In ${esc(x.timeIn)}`:'';
-       const outTime=x?.timeOut?`Out ${esc(x.timeOut)}`:'';
-       const hours=x?.hours?`${esc(x.hours)} hrs`:'';
-       cells+=`<div class="dtr-date ${cls}" title="${esc(label)}"><div class="dtr-date-top"><b>${day.getDate()}</b><span class="dtr-status-dot"></span></div><span class="dtr-status-label">${esc(label)}</span><small>${inTime}${inTime&&outTime?' · ':''}${outTime}</small>${hours?`<small class="dtr-hours">${hours}</small>`:''}</div>`;
-     }
-     monthBlocks.push(`<section class="dtr-month"><div class="dtr-month-title">${monthLabel(blockStart)} <span>${blockStart.getDate()}–${blockEnd.getDate()}</span></div><div class="dtr-calendar-grid">${cells}</div></section>`);
-     cursor=new Date(blockEnd.getFullYear(),blockEnd.getMonth()+1,1);
-   }
-   cal=monthBlocks.join('');
- }else{
-   cal='<div class="empty">No attendance dates are available for this cutoff.</div>';
- }
- return DLROW('dlDtr()')+
- `${r.shiftSet?'':`<div class="dtr-note">Your shift schedule has not been assigned yet. Attendance hours will still appear; late and undertime calculations will be available after Management assigns your shift.</div>`}
- <div class="grid">${stat(t.daysRendered,'Days worked')}${stat(t.hours,'Total hours')}${stat(t.overtimeHours||0,'OT hours','ok')}${stat(t.lateMinutes??0,'Late (min)','wa')}</div>
- <div class="calendar dtr-calendar">
-   <div class="dtr-calendar-heading"><div><span class="dtr-eyebrow">MY ATTENDANCE</span><div class="calHead">Attendance calendar · ${esc(r.tab||'Selected cutoff')}</div><p>Full cutoff view · Select another cutoff above to view a different period.</p></div><span class="dtr-calendar-icon">▦</span></div>
-   <div class="legend"><span><i class="dot" style="background:#17a879"></i>On time</span><span><i class="dot" style="background:#e99a35"></i>Late</span><span><i class="dot" style="background:#8262d8"></i>Undertime</span><span><i class="dot" style="background:#2589c3"></i>Overtime</span><span><i class="dot" style="background:#df5965"></i>Missing time out</span><span><i class="dot" style="background:#aab7c5"></i>No record</span></div>
-   ${cal}
- </div>
- <div class="grid">${stat(t.undertimeMinutes??0,'Undertime (min)','wa')}${stat(t.absences??0,'Absences','er')}</div>`;
-}
-async function loadMyDtr(b){if(!$('ec').value)return;DTRCTX={name:$('eName').textContent,meta:$('eMeta').textContent,cut:$('ec').value};$('eDtrBody').dataset.loaded='0';$('eDtrBody').innerHTML='<div class="empty">Loading selected cutoff calendar…</div>';const r=await run(b,'getMyDTR',S.tok,$('ec').value);$('eDtrBody').innerHTML=dtrView(r);$('eDtrBody').dataset.loaded=r.success?'1':'0'}
+ const parsed=rows.map(x=>({x,d:new Date(x.date+'T12:00:00')})).filter(z=>!isNaN(z.d));const first=parsed.length?new Date(parsed[0].d.getFullYear(),parsed[0].d.getMonth(),1):new Date();const last=parsed.length?new Date(parsed[parsed.length-1].d.getFullYear(),parsed[parsed.length-1].d.getMonth()+1,0):new Date();const map={};parsed.forEach(z=>map[z.d.getDate()]=z.x);
+ let cal=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(x=>`<div class="dayName">${x}</div>`).join('');for(let k=0;k<first.getDay();k++)cal+='<div></div>';for(let d=1;d<=last.getDate();d++){let x=map[d],st=String(x?.status||'').toUpperCase(),cl=st.includes('ABSENT')?'absent':st.includes('LATE')?'late':x?.timeIn?'present':'';cal+=`<div class="dayCell ${cl}"><b>${d}</b><small>${x?esc(x.timeIn||x.status||'—'):'—'}</small></div>`}
+ return DLROW('dlDtr()')+`${r.shiftSet?'':`<div class="msg er">No shift is set yet, so late and undertime cannot be computed. Ask HR to set it.</div>`}<div class="grid">${stat(t.daysRendered,'Days worked')}${stat(t.hours,'Total hours')}${stat(t.overtimeHours||0,'OT hours','ok')}${stat(t.lateMinutes??0,'Late (min)','wa')}</div><div class="calendar"><div class="calHead">Attendance calendar · ${esc(r.tab||'Selected cutoff')}</div><div class="legend"><span><i class="dot" style="background:#17a879"></i>On time</span><span><i class="dot" style="background:#e99a35"></i>Late</span><span><i class="dot" style="background:#8262d8"></i>Undertime</span><span><i class="dot" style="background:#2589c3"></i>Overtime</span><span><i class="dot" style="background:#df5965"></i>Missing time out</span></div><div class="calendarGrid">${cal}</div></div><div class="grid">${stat(t.undertimeMinutes??0,'Undertime (min)','wa')}${stat(t.absences??0,'Absences','er')}</div><h3 style="margin-top:20px">Daily attendance details</h3>${table(['Date','Day','Time in','Time out','Hours','Late','Undertime','Status','Filing'],rows.map(x=>`<tr><td>${esc(x.date)}</td><td>${esc(x.day)}</td><td>${esc(x.timeIn)}</td><td>${esc(x.timeOut)}</td><td>${esc(x.hours)}</td><td>${esc(x.late)}</td><td>${esc(x.undertime)}</td><td>${badge(x.status)}</td><td>${esc(x.filing)}</td></tr>`),'No dates in this cutoff.')}`;}
+async function loadMyDtr(b){DTRCTX={name:$('eName').textContent,meta:$('eMeta').textContent,cut:$('ec').value};$('eDtrBody').innerHTML='';$('eDtrBody').innerHTML=dtrView(await run(b,'getMyDTR',S.tok,$('ec').value))}
 
 /* ---------- HR ---------- */
 async function loadFilings(){$('hFBody').innerHTML='<div class="empty">Loading...</div>';const r=await call('getHRDashboard',S.tok,$('hfl').value);
@@ -775,32 +390,18 @@ async function loadFilings(){$('hFBody').innerHTML='<div class="empty">Loading..
   FIL=r.records;const s=r.stats;
   $('hStats').innerHTML=`<div class="stat"><b>${s.total}</b><span>Total filings</span></div><div class="stat wa"><b>${s.pending}</b><span>Pending</span></div><div class="stat ok"><b>${s.approved}</b><span>Approved</span></div><div class="stat er"><b>${s.rejected}</b><span>Rejected</span></div>`;renderFilings()}
 function renderFilings(){const f=$('hfs').value;
-  const q=String($('filingSearch')?.value||'').trim().toLowerCase();
   $('hFBody').innerHTML=table(['Reference','Filed','Employee','LDC','Type','Start','End','Days','Reason','Status','Action'],
-    FIL.filter(x=>(!f||x.status===f)&&arcOk(x,$('hfa').value))
-    .filter(x=>!q||[x.reference,x.timestamp,x.employeeName,x.employeeId,x.ldc,x.filingType,x.startDate,x.endDate,x.reason,x.status].some(v=>String(v||'').toLowerCase().includes(q))).map(x=>`<tr><td>${esc(x.reference)}</td><td>${esc(x.timestamp)}</td><td>${esc(x.employeeName)}<br><small>${esc(x.employeeId)}</small></td><td>${esc(x.ldc)}</td><td>${esc(x.filingType)}</td><td>${esc(x.startDate)}</td><td>${esc(x.endDate)}</td><td>${esc(x.days)}</td><td class="wrap">${esc(x.reason)}</td><td>${badge(x.status)}${x.actionBy?`<br><small>${esc(x.actionBy)}</small>`:''}</td>
+    FIL.filter(x=>(!f||x.status===f)&&arcOk(x,$('hfa').value)).map(x=>`<tr><td>${esc(x.reference)}</td><td>${esc(x.timestamp)}</td><td>${esc(x.employeeName)}<br><small>${esc(x.employeeId)}</small></td><td>${esc(x.ldc)}</td><td>${esc(x.filingType)}</td><td>${esc(x.startDate)}</td><td>${esc(x.endDate)}</td><td>${esc(x.days)}</td><td class="wrap">${esc(x.reason)}</td><td>${badge(x.status)}${x.actionBy?`<br><small>${esc(x.actionBy)}</small>`:''}</td>
     <td>${x.status==='PENDING'?`<div class="act"><button class="btn good sm" onclick="decide(this,'${esc(x.reference)}','APPROVED')">Approve</button><button class="btn bad sm" onclick="decide(this,'${esc(x.reference)}','REJECTED')">Reject</button></div>`:''}</td></tr>`),'No filings match these filters.')}
 async function decide(b,ref,st){if(!confirm((st==='APPROVED'?'Approve':'Reject')+' this filing?'))return;
   const r=await run(b,'updateFilingStatus',S.tok,ref,st);if(!r.success)dlg('Could not update',esc(r.message));loadFilings()}
 
-async function loadEmps(){
-  $('hEBody').innerHTML='<div class="empty">Loading employee directory...</div>';
-  const r=await call('getEmployeesForHR',S.tok,$('hel').value);
+async function loadEmps(){$('hEBody').innerHTML='<div class="empty">Loading...</div>';const r=await call('getEmployeesForHR',S.tok,$('hel').value);
   if(!r.success){$('hEBody').innerHTML=`<div class="msg er">${esc(r.message)}</div>`;return}
-  EMPS=r.employees||[];$('as').innerHTML=shiftOpts('');
-  renderEmployees();
-}
-function renderEmployees(){
-  const q=String($('employeeSearch')?.value||'').trim().toLowerCase();
-  const status=$('hes').value;
-  const rows=EMPS.filter(e=>(!status||String(e.status||'').toUpperCase()===status))
-    .filter(e=>!q||[e.employeeId,e.employeeName,e.ldc,e.email,e.contactNumber,e.emergencyContactName,e.emergencyContactNumber,e.address,e.shift,e.status]
-      .some(v=>String(v||'').toLowerCase().includes(q)));
-  $('employeeCount').textContent=`Showing ${rows.length} of ${EMPS.length} employee${EMPS.length===1?'':'s'}${q?' · Search: “'+q+'”':''}`;
-  $('hEBody').innerHTML=table(['ID','Name','LDC','Email','Birth date','Contact','Emergency contact','Address','Shift','Status','Registered','Actions'],rows.map(e=>`<tr><td>${esc(e.employeeId)}</td><td><strong>${esc(e.employeeName)}</strong></td><td>${esc(e.ldc)}</td><td>${esc(e.email)}</td><td>${esc(e.dateOfBirth||'')}</td><td>${esc(e.contactNumber||'')}</td><td>${esc([e.emergencyContactName,e.emergencyContactNumber].filter(Boolean).join(' / '))}</td><td class="wrap">${esc(e.address||'')}</td>
+  EMPS=r.employees;$('as').innerHTML=shiftOpts('');
+  $('hEBody').innerHTML=table(['ID','Name','LDC','Email','Birth date','Contact','Emergency contact','Address','Shift','Status','Registered','Actions'],EMPS.filter(e=>!$('hes').value||String(e.status||'').toUpperCase()===$('hes').value).map(e=>`<tr><td>${esc(e.employeeId)}</td><td>${esc(e.employeeName)}</td><td>${esc(e.ldc)}</td><td>${esc(e.email)}</td><td>${esc(e.dateOfBirth||'')}</td><td>${esc(e.contactNumber||'')}</td><td>${esc([e.emergencyContactName,e.emergencyContactNumber].filter(Boolean).join(' / '))}</td><td class="wrap">${esc(e.address||'')}</td>
     <td><select style="width:130px" onchange="setShift(this,'${esc(e.employeeId)}')">${shiftOpts(e.shift)}</select></td><td>${badge(e.status)}</td><td>${e.registered?'Yes':'No'}</td>
-    <td><div class="act"><button class="btn sec sm" onclick="setStatus('${esc(e.employeeId)}','${e.status==='ACTIVE'?'INACTIVE':'ACTIVE'}')">${e.status==='ACTIVE'?'Archive':'Restore'}</button>${e.registered?`<button class="btn sec sm" onclick="resetEmp(this,'${esc(e.employeeId)}')">Reset PIN</button>`:''}<button class="btn bad sm" onclick="rmEmp('${esc(e.employeeId)}','${esc(e.employeeName)}')">Remove</button></div></td></tr>`),q?'No employees match your search.':'No employees found. Use "Sync from master list" or add one.');
-}
+    <td><div class="act"><button class="btn sec sm" onclick="setStatus('${esc(e.employeeId)}','${e.status==='ACTIVE'?'INACTIVE':'ACTIVE'}')">${e.status==='ACTIVE'?'Archive':'Restore'}</button>${e.registered?`<button class="btn sec sm" onclick="resetEmp(this,'${esc(e.employeeId)}')">Reset PIN</button>`:''}<button class="btn bad sm" onclick="rmEmp('${esc(e.employeeId)}','${esc(e.employeeName)}')">Remove</button></div></td></tr>`),'No employees found. Use "Sync from master list" or add one.')}
 async function setShift(sel,id){const r=await call('updateEmployeeShift',S.tok,id,sel.value);if(!r.success)dlg('Could not save shift',esc(r.message))}
 async function setStatus(id,st){const r=await call('updateEmployeeStatus',S.tok,id,st);if(!r.success)dlg('Could not update',esc(r.message));loadEmps()}
 async function resetEmp(b,id){if(!confirm('Reset this employee\'s PIN?'))return;const r=await run(b,'resetEmployeePIN',S.tok,id);
@@ -832,84 +433,25 @@ function openEmpTab(t){['eDtr','eFile','ePw','eProfile'].forEach(id=>$(id).class
 $('empNav').addEventListener('click',e=>{const b=e.target.closest('button[data-t]');if(b)openEmpTab(b.dataset.t)});
 function pinForm(){$('ePwBox').innerHTML=`<label>Current 6-digit PIN</label><input id="pinOld" type="text" inputmode="numeric" maxlength="6" autocomplete="off"><label>New 6-digit PIN</label><input id="pinNew" type="text" inputmode="numeric" maxlength="6" autocomplete="off"><label>Confirm new PIN</label><input id="pinConfirm" type="text" inputmode="numeric" maxlength="6" autocomplete="off"><button class="btn" style="margin-top:15px" id="pinSaveBtn">Update PIN</button><div id="pinMsg"></div>`;$('pinSaveBtn').onclick=async()=>{let o=$('pinOld').value,n=$('pinNew').value,c=$('pinConfirm').value;if(!/^\d{6}$/.test(o)||!/^\d{6}$/.test(n)){msg('pinMsg',{message:'Enter a valid six-digit PIN.'});return}if(n!==c){msg('pinMsg',{message:'New PINs do not match.'});return}let r=await run($('pinSaveBtn'),'changeEmployeePIN',S.tok,o,n);msg('pinMsg',r,'PIN updated successfully.');if(r.success)$('pinOld').value=$('pinNew').value=$('pinConfirm').value=''}}
 let PROFILE_SNAPSHOT={};
-setProfileEditMode(false);
-function profileVals(){return{dateOfBirth:$('pDob').value,contactNumber:$('pPhone').value,emergencyContactName:$('pEmergency').value,emergencyContactNumber:$('pEmergencyPhone').value,address:$('pAddress').value}}
-function setProfile(p){
-  p=p||{};
-  $('pName').value=p.employeeName||p.name||$('eName').textContent||'';
-  $('pDob').value=String(p.dateOfBirth||p.dob||'').slice(0,10);
-  $('pPhone').value=p.contactNumber||'';
-  $('pEmergency').value=p.emergencyContactName||p.emergencyContact||'';
-  $('pEmergencyPhone').value=p.emergencyContactNumber||'';
-  $('pAddress').value=p.address||'';
-  $('profileNameHead').textContent=$('pName').value||'Employee profile';
-  $('profileEmailHead').textContent=p.email||S.employeeEmail||$('le').value;
-  $('profileAvatar').textContent=$('pName').value.split(/\s+/).slice(0,2).map(x=>x[0]||'').join('').toUpperCase()||'BE';
-  PROFILE_SNAPSHOT=profileVals();
-  // First-time sorter profiles have no saved personal details yet.
-  // Keep the fields open so the sorter can enter details immediately.
-  const hasSavedDetails = !!(
-    p.dateOfBirth || p.dob || p.contactNumber ||
-    p.emergencyContactName || p.emergencyContact ||
-    p.emergencyContactNumber || p.address
-  );
-  setProfileEditMode(!hasSavedDetails);
-  if (!hasSavedDetails) {
-    $('profileMsg').innerHTML = '<div class="msg info">Please enter your personal and emergency contact details, then select Save changes.</div>';
-  }
-}
-let PROFILE_EDITING=false;
-function setProfileEditMode(editing){
-  PROFILE_EDITING=!!editing;
-  ['pDob','pPhone','pEmergency','pEmergencyPhone','pAddress'].forEach(id=>{
-    const field=$(id);
-    field.disabled=!PROFILE_EDITING;
-    field.readOnly=!PROFILE_EDITING;
-    field.setAttribute('aria-readonly',String(!PROFILE_EDITING));
-  });
-  $('profileEditBtn').classList.toggle('hide',PROFILE_EDITING);
-  $('profileSaveBtn').classList.toggle('hide',!PROFILE_EDITING);
-  $('profileCancelBtn').classList.toggle('hide',!PROFILE_EDITING);
-  $('eProfile').classList.toggle('profile-editing',PROFILE_EDITING);
-  $('eProfile').setAttribute('data-editing',PROFILE_EDITING?'true':'false');
-}
-function toggleProfileEdit(){
-  if(PROFILE_EDITING)return;
-  $('profileMsg').innerHTML='';
-  PROFILE_SNAPSHOT=profileVals();
-  setProfileEditMode(true);
-  $('pPhone').focus();
-}
-function cancelProfileEdit(){
-  if(!PROFILE_EDITING)return;
-  $('pDob').value=PROFILE_SNAPSHOT.dateOfBirth||'';
-  $('pPhone').value=PROFILE_SNAPSHOT.contactNumber||'';
-  $('pEmergency').value=PROFILE_SNAPSHOT.emergencyContactName||'';
-  $('pEmergencyPhone').value=PROFILE_SNAPSHOT.emergencyContactNumber||'';
-  $('pAddress').value=PROFILE_SNAPSHOT.address||'';
-  setProfileEditMode(false);
-  $('profileMsg').innerHTML='';
-}
-async function saveProfile(button){
-  if(!PROFILE_EDITING)return;
-  const p=profileVals();
-  if(p.contactNumber.length>30||p.emergencyContactNumber.length>30){$('profileMsg').innerHTML='<div class="msg er">Contact numbers must be 30 characters or fewer.</div>';return}
-  if(p.emergencyContactName.length>100||p.address.length>500){$('profileMsg').innerHTML='<div class="msg er">Please check the length of your emergency contact name or address.</div>';return}
-  const r=await run(button,'updateMyProfile',S.tok,p);
-  if(!r.success){$('profileMsg').innerHTML=`<div class="msg er">${esc(r.message||'Unable to save profile details.')}</div>`;return}
-  PROFILE_SNAPSHOT=p;
-  setProfileEditMode(false);
-  $('profileMsg').innerHTML='<div class="msg ok">Your profile details have been saved.</div>';
-}
-async function loadProfile(){
-  if(!$('profileMsg'))return;
-  $('profileMsg').innerHTML='';
-  const r=await call('getMyProfile',S.tok);
-  if(r.success){setProfile(r.profile||{});return}
-  if(r.sessionExpired){$('profileMsg').innerHTML='<div class="msg er">Your session has expired. Please sign in again.</div>';return}
-  setProfile({employeeName:$('eName').textContent,email:S.employeeEmail||$('le').value});
-  $('profileMsg').innerHTML=`<div class="msg er">${esc(r.message||'Unable to load your profile details.')}</div>`;
-}
+function profileVals(){return{employeeName:$('pName').value,dateOfBirth:$('pDob').value,contactNumber:$('pPhone').value,emergencyContactName:$('pEmergency').value,emergencyContactNumber:$('pEmergencyPhone').value,address:$('pAddress').value}}
+function setProfile(p){p=p||{};$('pName').value=p.employeeName||p.name||$('eName').textContent||'';$('pDob').value=(p.dateOfBirth||p.dob||'').slice(0,10);$('pPhone').value=p.contactNumber||'';$('pEmergency').value=p.emergencyContactName||p.emergencyContact||'';$('pEmergencyPhone').value=p.emergencyContactNumber||'';$('pAddress').value=p.address||'';$('profileNameHead').textContent=$('pName').value||'Employee profile';$('profileEmailHead').textContent=p.email||$('le').value;$('profileAvatar').textContent=$('pName').value.split(/\s+/).slice(0,2).map(x=>x[0]||'').join('').toUpperCase()||'BE';PROFILE_SNAPSHOT=profileVals();['pName','pDob','pPhone','pEmergency','pEmergencyPhone','pAddress'].forEach(id=>$(id).readOnly=true);$('profileActions').classList.add('hide');$('profileEditBtn').classList.remove('hide')}
+async function loadProfile(){if(!$('profileMsg'))return;$('profileMsg').innerHTML='';let r=await call('getEmployeeProfile',S.tok);if(r.success)setProfile(r.profile||r.employee||r);else{setProfile({employeeName:$('eName').textContent,email:$('le').value});$('profileMsg').innerHTML=`<div class="msg er">${esc(r.message||'Profile service is not available yet.')}</div>`}}
+function toggleProfileEdit(){['pName','pDob','pPhone','pEmergency','pEmergencyPhone','pAddress'].forEach(id=>$(id).readOnly=false);$('profileActions').classList.remove('hide');$('profileEditBtn').classList.add('hide')}
+function cancelProfileEdit(){setProfile(PROFILE_SNAPSHOT)}
+async function saveProfile(b){let v=profileVals();if(!v.employeeName.trim()){msg('profileMsg',{message:'Full name is required.'});return}let r=await run(b,'updateEmployeeProfile',S.tok,v);msg('profileMsg',r,'Profile details saved. HR/Management can view the updated details.');if(r.success){$('eName').textContent=v.employeeName;setProfile(v)}}
+
+/* ---------- LOGIN UI ---------- */
+const EYE='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>';
+document.querySelectorAll('.eye').forEach(b=>b.innerHTML=EYE);
+function togglePw(id){const i=$(id);i.type=i.type==='password'?'text':'password'}
+function syncAuthHead(){const hr=!$('aHR').classList.contains('hide'),rg=!$('aReg').classList.contains('hide');
+  $('authH').textContent=hr?'Management sign in':rg?'Create your account':'Welcome back';
+  $('authSub').textContent=hr?'Sign in to review filings, employees and DTR.':rg?'Register with your master-list name and create a six-digit PIN.':'Sign in to record attendance and view your cutoff details.'}
+function showReg(on){$('sLog').classList.toggle('hide',on);$('aReg').classList.toggle('hide',!on);$('authMsg').innerHTML='';syncAuthHead()}
+$('authTabs').addEventListener('click',syncAuthHead);
+function toggleDark(on){const d=typeof on==='boolean'?on:!document.body.classList.contains('dark-mode');document.body.classList.toggle('dark-mode',d);
+  try{localStorage.setItem('besi-dark',d?'1':'0')}catch(e){}}
+try{if(localStorage.getItem('besi-dark')==='1')toggleDark(true)}catch(e){}
 
 document.addEventListener('keydown',e=>{if(e.key!=='Enter'||e.target.tagName==='TEXTAREA')return;
   const m={le:()=>empLogin($('aLogin').querySelector('.btn')),lp:()=>empLogin($('aLogin').querySelector('.btn')),hu:()=>hrLogin($('aHR').querySelector('.btn')),hp:()=>hrLogin($('aHR').querySelector('.btn'))};m[e.target.id]&&m[e.target.id]()});
