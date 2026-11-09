@@ -73,13 +73,26 @@ td{padding:12px 14px;border-top:1px solid var(--line);vertical-align:middle}tbod
 .cutRow{display:flex;gap:10px}.cutRow select{flex:1;min-width:0}
 .prof{display:flex;gap:14px;align-items:center;padding:14px;border-radius:14px;background:var(--tint);margin:14px 0}.av{width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,var(--cy),var(--mg));color:#fff;display:grid;place-items:center;font-weight:800;flex:none}
 /* management */
-.side{position:fixed;inset:0 auto 0 0;width:252px;z-index:40;display:flex;flex-direction:column;padding:20px 14px 16px;color:#dfe7ff;background:linear-gradient(180deg,#0f2461,#183a93 75%,#14327f)}
-.side::after{content:"";position:absolute;top:0;right:0;bottom:0;width:3px;background:linear-gradient(180deg,#27cdff,#d92aa1)}
-.side .brand{display:flex;gap:11px;align-items:center;padding:0 6px 18px;margin-bottom:16px;border-bottom:1px solid rgba(255,255,255,.14)}.side .brand b{color:#fff}.side .brand span{letter-spacing:0;font-size:12px;color:#a9bbf0}.side svg.lg{flex:none;border-radius:10px}
-.snav{display:grid;gap:4px}.snav button{display:flex;align-items:center;gap:12px;height:44px;padding:0 12px;border:0;border-radius:11px;background:none;color:#cfdaff;font:inherit;font-weight:600;cursor:pointer;position:relative}.snav svg{width:19px;height:19px;flex:none}.snav button:hover{background:rgba(255,255,255,.09)}.snav button.on{background:rgba(255,255,255,.16);color:#fff}
-.cnt{margin-left:auto;background:var(--mg);color:#fff;border-radius:99px;font-size:11px;font-weight:700;padding:1px 8px}
-.sbot{margin-top:auto;display:grid;gap:10px}.suser{display:flex;gap:10px;align-items:center;padding:11px;border-radius:12px;background:rgba(255,255,255,.1);min-width:0}.suser .av{width:36px;height:36px;border-radius:50%;font-size:13px}.suser b{display:block;color:#fff;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.suser span{font-size:12px;color:#a9bbf0}
-.sbtn{height:40px;border-radius:11px;border:1px solid rgba(255,255,255,.25);background:none;color:#fff;font:inherit;font-weight:600;cursor:pointer}
+.side{position:fixed;inset:0 auto 0 0;width:252px;z-index:40;display:flex;flex-direction:column;padding:18px 14px 16px;background:var(--glass);border-right:1px solid var(--gb);-webkit-backdrop-filter:blur(20px) saturate(1.6);backdrop-filter:blur(20px) saturate(1.6);box-shadow:8px 0 30px rgba(24,58,147,.08),inset -1px 0 0 rgba(255,255,255,.7)}
+.side .brand{display:flex;gap:11px;align-items:center;padding:0 4px 16px;margin-bottom:14px;border-bottom:1px solid var(--line)}
+.lgo{flex:none;width:36px;height:36px;border-radius:11px;display:grid;place-items:center;color:#fff;font-weight:800;font-size:16px;background:linear-gradient(135deg,#183a93,#27cdff 60%,#d92aa1);box-shadow:0 4px 12px rgba(24,58,147,.28)}
+.side .brand b{font-size:14px;letter-spacing:0}.side .brand span{font-size:11.5px;letter-spacing:0}
+.slabel{font-size:12px;font-weight:700;color:var(--mut);padding:0 6px;margin-bottom:10px}
+.snav{display:grid;gap:8px}
+.snav button{display:flex;align-items:center;gap:12px;width:100%;height:46px;padding:0 14px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.55);color:var(--ink);font:inherit;font-size:13.5px;font-weight:650;cursor:pointer;position:relative;box-shadow:inset 0 1px 0 rgba(255,255,255,.8)}
+body.dark .snav button{background:rgba(255,255,255,.05);box-shadow:none}
+.snav svg{width:19px;height:19px;flex:none;color:var(--mut)}
+.snav button:hover{background:rgba(39,205,255,.1)}
+.snav button.on{background:linear-gradient(180deg,rgba(39,205,255,.2),rgba(24,58,147,.1));border-color:rgba(24,58,147,.3);color:var(--navy);box-shadow:inset 4px 0 0 var(--navy)}
+.snav button.on svg{color:var(--navy)}
+.sbot{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);display:grid;gap:12px}
+.schip{display:flex;align-items:center;gap:8px;align-self:start;max-width:100%;padding:6px 12px;border:1px solid var(--line);border-radius:99px;background:rgba(255,255,255,.6);font-size:12px;font-weight:600}
+body.dark .schip{background:rgba(255,255,255,.06)}
+.schip:before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:#18a77a}.schip span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sacts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sacts button{height:40px;border:1px solid var(--line);border-radius:99px;background:rgba(255,255,255,.6);color:var(--ink);font:inherit;font-size:13px;font-weight:600;cursor:pointer}.sacts button:hover{background:rgba(24,58,147,.08)}
+body.dark .sacts button{background:rgba(255,255,255,.06)}
+.mtact{display:none;gap:10px}
 .mgm{max-width:1300px;margin:0 auto;padding:30px 34px 56px}
 .mgTop{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:22px}.mgTop h1{font-size:28px;letter-spacing:-.6px}.mgTop p{color:var(--mut);margin-top:4px}
 .bar,.filters{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end}.bar{justify-content:space-between}
@@ -93,8 +106,8 @@ dialog h3{margin-bottom:12px}code{background:var(--tint);padding:6px 10px;border
 @media(max-width:900px){
  body.mg main{padding:64px 0 0}
  .side{inset:0 0 auto 0;width:100%;height:60px;flex-direction:row;align-items:center;gap:8px;padding:8px 12px}.side::after{inset:auto 0 0 0;width:auto;height:3px;background:linear-gradient(90deg,#27cdff,#d92aa1)}
- .side .brand{border:0;margin:0;padding:0}.side .brand div,.sbot{display:none}.snav{display:flex;flex:1;overflow-x:auto;justify-content:space-around}.snav button{width:auto;padding:0 12px;font-size:13px}.snav svg{display:none}
- .mgm{padding:20px 14px 40px}.mgTop h1{font-size:23px}.f,.filters{width:100%}.bar>.btn,.mgTop .btn{width:100%}
+ .side .brand{border:0;margin:0;padding:0}.side .brand>div:last-child,.sbot,.slabel{display:none}.snav button{border:0;background:none;box-shadow:none;height:40px}.snav button.on{box-shadow:inset 0 -3px 0 var(--navy);border-radius:10px 10px 0 0}.mtact{display:flex}.mtact .btn{flex:1}.snav{display:flex;flex:1;overflow-x:auto;justify-content:space-around}.snav button{width:auto;padding:0 12px;font-size:13px}.snav svg{display:none}
+ .mgm{padding:20px 14px 40px}.mgTop h1{font-size:23px}.f,.filters{width:100%}.bar>.btn{width:100%}.mtact{width:100%}
 }
 @media(max-width:760px){
  .card{padding:16px}.authBox{padding:24px 18px}.top .nm{display:none}
@@ -149,14 +162,15 @@ dialog h3{margin-bottom:12px}code{background:var(--tint);padding:6px 10px;border
  <button data-t="eProfile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Profile</button></nav>
 
 <section id="hr" class="hide">
- <aside class="side"><div class="brand"><svg class="lg" viewBox="0 0 40 40" width="38" height="38"><rect width="40" height="40" rx="9" fill="#fff"/><path d="M9 6h12a9 9 0 0 1 0 14L9 20z" fill="#183a93"/><path d="M9 20h14a9 9 0 0 1 0 14H9z" fill="#d92aa1"/><path d="M9 12l12 8-12 8z" fill="#27cdff"/></svg><div><b>Better Edge</b><span>Management</span></div></div>
+ <aside class="side"><div class="brand"><div class="lgo">B</div><div><b>Better Edge Solutions</b><span>Management</span></div></div>
+ <div class="slabel">Management Dashboard</div>
  <nav class="snav" id="managementNav">
-  <button data-panel="hF" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>Filings<span class="cnt hide" id="pendCount">0</span></button>
+  <button data-panel="hF" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>Filings</button>
   <button data-panel="hE"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg>Employees</button>
   <button data-panel="hD"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>DTR</button>
   <button data-panel="hP"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Account</button></nav>
- <div class="sbot"><div class="suser"><div class="av" id="mgAv">M</div><div style="min-width:0"><b id="mgUser"></b><span id="mgRole"></span></div></div><button class="sbtn" onclick="logout()">Log out</button></div></aside>
- <div class="mgm"><div class="mgTop"><div><h1 id="mgTitle"></h1><p id="mgSub"></p></div><div style="display:flex;gap:10px"><button class="btn s" onclick="toggleDark()">&#9680; Theme</button><button class="btn s" id="loTop" onclick="logout()">Log out</button></div></div>
+ <div class="sbot"><div class="schip"><span id="mgUser"></span></div><div class="sacts"><button onclick="toggleDark()">&#9680; Dark</button><button onclick="logout()">Log out</button></div></div></aside>
+ <div class="mgm"><div class="mgTop"><div><h1 id="mgTitle"></h1><p id="mgSub"></p></div><div class="mtact"><button class="btn s" onclick="toggleDark()">&#9680; Theme</button><button class="btn s" onclick="logout()">Log out</button></div></div>
   <div id="hF"><div class="stats" id="hStats"></div><div class="card glass"><div class="bar"><div class="filters">
    <div class="f"><label>LDC</label><select id="hfl" onchange="loadFilings()"><option value="">All LDCs</option><option>LDC1</option><option>LDC2</option></select></div>
    <div class="f"><label>Status</label><select id="hfs" onchange="renderFilings()"><option value="">All</option><option>PENDING</option><option>APPROVED</option><option>REJECTED</option></select></div>
@@ -232,7 +246,7 @@ function managementNav(p){if(S.mustChange&&p!=='hP')return;
  ['hF','hE','hD','hP'].forEach(id=>$(id).classList.toggle('hide',id!==p));$('hA').classList.toggle('hide',!(p==='hP'&&S.isOwner));
  document.querySelectorAll('#managementNav button').forEach(b=>b.classList.toggle('on',b.dataset.panel===p));
  $('mgTitle').textContent=TITLES[p][0];$('mgSub').textContent=TITLES[p][1];
- const n=$('whoTxt').textContent.replace(' (Owner)','');$('mgUser').textContent=n;$('mgRole').textContent=S.isOwner?'Owner':'Management';$('mgAv').textContent=n.split(/\s+/).map(w=>w[0]).slice(0,2).join('').toUpperCase()||'M';
+ const n=$('whoTxt').textContent.replace(' (Owner)','');$('mgUser').textContent=n;
  if(p==='hE')loadEmps();if(p==='hF')loadFilings();if(p==='hP'&&S.isOwner)loadHR();
  if(p==='hD')$('hDBody').innerHTML='<div class="empty">Choose an LDC, cutoff and employee.</div>';window.scrollTo(0,0)}
 $('managementNav').addEventListener('click',e=>{const b=e.target.closest('button[data-panel]');if(b)managementNav(b.dataset.panel)});
@@ -302,7 +316,7 @@ async function saveProfile(b){const v=profileVals();if(!v.employeeName.trim()){m
 /* HR */
 async function loadFilings(){$('hFBody').innerHTML='<div class="empty">Loading...</div>';const r=await call('getHRDashboard',S.tok,$('hfl').value);if(!r.success){$('hFBody').innerHTML=`<div class="msg er">${esc(r.message)}</div>`;return}
  FIL=r.records;const s=r.stats;$('hStats').innerHTML=`<div class="stat"><b>${s.total}</b><span>Total</span></div><div class="stat wa"><b>${s.pending}</b><span>Pending</span></div><div class="stat ok"><b>${s.approved}</b><span>Approved</span></div><div class="stat er"><b>${s.rejected}</b><span>Rejected</span></div>`;renderFilings()}
-function renderFilings(){const f=$('hfs').value,pc=FIL.filter(x=>x.status==='PENDING').length;$('pendCount').textContent=pc;$('pendCount').classList.toggle('hide',!pc);
+function renderFilings(){const f=$('hfs').value,pc=FIL.filter(x=>x.status==='PENDING').length;
  $('hFBody').innerHTML=mtable(['Employee','Type','Dates','Reason','Status','Action'],FIL.filter(x=>(!f||x.status===f)&&arcOk(x,$('hfa').value)).map(x=>{const rg=x.endDate&&x.endDate!==x.startDate?`${fd(x.startDate)} → ${fd(x.endDate)}`:fd(x.startDate),d=Number(x.days)||1,r=esc(x.reference);
   return'<tr>'+td('Employee',`<div class="c1">${esc(x.employeeName)}</div><div class="c2">${esc(x.employeeId)} · ${r}</div>`)+td('Type',`<div class="c1">${esc(x.filingType)}</div><div class="c2">${esc(x.ldc)}</div>`)+td('Dates',`<div class="c1">${rg}</div><div class="c2">${d} day${d>1?'s':''}</div>`)+td('Reason',`<div class="clamp" title="${esc(x.reason)}">${esc(x.reason)}</div>`)+td('Status',badge(x.status)+(x.actionBy?`<div class="c2">by ${esc(x.actionBy)}</div>`:''))
   +td('Action',x.status==='PENDING'?`<div class="act"><button class="btn sm g" onclick="decide(this,'${r}','APPROVED')">Approve</button><button class="btn sm r" onclick="decide(this,'${r}','REJECTED')">Reject</button></div>`:'—')+'</tr>'}),'No filings match these filters.')}
