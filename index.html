@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#183a93">
 <title>Better Edge Solutions Inc. - Portal</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx-js-style@1.2.0/dist/xlsx.bundle.js"></script>
 <style>
 :root{--ink:#14213d;--mut:#6a7592;--line:rgba(24,58,147,.14);--navy:#183a93;--cy:#27cdff;--mg:#d92aa1;--ok:#14835d;--bad:#b94351;--warn:#a8680f;--glass:linear-gradient(180deg,rgba(255,255,255,.82),rgba(255,255,255,.58));--gb:rgba(255,255,255,.9);--fld:rgba(255,255,255,.85);--tint:rgba(24,58,147,.06)}
 body.dark{--ink:#e8ecf7;--mut:#9aa7c7;--line:rgba(255,255,255,.13);--glass:linear-gradient(180deg,rgba(34,46,90,.76),rgba(18,26,54,.66));--gb:rgba(255,255,255,.12);--fld:rgba(255,255,255,.07);--tint:rgba(255,255,255,.06);--navy:#8fb0ff;--ok:#6fe0b6;--bad:#ff9aa4;--warn:#f2c46e}
@@ -248,14 +248,22 @@ const arcOk=(x,m)=>m==='all'||(m==='arc'?isArchFiling(x):!isArchFiling(x));
 /* DOWNLOADS */
 let LASTDTR=null,DTRCTX={},LASTSUM=null;
 function saveXlsx(name,sheets){if(!window.XLSX){dlg('Download unavailable','The Excel library could not load. Check your connection and try again.');return}
- const wb=XLSX.utils.book_new();sheets.forEach(s=>{const ws=XLSX.utils.aoa_to_sheet(s.rows);ws['!cols']=(s.widths||[]).map(w=>({wch:w}));XLSX.utils.book_append_sheet(wb,ws,s.name.slice(0,31))});XLSX.writeFile(wb,name.replace(/[^\w.-]+/g,'_')+'.xlsx')}
+ const wb=XLSX.utils.book_new(),bd={style:'thin',color:{rgb:'C9D3E3'}},B={top:bd,bottom:bd,left:bd,right:bd};
+ sheets.forEach(sh=>{const ws=XLSX.utils.aoa_to_sheet(sh.rows),h=sh.hr==null?0:sh.hr,rg=XLSX.utils.decode_range(ws['!ref']);
+  for(let r=0;r<=rg.e.r;r++)for(let c=0;c<=rg.e.c;c++){const a=XLSX.utils.encode_cell({r,c}),x=ws[a];if(!x)continue;
+   if(r===h)x.s={fill:{patternType:'solid',fgColor:{rgb:'1F4E79'}},font:{bold:true,color:{rgb:'FFFFFF'},sz:11,name:'Calibri'},alignment:{horizontal:'center',vertical:'center',wrapText:true},border:B};
+   else if(r>h&&sh.body!==false)x.s={font:{sz:11,name:'Calibri'},alignment:{vertical:'center'},border:B}}
+  ws['!cols']=(sh.widths||[]).map(w=>({wch:w}));ws['!rows']=[];ws['!rows'][h]={hpt:32};
+  if(sh.filter!==false){ws['!autofilter']={ref:XLSX.utils.encode_range({s:{r:h,c:0},e:{r:rg.e.r,c:rg.e.c}})}}
+  if(sh.freeze){const f=sh.freeze;ws['!freeze']={xSplit:String(f),ySplit:String(h+1),topLeftCell:XLSX.utils.encode_cell({r:h+1,c:f}),activePane:'bottomRight',state:'frozen'}}
+  XLSX.utils.book_append_sheet(wb,ws,sh.name.slice(0,31))});XLSX.writeFile(wb,name.replace(/[^\w.-]+/g,'_')+'.xlsx')}
 const DLROW=f=>`<div class="dlRow"><button class="btn" onclick="${f}">Download Excel</button><button class="btn s" onclick="window.print()">Print / PDF</button></div>`;
 function dlDtr(){const r=LASTDTR;if(!r||!r.success)return;const t=r.totals||{},c=DTRCTX,cut=r.tab||c.cut;
- saveXlsx('DTR_'+c.name+'_'+cut,[{name:'Summary',widths:[22,34,12,12,16,12],rows:[['Better Edge Solutions Inc.'],['Daily Time Record'],[],['Employee',c.name],['Details',c.meta],['Cutoff',cut],[],['Days worked','Total hours','OT hours','Late (min)','Undertime (min)','Absences'],[t.daysRendered||0,t.hours||0,t.overtimeHours||0,t.lateMinutes||0,t.undertimeMinutes||0,t.absences||0]]},
- {name:'Attendance',widths:[12,8,11,11,9,9,11,14,24],rows:[['Date','Day','Time in','Time out','Hours','Late','Undertime','Status','Filing'],...(r.rows||[]).map(x=>[x.date,x.day,x.timeIn,x.timeOut,x.hours,x.late,x.undertime,x.status,x.filing])]}])}
-function dlSummary(){const s=LASTSUM;if(!s)return;saveXlsx('DTR_summary_'+s.ldc+'_'+s.cut,[{name:'LDC summary',widths:[12,30,14,8,9,11,15,10,8],rows:[['Better Edge Solutions Inc. - DTR summary',s.ldc,s.cut],[],['ID','Name','Shift','Days','Hours','Late (min)','Undertime (min)','Absences','Leaves'],...s.rows.map(x=>x.found?[x.employeeId,x.employeeName,x.shiftLabel,x.totals.daysRendered,x.totals.hours,x.totals.lateMinutes,x.totals.undertimeMinutes,x.totals.absences,x.totals.leaves]:[x.employeeId,x.employeeName,x.shiftLabel,'Not found in this cutoff'])]}])}
+ saveXlsx('DTR_'+c.name+'_'+cut,[{name:'Summary',hr:7,body:false,filter:false,widths:[22,34,12,12,16,12],rows:[['Better Edge Solutions Inc.'],['Daily Time Record'],[],['Employee',c.name],['Details',c.meta],['Cutoff',cut],[],['Days worked','Total hours','OT hours','Late (min)','Undertime (min)','Absences'],[t.daysRendered||0,t.hours||0,t.overtimeHours||0,t.lateMinutes||0,t.undertimeMinutes||0,t.absences||0]]},
+ {name:'Attendance',freeze:2,widths:[12,8,11,11,9,9,11,14,24],rows:[['Date','Day','Time in','Time out','Hours','Late','Undertime','Status','Filing'],...(r.rows||[]).map(x=>[x.date,x.day,x.timeIn,x.timeOut,x.hours,x.late,x.undertime,x.status,x.filing])]}])}
+function dlSummary(){const s=LASTSUM;if(!s)return;saveXlsx('DTR_summary_'+s.ldc+'_'+s.cut,[{name:'LDC summary',freeze:2,widths:[12,30,14,8,9,11,15,10,8],rows:[['ID','Name','Shift','Days','Hours','Late (min)','Undertime (min)','Absences','Leaves'],...s.rows.map(x=>x.found?[x.employeeId,x.employeeName,x.shiftLabel,x.totals.daysRendered,x.totals.hours,x.totals.lateMinutes,x.totals.undertimeMinutes,x.totals.absences,x.totals.leaves]:[x.employeeId,x.employeeName,x.shiftLabel,'Not found in this cutoff'])]}])}
 function dlFilings(){const f=$('hfs').value,rows=FIL.filter(x=>(!f||x.status===f)&&arcOk(x,$('hfa').value));if(!rows.length){dlg('Nothing to download','No filings match the current filters.');return}
- saveXlsx('Filings_'+new Date().toISOString().slice(0,10),[{name:'Filings',widths:[16,18,26,12,8,10,12,12,6,36,11,18],rows:[['Reference','Filed','Employee','Employee ID','LDC','Type','Start','End','Days','Reason','Status','Action by'],...rows.map(x=>[x.reference,x.timestamp,x.employeeName,x.employeeId,x.ldc,x.filingType,x.startDate,x.endDate,x.days,x.reason,x.status,x.actionBy])]}])}
+ saveXlsx('Filings_'+new Date().toISOString().slice(0,10),[{name:'Filings',freeze:3,widths:[16,18,26,12,8,10,12,12,6,36,11,18],rows:[['Reference','Filed','Employee','Employee ID','LDC','Type','Start','End','Days','Reason','Status','Action by'],...rows.map(x=>[x.reference,x.timestamp,x.employeeName,x.employeeId,x.ldc,x.filingType,x.startDate,x.endDate,x.days,x.reason,x.status,x.actionBy])]}])}
 
 /* EMPLOYEE */
 function openEmpTab(t){['eDtr','eFile','ePw','eProfile'].forEach(id=>$(id).classList.toggle('hide',id!==t));[...$('empNav').children].forEach(b=>b.classList.toggle('on',b.dataset.t===t));if(t==='eFile')loadMine();if(t==='eDtr')initDtr();window.scrollTo(0,0)}
